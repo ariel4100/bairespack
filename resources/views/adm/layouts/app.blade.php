@@ -26,10 +26,10 @@
         i.material-icons{
             margin-right: .5rem;
             margin-left: .5rem;
-            color: #8BBF41;
+            color: #FEB80B;
         }
         i.fa-chevron-right{
-            color: #8BBF41;
+            color: #FEB80B;
         }
         #sidebar {
             min-width: 300px;
