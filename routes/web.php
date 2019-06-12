@@ -26,4 +26,38 @@ Route::group([ 'prefix' => 'productos'],function (){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+/*************************RUTAS ADM******************************/
+Route::group(['prefix' => 'adm'],function (){
+    Route::view('/',  'adm.dashboard.index');
+    Route::group(['prefix' => 'slider', 'as' => 'slider'], function() {
+        Route::get('{seccion}/create', ['uses' => 'Adm\SliderController@create', 'as' => '.create']);
+        Route::post('store', ['uses' => 'Adm\SliderController@store', 'as' => '.store']);
+        Route::get('{seccion}/list', ['uses' => 'Adm\SliderController@list', 'as' => '.list']);
+        Route::get('edit/{slider}', ['uses' => 'Adm\SliderController@edit', 'as' => '.edit']);
+        Route::post('update/{slider}', ['uses' => 'Adm\SliderController@update', 'as' => '.update']);
+        Route::get('destroy/{slider}', ['uses' => 'Adm\SliderController@destroy', 'as' => '.destroy']);
+    });
+ 
+    Route::group(['prefix' => 'contenido', 'as' => 'contenido'], function() {
+        Route::get('{seccion}/index', ['uses' => 'Adm\ContentController@index', 'as' => '.index']);
+        Route::get('{seccion}/edit', ['uses' => 'Adm\ContentController@edit', 'as' => '.edit']);
+        Route::post('{seccion}/update', ['uses' => 'Adm\ContentController@update', 'as' => '.update']);
+    });
+    // GALERIAS DE PRODUCTOS
+    Route::group(['prefix' => 'galeria', 'as' => 'galeria'], function() {
+        Route::get('{id}', ['uses' => 'Adm\GaleryController@index', 'as' => '.index']);
+        Route::get('crear/galeria/{id}', ['uses' => 'Adm\GaleryController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\GaleryController@store', 'as' => '.store']);
+        Route::get('{id}/edit', ['uses' => 'Adm\GaleryController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\GaleryController@update', 'as' => '.update']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\GaleryController@destroy', 'as' => '.destroy']);
+    });
+   /* Route::group(['prefix' => 'pedidos', 'as' => 'pedidos'], function() {
+        Route::get('pedidos', ['uses' => 'Adm\OrderController@index', 'as' => '.index']);
+
+    });*/
+ 
+    Route::resource('metadatos','Adm\MetadataController');
+    Route::resource('usuario','Adm\UserController');
+});
