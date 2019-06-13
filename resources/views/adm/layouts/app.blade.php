@@ -34,7 +34,7 @@
         #sidebar {
             min-width: 300px;
             max-width: 300px;
-            background: #ffffff;
+            background: #333333;
             color: #333333;
             transition: all 0.3s;
             box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
@@ -46,7 +46,7 @@
         }
         #sidebar ul li a {
             display: block;
-            color: black;
+            color: white;
             padding: 10px;
         }
         #sidebar ul li a:hover, #sidebar ul ul .active {
@@ -104,7 +104,7 @@
 <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
 
-@yield('script')
+@stack('script')
 
 </body>
 </html>

@@ -38,12 +38,26 @@ Route::group(['prefix' => 'adm'],function (){
         Route::post('update/{slider}', ['uses' => 'Adm\SliderController@update', 'as' => '.update']);
         Route::get('destroy/{slider}', ['uses' => 'Adm\SliderController@destroy', 'as' => '.destroy']);
     });
- 
+
     Route::group(['prefix' => 'contenido', 'as' => 'contenido'], function() {
-        Route::get('{seccion}/index', ['uses' => 'Adm\ContentController@index', 'as' => '.index']);
-        Route::get('{seccion}/edit', ['uses' => 'Adm\ContentController@edit', 'as' => '.edit']);
-        Route::post('{seccion}/update', ['uses' => 'Adm\ContentController@update', 'as' => '.update']);
+        Route::get('{section}/{type}', ['uses' => 'Adm\ContentController@index', 'as' => '.index']);
+        Route::get('{section}/{type}/create', ['uses' => 'Adm\ContentController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\ContentController@store', 'as' => '.store']);
+        Route::get('{section}/{contenido}/edit', ['uses' => 'Adm\ContentController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\ContentController@update', 'as' => '.update']);
+        Route::get('/eliminar/lista/{section}/{contenido}', ['uses' => 'Adm\ContentController@delete', 'as' => '.delete']);
     });
+
+    // PRODUCTOS
+    Route::group(['prefix' => 'productos', 'as' => 'productos'], function() {
+        Route::get('{id}', ['uses' => 'Adm\ProductController@index', 'as' => '.index']);
+        Route::get('crear/productos/{id}', ['uses' => 'Adm\ProductController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\ProductController@store', 'as' => '.store']);
+        Route::get('{id}/edit', ['uses' => 'Adm\ProductController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\ProductController@update', 'as' => '.update']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\ProductController@destroy', 'as' => '.destroy']);
+    });
+
     // GALERIAS DE PRODUCTOS
     Route::group(['prefix' => 'galeria', 'as' => 'galeria'], function() {
         Route::get('{id}', ['uses' => 'Adm\GaleryController@index', 'as' => '.index']);
@@ -57,7 +71,8 @@ Route::group(['prefix' => 'adm'],function (){
         Route::get('pedidos', ['uses' => 'Adm\OrderController@index', 'as' => '.index']);
 
     });*/
- 
+    Route::get('familia/{general}','Adm\FamilyController@index')->name('fami.index');
+    Route::resource('familia','Adm\FamilyController');
     Route::resource('metadatos','Adm\MetadataController');
     Route::resource('usuario','Adm\UserController');
 });

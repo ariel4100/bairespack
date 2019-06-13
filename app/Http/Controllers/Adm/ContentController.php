@@ -10,42 +10,39 @@ class ContentController extends Controller
 {
     public $idioma = ["es","en"];
 
-    public function index($section)
+    public function index($section, $type)
     {
-        $content = Content::where("section",$section)->first();
-        $data = $content->toArray();
-        return view('adm.content.index',compact('section','data'));
+        if ($type == 'imagen') {
+            $contenido = Content::seccionTipo($section, $type)->get();
+            return view('adm.content.lista', compact('contenido', 'section','type'));
+        }else {
+            $contenido = Content::seccionTipo($section, $type)->first();
+            $data = $contenido ? $data = json_decode($contenido->text, true) : $data = [];
+        }
+        return view('adm.content.index',compact('type','section','data'));
     }
 
-    public function edit($section)
-    {
-        return $section;
+    public function create($section, $type) {
+        return view('adm.content.create', compact('section','type'));
+    }
+
+    public function edit($section, Content $contenido) {
+        if ($section) {
+            return view('adm.content.edit', compact('contenido','section'));
+        }
     }
 
     public function update(Request $request,$section)
     {
-        $datos = $request->all();
-//        dd($datos['list'][0]);
-        $content = Content::firstOrNew(['section' => $section]);
-    
-        $contenido = [];
-        foreach($this->idioma as $key=>$item)
-        {
-            $contenido["data"][$item] = [
-                "title" => $datos['title_'.$item],
-                "text" => $datos['text_'.$item],
-            ];
-            //la lista
-            foreach ($datos['list'] as $lista)
-            {
-                $contenido["data"][$item]["lista"][] = ["title" => $lista['title_'.$item],"order" => $lista['order']];
+//
+//        $datos = $request->except('_token','_method');
+//
+//        $content = Content::firstOrNew(['section' => $section]);
+//
+//
+//        //dd($data);
 
-            }
-        }
 
-        //dd($data);
-
-        $content->fill($contenido)->save();
         
         return back()->with('status','Actualizado correctamente');
     }
