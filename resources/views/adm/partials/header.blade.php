@@ -1,5 +1,5 @@
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #595959;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-t op" style="background-color: #595959; ">
 
     <!-- Navbar brand -->
     <a class="text-white " href="#">Bienvenido/a</a>

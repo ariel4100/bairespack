@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
- 
+    @stack('style')
 </head>
 <body  style="background-color: #333">
 @yield('content')
@@ -35,5 +35,6 @@
 <script>
     new WOW().init();
 </script>
+@stack('script')
 </body>
 </html>

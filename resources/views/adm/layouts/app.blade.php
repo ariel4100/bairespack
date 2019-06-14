@@ -61,7 +61,7 @@
             width: 90%;
         }
     </style>
-    @yield('style')
+    @stack('style')
 </head>
 <body style="font-family: 'Montserrat Light'; ">
 <div id="app">

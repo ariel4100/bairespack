@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container p-4">
-        <a href="{{ route('productos.create') }}" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle mx-1"></i>Añadir</a>
+        <a href="{{ route('productos.create',['general' => $general]) }}" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle mx-1"></i>Añadir</a>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
@@ -17,11 +17,11 @@
                     <tbody>
                     @forelse ($productos as $item)
                         <tr>
-                            <td><img src="{{  asset($item->image) }}" style="width: 150px"></td>
-                            <td>{{ $item->title }}</td>
+                            <td><img src="" style="width: 150px"></td>
+                            <td>{{ $item->text{'title_es'} }}</td>
                             <td>{{ $item->order }}</td>
                             <td>
-                                <a class="btn btn-sm btn-warning" href="{{ route('productos.edit', $item->id) }}"><i class="fas fa-pen"></i></a>
+                                <a class="btn btn-sm btn-warning" href="{{ route('productos.edit',['id' => $item->id,'general' => $general]) }}"><i class="fas fa-pen"></i></a>
                                 <form action="{{ route('productos.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

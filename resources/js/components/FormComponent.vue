@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-
+        <a @clicl.prevent="addImage" class="btn btn-success">Imagen</a>
     </div>
 </template>
 

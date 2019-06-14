@@ -6,10 +6,10 @@
         </div>
         <!---HOME---->
         <li class="">
-            <a href="#home" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Home" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">home</i>Home<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="home">
+            <ul class="collapse list-group list-group-flush " id="Home">
                 <li><a href="{{ route('contenido.index', ['section' => 'home', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
                 <li><a href="{{ route('contenido.index', ['section' => 'home', 'type' => 'imagen']) }}"><i class="fas fa-chevron-right px-4"></i>Contenido</a></li>
                 <li><a href="{{ route('slider.list', ['seccion' => 'home']) }}"><i class="fas fa-chevron-right px-4"></i>Slider</a></li>
@@ -17,10 +17,10 @@
         </li>
         <!---EMPRESA---->
         <li class="">
-            <a href="#empresa" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Empresa" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">business</i>Empresa<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="empresa">
+            <ul class="collapse list-group list-group-flush " id="Empresa">
                 <li><a href="{{ route('contenido.index', ['section' => 'empresa', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
 
                 <li><a href="{{ route('slider.list', ['seccion' => 'empresa']) }}"><i class="fas fa-chevron-right px-4"></i>Slider</a></li>
@@ -28,7 +28,7 @@
         </li>
         @php($general = \App\General::orderBy('order')->get())
 
-        @foreach($general as $item)
+        @foreach($general as $k=>$item)
 
             <li class="">
                 <a href="#{{ $item->text{'title_es'} }}" data-toggle="collapse" aria-expanded="false" class="d-flex">
@@ -36,7 +36,10 @@
                 </a>
                 <ul class="collapse list-group list-group-flush " id="{{ $item->text{'title_es'} }}">
                     <li><a href="{{ route('fami.index',['general' => $item]) }}"><i class="fas fa-chevron-right px-4"></i>Categorias</a></li>
-                    <li><a href="{{ route('familia.index') }}"><i class="fas fa-chevron-right px-4"></i>Productos</a></li>
+                    @if($item->id == 2)
+                    <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Subcategorias</a></li>
+                    @endif
+                    <li><a href="{{ route('productos.index',['general' => $item]) }}"><i class="fas fa-chevron-right px-4"></i>Productos</a></li>
                 </ul>
             </li>
         @endforeach
@@ -74,37 +77,37 @@
 
         <!---NOTICIAS---->
         <li class="">
-            <a href="#contacto" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Noticias" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">contact_mail</i>Noticias<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="contacto">
+            <ul class="collapse list-group list-group-flush " id="Noticias">
                 <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
             </ul>
         </li>
         <!---POST-VENTA---->
         <li class="">
-            <a href="#contacto" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Venta" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">contact_mail</i>Post Venta<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="contacto">
+            <ul class="collapse list-group list-group-flush " id="Venta">
                 <li><a href="{{ route('contenido.index', ['section' => 'postventa', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
             </ul>
         </li>
         <!---VIDEOS---->
         <li class="">
-            <a href="#contacto" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Videos" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">contact_mail</i>Videos<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="contacto">
+            <ul class="collapse list-group list-group-flush " id="Videos">
                 <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
             </ul>
         </li>
         <!---CONTACTO---->
         <li class="">
-            <a href="#contacto" data-toggle="collapse" aria-expanded="false" class="d-flex">
+            <a href="#Contacto" data-toggle="collapse" aria-expanded="false" class="d-flex">
                 <i class="material-icons">contact_mail</i>Contacto<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="contacto">
+            <ul class="collapse list-group list-group-flush " id="Contacto">
                 <li><a href="{{ route('contenido.index', ['section' => 'contacto', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
             </ul>
         </li>

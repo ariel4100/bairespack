@@ -50,10 +50,10 @@ Route::group(['prefix' => 'adm'],function (){
 
     // PRODUCTOS
     Route::group(['prefix' => 'productos', 'as' => 'productos'], function() {
-        Route::get('{id}', ['uses' => 'Adm\ProductController@index', 'as' => '.index']);
-        Route::get('crear/productos/{id}', ['uses' => 'Adm\ProductController@create', 'as' => '.create']);
+        Route::get('{general}', ['uses' => 'Adm\ProductController@index', 'as' => '.index']);
+        Route::get('crear/productos/{general}', ['uses' => 'Adm\ProductController@create', 'as' => '.create']);
         Route::post('/store', ['uses' => 'Adm\ProductController@store', 'as' => '.store']);
-        Route::get('{id}/edit', ['uses' => 'Adm\ProductController@edit', 'as' => '.edit']);
+        Route::get('{id}/edit/{general}', ['uses' => 'Adm\ProductController@edit', 'as' => '.edit']);
         Route::put('{contenido}/update', ['uses' => 'Adm\ProductController@update', 'as' => '.update']);
         Route::get('{id}/destroy', ['uses' => 'Adm\ProductController@destroy', 'as' => '.destroy']);
     });
