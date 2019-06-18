@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
+        dd($request->all());
         $producto = new Product();
         $producto->text = $request->except('_token','category_id','subcategory_id','order','galery');
         $producto->image = $request->galery;
@@ -58,8 +58,14 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-
-
+        //dd($request->gallery);
+        $gallery = $request->gallery;
+        foreach ($gallery as $k=>$item)
+        {
+            $path = $item['img']->store('gallery');
+            $gallery[$k]['img'] = $path;
+        }
+        dd($gallery);
         $producto = Product::find($id);
         $producto->text = $request->except('_token','category_id','subcategory_id','order','galery');
         $producto->image = $request->galery;
@@ -72,7 +78,7 @@ class ProductController extends Controller
         return back()->with('status','Se actualizó correctamente');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         Product::find($id)->delete();
         return back()->with('status','Se eliminó correctamente');

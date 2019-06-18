@@ -35,7 +35,7 @@
                     <i class="material-icons">contact_mail</i>{{ $item->text{'title_es'} }}<i class="fas fa-sort-down ml-auto"></i>
                 </a>
                 <ul class="collapse list-group list-group-flush " id="{{ $item->text{'title_es'} }}">
-                    <li><a href="{{ route('fami.index',['general' => $item]) }}"><i class="fas fa-chevron-right px-4"></i>Categorias</a></li>
+                    <li><a href="{{ route('familia.index',['general' => $item]) }}"><i class="fas fa-chevron-right px-4"></i>Categorias</a></li>
                     @if($item->id == 2)
                     <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Subcategorias</a></li>
                     @endif

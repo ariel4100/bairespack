@@ -112,6 +112,7 @@
                 {{--<label class="custom-control-label" for="customSwitch1" >Destacado</label>--}}
                 {{--</div>--}}
                 {{--</div>--}}
+
                 <gallery-component :galery="{{ json_encode($producto->image) }}"></gallery-component>
             </div>
             <div class="row">

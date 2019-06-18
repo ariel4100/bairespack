@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container p-4">
-        <a class="text-decoration-none " href="{{ route('familia.index') }}"><< Volver</a>
+        <a class="text-decoration-none " href="{{ route('familia.index',['general' => $general]) }}"><< Volver</a>
         <form class="" method="POST" action="{{ route('familia.update',$categoria->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')

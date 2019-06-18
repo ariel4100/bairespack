@@ -22,11 +22,7 @@
                             <td>{{ $item->order }}</td>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('productos.edit',['id' => $item->id,'general' => $general]) }}"><i class="fas fa-pen"></i></a>
-                                <form action="{{ route('productos.destroy', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button onclick="return confirm('¿Realmente desea eliminar este registro?')" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                </form>
+                                <a class="btn btn-sm btn-danger" onclick="return confirm('¿Realmente desea eliminar este registro?')" href="{{ route('productos.destroy',$item->id) }}"><i class="fas fa-trash-alt"></i></a>
                                 <a class="btn btn-sm btn-info" href="{{ route('galeria.index',$item->id) }}"><i class="far fa-images"></i></a>
                             </td>
                         </tr>

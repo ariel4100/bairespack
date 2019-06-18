@@ -2,9 +2,10 @@
 
 @section('content')
     <div class="container p-4">
-        <a class="text-decoration-none " href="{{ route('familia.index') }}"><< Volver</a>
+        <a class="text-decoration-none " href="{{ route('familia.index',['general' => $general]) }}"><< Volver</a>
         <form class="my-5" method="POST" action="{{ route('familia.store') }}" enctype="multipart/form-data">
             @csrf
+            <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             <div class="row">
                 <div class="col-md-12">
                     <div class="custom-file">

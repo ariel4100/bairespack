@@ -55,7 +55,7 @@ Route::group(['prefix' => 'adm'],function (){
         Route::post('/store', ['uses' => 'Adm\ProductController@store', 'as' => '.store']);
         Route::get('{id}/edit/{general}', ['uses' => 'Adm\ProductController@edit', 'as' => '.edit']);
         Route::put('{contenido}/update', ['uses' => 'Adm\ProductController@update', 'as' => '.update']);
-        Route::get('{id}/destroy', ['uses' => 'Adm\ProductController@destroy', 'as' => '.destroy']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\ProductController@delete', 'as' => '.destroy']);
     });
 
     // GALERIAS DE PRODUCTOS
@@ -71,8 +71,17 @@ Route::group(['prefix' => 'adm'],function (){
         Route::get('pedidos', ['uses' => 'Adm\OrderController@index', 'as' => '.index']);
 
     });*/
-    Route::get('familia/{general}','Adm\FamilyController@index')->name('fami.index');
-    Route::resource('familia','Adm\FamilyController');
+    // FAMILIA
+    Route::group(['prefix' => 'familia', 'as' => 'familia'], function() {
+        Route::get('{general}', ['uses' => 'Adm\FamilyController@index', 'as' => '.index']);
+        Route::get('crear/familia/{general}', ['uses' => 'Adm\FamilyController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\FamilyController@store', 'as' => '.store']);
+        Route::get('{id}/edit/{general}', ['uses' => 'Adm\FamilyController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\FamilyController@update', 'as' => '.update']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\FamilyController@delete', 'as' => '.destroy']);
+    });
+    //Route::get('familia/{general}','Adm\FamilyController@index')->name('fami.index');
+    //Route::resource('familia','Adm\FamilyController');
     Route::resource('metadatos','Adm\MetadataController');
     Route::resource('usuario','Adm\UserController');
 });

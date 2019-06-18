@@ -16,10 +16,11 @@ class ContentController extends Controller
             $contenido = Content::seccionTipo($section, $type)->get();
             return view('adm.content.lista', compact('contenido', 'section','type'));
         }else {
-            $contenido = Content::seccionTipo($section, $type)->first();
-            $data = $contenido ? $data = json_decode($contenido->text, true) : $data = [];
+            $contenido = Content::firstOrNew(['section' => $section,'type' => $type]);
+            //$contenido = Content::seccionTipo($section, $type)->first();
+//            $data = $contenido ? $data = json_decode($contenido->text, true) : $data = [];
         }
-        return view('adm.content.index',compact('type','section','data'));
+        return view('adm.content.index',compact('type','section','contenido'));
     }
 
     public function create($section, $type) {
@@ -34,13 +35,16 @@ class ContentController extends Controller
 
     public function update(Request $request,$section)
     {
-//
-//        $datos = $request->except('_token','_method');
-//
-//        $content = Content::firstOrNew(['section' => $section]);
-//
-//
-//        //dd($data);
+
+        $datos = $request->except('_token','_method','section','type');
+
+        $content = Content::firstOrNew(['section' => $section]);
+        $content->type = $request->type;
+        $content->text = $datos;
+        $content->order = $request->order;
+        $content->save();
+
+        //dd($datos);
 
 
         

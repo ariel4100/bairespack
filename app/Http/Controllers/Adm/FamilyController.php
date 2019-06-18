@@ -13,12 +13,13 @@ class FamilyController extends Controller
     {
 
         $categorias = Family::where('general_id',$general->id)->orderBy('order')->get();
-        return view('adm.family.index',compact('categorias'));
+        return view('adm.family.index',compact('categorias','general'));
     }
 
-    public function create()
+    public function create(General $general)
     {
-        return view('adm.family.create');
+
+        return view('adm.family.create',compact('general'));
     }
 
     public function store(Request $request)
@@ -30,16 +31,16 @@ class FamilyController extends Controller
         $family->text = $data;
         $family->image = $galery;
         $family->order = $request->order;
-        $family->general_id = 1;
+        $family->general_id = $request->general_id;
         $family->save();
 
         return back()->with('status','Producto creadó correctamente');
     }
 
-    public function edit($id)
+    public function edit($id,General $general)
     {
         $categoria = Family::find($id);
-        return view('adm.family.edit',compact('categoria'));
+        return view('adm.family.edit',compact('categoria','general'));
     }
 
     public function update(Request $request, $id)
@@ -55,5 +56,11 @@ class FamilyController extends Controller
         $family->update();
 
         return back()->with('status','Categoria actualizado correctamente');
+    }
+
+    public function delete($id)
+    {
+        Family::find($id)->delete();
+        return back()->with('status','Se eliminó correctamente');
     }
 }

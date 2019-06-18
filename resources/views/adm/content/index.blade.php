@@ -8,7 +8,6 @@
             <input type="hidden" name="section" value="{{$section}}">
             <input type="hidden" name="type" value="{{$type}}">
             @if($section == 'home')
-
                 <div class="custom-file">
                     <input value=""  accept="image/jpeg,application/pdf" name="image" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
                     <label data-invalid="Seleccione ficha" data-valid="Ficha seleccionada" class="custom-file-label mb-0 text-truncate" data-browse="Buscar" for="ficha"></label>
@@ -16,18 +15,18 @@
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto Es</p>
-                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! isset($data['text_es']) ? $data['text_es'] : null !!}</textarea>
+                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! $contenido->text{'text_es'} !!}</textarea>
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto En</p>
-                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! isset($data['text_en']) ? $data['text_en'] : null !!}</textarea>
+                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $contenido->text{'text_en'} !!}</textarea>
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_es" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! isset($data['title_es']) ? $data['title_es'] : null !!}">
+                    <input type="text" id="title_es" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! $contenido->text{'title_es'} !!}">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_en" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! isset($data['title_en']) ? $data['title_en'] : null !!}">
+                    <input type="text" id="title_en" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! $contenido->text{'title_en'} !!}">
                 </div>
 
 
@@ -39,54 +38,54 @@
                 </div>
                 <!-----------NOSOTROS-------------->
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_es" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! isset($data['title']) ? $data['title'] : null !!}">
+                    <input type="text" id="title_es" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! $contenido->text{'title_es'} !!}">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_en" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! isset($data['title']) ? $data['title'] : null !!}">
+                    <input type="text" id="title_en" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! $contenido->text{'title_en'} !!}">
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto Es</p>
-                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! isset($data['text_en']) ? $data['text_en'] : null !!}</textarea>
+                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! $contenido->text{'text_es'} !!}</textarea>
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto En</p>
-                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! isset($data['text_en']) ? $data['text_en'] : null !!}</textarea>
+                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $contenido->text{'text_en'} !!}</textarea>
                 </div>
                 <!-----------MISION-------------->
                 <div class="md-form col-md-6">
-                    <input type="text" id="mision_es" name="mision_es" placeholder="Titulo Mision - español" class="form-control" value="{!! isset($data['mision_es']) ? $data['mision_es'] : null !!}">
+                    <input type="text" id="mision_es" name="mision_es" placeholder="Titulo Mision - español" class="form-control" value="{!! $contenido->text{'mision_es'} !!}">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="mision_en" name="mision_en" placeholder="Titulo Mision - ingles" class="form-control" value="{!! isset($data['mision_en']) ? $data['mision_en'] : null !!}">
+                    <input type="text" id="mision_en" name="mision_en" placeholder="Titulo Mision - ingles" class="form-control" value="{!! $contenido->text{'mision_en'} !!}">
                 </div>
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto Es</p>
-                    <textarea id="text_es" class="md-textarea form-control" name="misiontext_es" rows="3">{!! isset($data['misiontext_es']) ? $data['misiontext_es'] : null !!}</textarea>
+                    <textarea id="text_es" class="md-textarea form-control" name="misiontext_es" rows="3">{!! $contenido->text{'misiontext_es'} !!}</textarea>
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto En</p>
-                    <textarea id="text_en" class="md-textarea form-control" name="misiontext_en" rows="3">{!! isset($data['misiontext_en']) ? $data['misiontext_en'] : null !!}</textarea>
+                    <textarea id="text_en" class="md-textarea form-control" name="misiontext_en" rows="3">{!! $contenido->text{'misiontext_en'} !!}</textarea>
                 </div>
 
                 <!-----------MISION-------------->
                 <div class="md-form col-md-6">
-                    <input type="text" id="valores_es" name="valores_es" placeholder="Titulo Valores - español" class="form-control" value="{!! isset($data['valores_es']) ? $data['valores_es'] : null !!}">
+                    <input type="text" id="valores_es" name="valores_es" placeholder="Titulo Valores - español" class="form-control" value="{!! $contenido->text{'valores_es'} !!}">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="valores_en" name="valores_en" placeholder="Titulo Valores - ingles" class="form-control" value="{!! isset($data['valores_en']) ? $data['valores_en'] : null !!}">
+                    <input type="text" id="valores_en" name="valores_en" placeholder="Titulo Valores - ingles" class="form-control" value="{!! $contenido->text{'valores_en'} !!}">
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto Es</p>
-                    <textarea id="valorestext_es" class="md-textarea form-control" name="valorestext_es" rows="3">{!! isset($data['valorestext_es']) ? $data['valorestext_es'] : null !!}</textarea>
+                    <textarea id="valorestext_es" class="md-textarea form-control" name="valorestext_es" rows="3">{!! $contenido->text{'valorestext_es'} !!}</textarea>
                 </div>
 
                 <div class="md-form col-md-6">
                     <p class="mb-0">Texto En</p>
-                    <textarea id="valorestext_en" class="md-textarea form-control" name="valorestext_en" rows="3">{!! isset($data['valorestext_en']) ? $data['valorestext_en'] : null !!}</textarea>
+                    <textarea id="valorestext_en" class="md-textarea form-control" name="valorestext_en" rows="3">{!! $contenido->text{'valorestext_en'} !!}</textarea>
                 </div>
                
             @endif
