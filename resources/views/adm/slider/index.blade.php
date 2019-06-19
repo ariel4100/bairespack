@@ -18,7 +18,10 @@
                     @forelse ($slider as $item)
                         <tr>
                             <td><img src="{{  asset($item->image) }}" style="width: 150px"></td>
-                            <td>{{ $item->title }}</td>
+                            <td>
+                                {!! $item->text{'text_es'} !!}
+                                {!! $item->text{'text_en'} !!}
+                            </td>
                             <td>{{ $item->order }}</td>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('slider.edit', ['slider' => $item->id]) }}"><i class="fas fa-pen"></i></a>

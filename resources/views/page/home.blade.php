@@ -1,46 +1,9 @@
 @extends('page.layouts.app')
 
 @section('content')
-    {{--@include('page.partials.carousel')--}}
+    @include('page.partials.carousel')
     <div class="bd-example">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+
     </div>
     <div class="container">
         <h4 class="text-center my-5">Tipos de envases</h4>
@@ -115,26 +78,17 @@
             </div>
         </div>
     </div>
-
-    <div class="container-fluid bg-dark py-5">
+    {{--@dd($contenido)--}}
+    <div class="container-flui d-flex justify-content-start align-items-center" style="background-image: url({{ asset($contenido->text{'image'}) }}); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; height: 350px">
         <div class="container">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-md-6">
-                    <h4>
-                        Proyectos adecuados a los requerimientos de nuestros clientes
-                    </h4>
-                    <a href="" class="btn btn-warning rounded">NOSOTROS</a>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg">
-                </div>
-            </div>
+            {!! $contenido->text{'text_es'} !!}
+            <a href="" class="btn baires-fondo rounded-pill m-0 px-4 my-3">Nosotros</a>
         </div>
     </div>
 
     <div class="container">
         <h4 class="text-center my-5">
-            Máxima calidad, garantía y confiabilidad
+            {!! $contenido->text{'title_es'} !!}
         </h4>
         <div class="row justify-content-center text-center">
             <div class="col-md-3">

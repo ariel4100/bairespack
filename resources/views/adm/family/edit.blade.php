@@ -3,9 +3,10 @@
 @section('content')
     <div class="container p-4">
         <a class="text-decoration-none " href="{{ route('familia.index',['general' => $general]) }}"><< Volver</a>
-        <form class="" method="POST" action="{{ route('familia.update',$categoria->id) }}" enctype="multipart/form-data">
+        <form class="my-5" method="POST" action="{{ route('familia.update',$categoria->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             <div class="row">
                 <div class="col-md-12">
                     <div class="custom-file">
@@ -29,28 +30,29 @@
                     <input type="text" id="type_en" name="type_en" value="{{ $categoria->text{'type_en'} }}" placeholder="Tipo - ingles" class="form-control">
                 </div>
             </div>
-
-            <div id="form" class="">
+            {{--@dd($categoria->image)--}}
+            <gallery-component :familia="{{ json_encode($categoria->image) }}"></gallery-component>
+            {{--<div id="form" class="">--}}
                 {{--<button @click.prevent="addImage()" class="btn btn-success p-2"><i class="fas fa-plus distren-color"></i></button>--}}
-                <div class="row">
-                    @for ($i=1; $i <= 3; $i++)
-                        <div class="col-md-4"  >
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="galery[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">
-                                <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Imagen</label>
-                            </div>
-                            <div class="md-form">
-                                <input type="text"  name="galery[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 my-5 text-center">
-                    <img src="{{ asset(isset($categoria->text{'image'}) ? $categoria->text{'image'} : null ) }}" alt="" class="img-fluid" style="height: 200px">
-                </div>
-            </div>
+                {{--<div class="row">--}}
+                    {{--@for ($i=1; $i <= 3; $i++)--}}
+                        {{--<div class="col-md-4"  >--}}
+                            {{--<div class="custom-file">--}}
+                                {{--<input type="file" class="custom-file-input" name="galery[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">--}}
+                                {{--<label class="custom-file-label" for="customFileLang" data-browse="Buscar">Imagen</label>--}}
+                            {{--</div>--}}
+                            {{--<div class="md-form">--}}
+                                {{--<input type="text"  name="galery[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endfor--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-12 my-5 text-center">--}}
+                    {{--<img src="{{ asset(isset($categoria->text{'image'}) ? $categoria->text{'image'} : null ) }}" alt="" class="img-fluid" style="height: 200px">--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="row">
                 <div class="col-md-12 my-4 text-right">
                     <button type="submit" class="btn btn-success">Guardar</button>

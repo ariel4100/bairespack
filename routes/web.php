@@ -16,7 +16,9 @@
 //});
 /*************************RUTAS PUBLICAS******************************/
 Route::get('/','FrontendController@home')->name('home');
-Route::get('empresa','FrontendController@empresa')->name('empresa');
+Route::get('nosotros','FrontendController@nosotros')->name('nosotros');
+Route::get('post-venta','FrontendController@postventa')->name('post.venta');
+Route::get('contacto','FrontendController@contacto')->name('contacto');
 Route::group([ 'prefix' => 'productos'],function (){
     Route::get('/','FrontendController@categorias')->name('categorias');
     Route::get('categoria/{id}','FrontendController@categoriaproductos')->name('categoria');

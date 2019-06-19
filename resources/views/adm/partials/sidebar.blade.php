@@ -11,19 +11,19 @@
             </a>
             <ul class="collapse list-group list-group-flush " id="Home">
                 <li><a href="{{ route('contenido.index', ['section' => 'home', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
-                <li><a href="{{ route('contenido.index', ['section' => 'home', 'type' => 'imagen']) }}"><i class="fas fa-chevron-right px-4"></i>Contenido</a></li>
+                {{--<li><a href="{{ route('contenido.index', ['section' => 'home', 'type' => 'imagen']) }}"><i class="fas fa-chevron-right px-4"></i>Contenido</a></li>--}}
                 <li><a href="{{ route('slider.list', ['seccion' => 'home']) }}"><i class="fas fa-chevron-right px-4"></i>Slider</a></li>
             </ul>
         </li>
-        <!---EMPRESA---->
+        <!---NOSOTROS---->
         <li class="">
-            <a href="#Empresa" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                <i class="material-icons">business</i>Empresa<i class="fas fa-sort-down ml-auto"></i>
+            <a href="#Nosotros" data-toggle="collapse" aria-expanded="false" class="d-flex">
+                <i class="material-icons">business</i>Nosotros<i class="fas fa-sort-down ml-auto"></i>
             </a>
-            <ul class="collapse list-group list-group-flush " id="Empresa">
-                <li><a href="{{ route('contenido.index', ['section' => 'empresa', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
+            <ul class="collapse list-group list-group-flush " id="Nosotros">
+                <li><a href="{{ route('contenido.index', ['section' => 'nosotros', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
 
-                <li><a href="{{ route('slider.list', ['seccion' => 'empresa']) }}"><i class="fas fa-chevron-right px-4"></i>Slider</a></li>
+                <li><a href="{{ route('slider.list', ['seccion' => 'nosotros']) }}"><i class="fas fa-chevron-right px-4"></i>Slider</a></li>
             </ul>
         </li>
         @php($general = \App\General::orderBy('order')->get())
@@ -32,7 +32,7 @@
 
             <li class="">
                 <a href="#{{ $item->text{'title_es'} }}" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                    <i class="material-icons">contact_mail</i>{{ $item->text{'title_es'} }}<i class="fas fa-sort-down ml-auto"></i>
+                    <i class="material-icons">shopping_basket</i>{{ $item->text{'title_es'} }}<i class="fas fa-sort-down ml-auto"></i>
                 </a>
                 <ul class="collapse list-group list-group-flush " id="{{ $item->text{'title_es'} }}">
                     <li><a href="{{ route('familia.index',['general' => $item]) }}"><i class="fas fa-chevron-right px-4"></i>Categorias</a></li>
@@ -78,7 +78,7 @@
         <!---NOTICIAS---->
         <li class="">
             <a href="#Noticias" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                <i class="material-icons">contact_mail</i>Noticias<i class="fas fa-sort-down ml-auto"></i>
+                <i class="material-icons">question_answer</i>Noticias<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Noticias">
                 <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
@@ -87,7 +87,7 @@
         <!---POST-VENTA---->
         <li class="">
             <a href="#Venta" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                <i class="material-icons">contact_mail</i>Post Venta<i class="fas fa-sort-down ml-auto"></i>
+                <i class="material-icons">verified_user</i>Post Venta<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Venta">
                 <li><a href="{{ route('contenido.index', ['section' => 'postventa', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
@@ -96,7 +96,7 @@
         <!---VIDEOS---->
         <li class="">
             <a href="#Videos" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                <i class="material-icons">contact_mail</i>Videos<i class="fas fa-sort-down ml-auto"></i>
+                <i class="material-icons">video_library</i>Videos<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Videos">
                 <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
@@ -115,7 +115,7 @@
         <!---DISTREN---->
         <li class="">
             <a href="#Logos" data-toggle="collapse" aria-expanded="false" class="d-flex">
-                BAIRES PACK<i class="fas fa-sort-down ml-auto"></i>
+                <i class="material-icons">settings</i>BAIRES PACK<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Logos">
                 <li><a href="{{ route('contenido.index', ['seccion' => 'logos', 'tipo' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Logos</a></li>

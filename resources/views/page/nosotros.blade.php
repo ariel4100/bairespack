@@ -4,27 +4,25 @@
 @stop
 @section('content')
     @include('page.partials.carousel')
-    @if($empresa)
+    @if($contenido)
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="text-uppercase distren-color distren-bold">{!! $empresa->title !!}</h2>
-                {!! $empresa->text !!}
+                <h2 class="">{!! $contenido->text{'title_es'} !!}</h2>
+                {!! $contenido->text{'text_es'} !!}
             </div>
         </div>
     </div>
     <div class="container my-4">
         <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-uppercase distren-color distren-bold">{!! $empresa->valores !!}</h2>
-                {!! $empresa->text_valores !!}
+            <div class="col-md-6" style="background-color: #f2f2f2">
+                <h2 class="baires-color">{!! $contenido->text{'mision_es'} !!}</h2>
+                {!! $contenido->text{'misiontext_es'} !!}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 " style="background-color: #f2f2f2">
                 <div class="">
-                    <h2 class="text-uppercase distren-color distren-bold">{!! $empresa->mision !!}</h2>
-                    {!! $empresa->text_mision !!}
-                    <h2 class="text-uppercase distren-color distren-bold pt-3">{!! $empresa->vision !!}</h2>
-                    {!! $empresa->text_vision !!}
+                    <h2 class="baires-color pt-3">{!! $contenido->text{'valores_es'} !!}</h2>
+                    {!! $contenido->text{'valorestext_es'} !!}
                 </div>
             </div>
         </div>

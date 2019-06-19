@@ -25,6 +25,14 @@
         document.__API_URL2 = '{{ url('/') }}';
     </script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        .baires-color{
+            color: #FEB80B;
+        }
+        .baires-fondo{
+            background-color: #FEB80B;
+        }
+    </style>
     @stack('style')
 </head>
 <body style="font-family:  'Montserrat', sans-serif; color: #9FA3A5;">

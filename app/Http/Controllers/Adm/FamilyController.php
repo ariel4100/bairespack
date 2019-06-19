@@ -25,11 +25,26 @@ class FamilyController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token','galery','_method');
-        $galery = $request->galery;
+        $gallery = $request->galery;
+        //dd($request->all());
+        //dd($gallery);
+        if (isset($data['image']))
+        {
+            $path = $data['image']->store('uploads/familia');
+            $data['image'] = $path;
+        }
+        if (isset($gallery))
+        {
+            foreach ($gallery as $k=>$item)
+            {
+                $path = $item['image']->store('uploads/familia/bag');
+                $gallery[$k]['image'] = $path;
+            }
+        }
 
         $family = new Family();
         $family->text = $data;
-        $family->image = $galery;
+        $family->image = $gallery;
         $family->order = $request->order;
         $family->general_id = $request->general_id;
         $family->save();
@@ -45,14 +60,20 @@ class FamilyController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->except('_token','galery','_method');
-        $galery = $request->galery;
-
+        dd($request->all());
+        $data = $request->except('_token','galery','_method','general_id');
+        $gallery = $request->gallery;
+        foreach ($gallery as $k=>$item)
+        {
+            $path = $item['image']->store('uploads/familia/bag');
+            $gallery[$k]['image'] = $path;
+        }
+        //dd($gallery);
         $family = Family::find($id);
         $family->text = $data;
-        $family->image = $galery;
+        $family->image = $gallery;
         $family->order = $request->order;
-        $family->general_id = 1;
+        $family->general_id = $request->general_id;
         $family->update();
 
         return back()->with('status','Categoria actualizado correctamente');

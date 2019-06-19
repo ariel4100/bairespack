@@ -1781,35 +1781,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['galeria'],
+  //props:['galeria','familia'],
+  props: {
+    galeria: Array,
+    familia: Array
+  },
   data: function data() {
     return {
       img: 1,
-      imageData: [],
-      gallery: [{
-        image: '',
-        title_es: '',
-        title_en: ''
-      }]
+      url: document.__API_URL + '/',
+      //imageData: [],
+      gallery: []
     };
   },
   components: {
     draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
   },
   mounted: function mounted() {
-    console.log(this.gallery);
+    //console.log(this.gallery)
+    this.getFamily();
   },
   methods: {
-    log: function log() {
-      console.log(this.gallery);
+    getFamily: function getFamily() {
+      console.log(this.familia);
+
+      if (this.familia) {
+        // for (const item in this.familia) {
+        //     this.gallery.push(this.familia);
+        //     //this.gallery[item] = this.familia[item];
+        //     //console.log(this.familia);
+        // }
+        this.gallery = this.familia;
+        console.log(this.gallery);
+      } //console.log(this.familia)
+
+    },
+    log: function log() {//console.log(this.gallery)
     },
     previewImage: function previewImage(Key, event) {
-      // this[fileKey] = event.target.files[0];
-      // console.log('File added', fileKey, event.target.files[0]);
       this.img = 0;
       var file = event.target.files[0];
       this.gallery[Key].image = file; //this.imageData[fileKey] = file;
@@ -1818,14 +1829,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     getPreviewImage: function getPreviewImage(Key) {
       var image = this.gallery[Key].image;
-      console.log(image);
 
       if (image && image instanceof File) {
         return URL.createObjectURL(image);
-      } // if (typeof image === 'string' || image instanceof String) {
-      // return image
-      // }
-      //return image
+      }
+
+      if (typeof image === 'string' || image instanceof String) {
+        //console.log(image)
+        image = this.url + image;
+        return image;
+      } //return image
 
     },
     addImage: function addImage() {
@@ -1855,7 +1868,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.del[data-v-a13cd294]{\n    position: absolute;\n    top: -1px;\n    z-index: 1;\n    cursor: pointer;\n    right: 1px;\n}\nfieldset[data-v-a13cd294]\n{\n    border: 1px solid #ddd !important;\n    margin: 0;\n    xmin-width: 0;\n    padding: 10px;\n    position: relative;\n    border-radius:4px;\n    background-color:#f5f5f5;\n    padding-left:10px!important;\n}\nlegend[data-v-a13cd294]\n{\n    font-size:14px;\n    font-weight:bold;\n    margin-bottom: 0px;\n    width: 35%;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    padding: 5px 5px 5px 10px;\n    background-color: #ffffff;\n}\n", ""]);
+exports.push([module.i, "\n.del[data-v-a13cd294]{\n    position: absolute;\n    top: -1px;\n    z-index: 1;\n    cursor: pointer;\n}\nfieldset[data-v-a13cd294]\n{\n    border: 1px solid #ddd !important;\n    margin: 0;\n    xmin-width: 0;\n    padding: 10px;\n    position: relative;\n    border-radius:4px;\n    background-color:#f5f5f5;\n    padding-left:10px!important;\n}\nlegend[data-v-a13cd294]\n{\n    font-size:14px;\n    font-weight:bold;\n    margin-bottom: 0px;\n    width: 35%;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    padding: 5px 5px 5px 10px;\n    background-color: #ffffff;\n}\n", ""]);
 
 // exports
 
@@ -25229,127 +25242,128 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("fieldset", [
-      _c("legend", [_vm._v("Galeria de Imagenes:")]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-info m-0 mb-3",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.addImage($event)
-            }
-          }
-        },
-        [_vm._v("Imagen")]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "ro w" },
-        [
-          _c(
-            "draggable",
-            {
-              staticClass: "row",
-              attrs: { draggable: ".item" },
-              on: { change: _vm.log },
-              model: {
-                value: _vm.gallery,
-                callback: function($$v) {
-                  _vm.gallery = $$v
-                },
-                expression: "gallery"
+    _c(
+      "fieldset",
+      [
+        _c("legend", [_vm._v("Galeria de Imagenes:")]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-info m-0 mb-3",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.addImage($event)
               }
-            },
-            _vm._l(_vm.gallery, function(item, index) {
-              return _c(
-                "div",
-                { key: index, staticClass: "col-md-4 mb-2 item" },
-                [
-                  _c("div", { staticClass: "image-preview" }, [
-                    _vm.img == 1
-                      ? _c("img", {
-                          staticClass: "img-fluid",
-                          staticStyle: { height: "200px" },
-                          attrs: { src: _vm.getPreviewImage(index) }
-                        })
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "custom-file" }, [
-                    _c("input", {
-                      staticClass: "custom-file-input",
-                      attrs: {
-                        type: "file",
-                        id: "customFileLang",
-                        name: "gallery[" + index + "][img]",
-                        lang: "es"
-                      },
-                      on: {
-                        change: function($event) {
-                          return _vm.previewImage(index, $event)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "custom-file-label",
-                        attrs: { for: "customFileLang", "data-browse": "Subir" }
-                      },
-                      [_vm._v("Imagen")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "badge badge-danger del",
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteImage(index)
+            }
+          },
+          [_vm._v("Imagen")]
+        ),
+        _vm._v(" "),
+        _c(
+          "draggable",
+          {
+            staticClass: "row",
+            attrs: { draggable: ".item" },
+            on: { change: _vm.log },
+            model: {
+              value: _vm.gallery,
+              callback: function($$v) {
+                _vm.gallery = $$v
+              },
+              expression: "gallery"
+            }
+          },
+          _vm._l(_vm.gallery, function(item, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "col-md-4 mb-2 item" },
+              [
+                _vm.getPreviewImage(index)
+                  ? _c("div", { staticClass: "image-preview" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "badge badge-danger del",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteImage(index)
+                            }
                           }
+                        },
+                        [_vm._v("X")]
+                      ),
+                      _vm._v(" "),
+                      _vm.img == 1
+                        ? _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: { height: "200px" },
+                            attrs: { src: _vm.getPreviewImage(index) }
+                          })
+                        : _vm._e()
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "custom-file" }, [
+                  _c("input", {
+                    staticClass: "custom-file-input",
+                    attrs: {
+                      type: "file",
+                      id: "customFileLang",
+                      name: "gallery[" + index + "][image]",
+                      lang: "es"
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.previewImage(index, $event)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-label",
+                      attrs: { for: "customFileLang", "data-browse": "Subir" }
+                    },
+                    [_vm._v("Imagen")]
+                  )
+                ]),
+                _vm._v(" "),
+                !_vm.familia
+                  ? _c("div", { staticClass: "md-form m-0" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "gallery[" + index + "][titleg_es]",
+                          placeholder: "Titulo - español"
                         }
-                      },
-                      [_vm._v("X")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "md-form m-0" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "gallery[" + index + "][titleg_es]",
-                        placeholder: "Titulo - español"
-                      },
-                      domProps: { value: _vm.gallery[index].titleg_es }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "md-form m-0" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "gallery[" + index + "][titleg_en]",
-                        placeholder: "Titulo - ingles"
-                      },
-                      domProps: { value: _vm.gallery[index].titleg_en }
-                    })
-                  ])
-                ]
-              )
-            }),
-            0
-          )
-        ],
-        1
-      )
-    ])
+                      })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.familia
+                  ? _c("div", { staticClass: "md-form m-0" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "gallery[" + index + "][titleg_en]",
+                          placeholder: "Titulo - ingles"
+                        }
+                      })
+                    ])
+                  : _vm._e()
+              ]
+            )
+          }),
+          0
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []

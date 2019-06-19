@@ -3,26 +3,24 @@
         <fieldset>
             <legend>Galeria de Imagenes:</legend>
             <a @click.prevent="addImage" class="btn btn-info m-0 mb-3">Imagen</a>
-            <div class="ro w">
-                <draggable v-model="gallery" class="row" draggable=".item" @change="log">
-                    <div class="col-md-4 mb-2 item" v-for="(item,index) in gallery" :key="index" >
-                        <div class="image-preview">
-                            <img class="img-fluid" :src="getPreviewImage(index)" style="height: 200px" v-if="img == 1">
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" @change="previewImage(index,$event)" class="custom-file-input" id="customFileLang" :name="'gallery['+index+'][img]'" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Subir">Imagen</label>
-                            <span @click="deleteImage(index)" class="badge badge-danger del">X</span>
-                        </div>
-                        <div class="md-form m-0">
-                            <input type="text" :name="'gallery['+index+'][titleg_es]'" :value="gallery[index].titleg_es" placeholder="Titulo - español" class="form-control">
-                        </div>
-                        <div class="md-form m-0">
-                            <input type="text" :name="'gallery['+index+'][titleg_en]'" :value="gallery[index].titleg_en" placeholder="Titulo - ingles" class="form-control">
-                        </div>
+            <draggable v-model="gallery" class="row" draggable=".item" @change="log">
+                <div class="col-md-4 mb-2 item" v-for="(item,index) in gallery" :key="index" >
+                    <div class="image-preview" v-if="getPreviewImage(index)">
+                        <span @click="deleteImage(index)" class="badge badge-danger del">X</span>
+                        <img class="img-fluid" :src="getPreviewImage(index)" style="height: 200px" v-if="img == 1">
                     </div>
-                </draggable>
-            </div>
+                    <div class="custom-file">
+                        <input type="file" @change="previewImage(index,$event)" class="custom-file-input" id="customFileLang" :name="'gallery['+index+'][image]'"   lang="es">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Subir">Imagen</label>
+                    </div>
+                    <div class="md-form m-0" v-if="!familia">
+                        <input type="text" :name="'gallery['+index+'][titleg_es]'"   placeholder="Titulo - español" class="form-control">
+                    </div>
+                    <div class="md-form m-0" v-if="!familia">
+                        <input type="text" :name="'gallery['+index+'][titleg_en]'"   placeholder="Titulo - ingles" class="form-control">
+                    </div>
+                </div>
+            </draggable>
         </fieldset>
     </div>
 </template>
@@ -30,50 +28,63 @@
 <script>
     import draggable from 'vuedraggable'
     export default {
-        props:['galeria'],
+        //props:['galeria','familia'],
+        props:{
+            galeria: Array,
+            familia: Array,
+        },
         data(){
             return {
                 img: 1,
-                imageData: [],
-                gallery:[
-                    {
-                        image:'',
-                        title_es:'',
-                        title_en:''
-                    }
-                ],
+                url: document.__API_URL+'/',
+                //imageData: [],
+                gallery:[],
             }
         },
         components: {
             draggable,
         },
         mounted() {
-            console.log(this.gallery)
+            //console.log(this.gallery)
+            this.getFamily();
         },
         methods:{
+            getFamily() {
+                console.log(this.familia);
+                if (this.familia)
+                {
+                    // for (const item in this.familia) {
+                    //     this.gallery.push(this.familia);
+                    //     //this.gallery[item] = this.familia[item];
+                    //     //console.log(this.familia);
+                    // }
+                    this.gallery = this.familia;
+
+                    console.log(this.gallery);
+
+                }
+                //console.log(this.familia)
+            },
             log() {
-                console.log(this.gallery)
+                //console.log(this.gallery)
             },
             previewImage: function(Key,event) {
-                // this[fileKey] = event.target.files[0];
-                // console.log('File added', fileKey, event.target.files[0]);
                 this.img = 0;
-
                 let file = event.target.files[0];
-                this.gallery[Key].image = file
+                this.gallery[Key].image = file;
                 //this.imageData[fileKey] = file;
-
                 this.img = 1;
             },
             getPreviewImage(Key) {
                 let image = this.gallery[Key].image;
-                console.log(image);
                 if (image && image instanceof File) {
                 return URL.createObjectURL(image)
                 }
-                // if (typeof image === 'string' || image instanceof String) {
-                // return image
-                // }
+                if (typeof image === 'string' || image instanceof String) {
+                    //console.log(image)
+                    image = this.url+image;
+                return image
+                }
                 //return image
             },
             addImage: function () {
@@ -84,7 +95,6 @@
                         title_en:''
                     }
                 )
-
             },
             deleteImage(index) {
                 this.gallery.splice(index, 1);
@@ -99,7 +109,6 @@
         top: -1px;
         z-index: 1;
         cursor: pointer;
-        right: 1px;
     }
     fieldset
     {

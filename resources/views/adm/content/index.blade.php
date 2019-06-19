@@ -8,9 +8,10 @@
             <input type="hidden" name="section" value="{{$section}}">
             <input type="hidden" name="type" value="{{$type}}">
             @if($section == 'home')
+                {{--@dd($contenido)--}}
                 <div class="custom-file">
-                    <input value=""  accept="image/jpeg,application/pdf" name="image" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
-                    <label data-invalid="Seleccione ficha" data-valid="Ficha seleccionada" class="custom-file-label mb-0 text-truncate" data-browse="Buscar" for="ficha"></label>
+                    <input name="image" value="" class="form-control  custom-file-input" type="file" placeholder="Imagen">
+                    <label class="custom-file-label mb-0 text-truncate" data-browse="Buscar" for="ficha"></label>
                 </div>
 
                 <div class="md-form col-md-6">
@@ -94,24 +95,24 @@
                     <div class="col-md-12">
 
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="Favicon" name="image" lang="es">
+                            <input type="file" class="custom-file-input" id="Favicon" name="favicon" lang="es">
                             <label class="custom-file-label" for="Favicon" data-browse="Buscar">Seleccionar Logo Favicon</label>
                         </div>
-                        <img src="{!! isset($logos['image']) ? asset($logos['image']) : null !!}" alt="" class="img-fluid my-4">
+                        <img src="{{ asset($contenido->text{'favicon'}) }}" alt="" class="img-fluid my-4">
                     </div>
                     <div class="col-md-12">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="Header" name="image_2" lang="es">
+                            <input type="file" class="custom-file-input" id="Header" name="header" lang="es">
                             <label class="custom-file-label" for="Header" data-browse="Buscar">Seleccionar Logo Header</label>
                         </div>
-                        <img src="{!! isset($logos['image_2']) ? asset($logos['image_2']) : null !!}" alt="" class="img-fluid my-4">
+                        <img src="{{ asset($contenido->text{'header'}) }}" alt="" class="img-fluid my-4">
                     </div>
                     <div class="col-md-12">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="Footer" name="image_3" lang="es">
+                            <input type="file" class="custom-file-input" id="Footer" name="footer" lang="es">
                             <label class="custom-file-label" for="Footer" data-browse="Buscar">Seleccionar Logo Footer</label>
                         </div>
-                        <img src="{!! isset($logos['image_3']) ? asset($logos['image_3']) : null !!}" alt="" class="img-fluid my-4">
+                        <img src="{{ asset($contenido->text{'footer'}) }}" alt="" class="img-fluid my-4">
                     </div>
                 </div>
             @endif

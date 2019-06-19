@@ -13,14 +13,17 @@
         @foreach($slider as $key=>$s)
             <div class="carousel-item  {{ $key == 0 ? 'active' : null }}">
                 <div class="view">
-                    <img class="d-block w-100"   src="{!! $s->image !!}"
+                    <img class="d-block w-100"   src="{{ asset($s->image) }}"
                          alt="First slide">
                     <div class="mask" style=""></div>
                 </div>
                 <div class="carousel-caption d-none d-md-block wow fadeInLeft" style="right: 0px; left: 0px; text-align: left; top: 30%">
                     <div class="container" >
-                        <h5 class="">{!! $s->title !!}</h5>
-                        <p>{!! $s->subtitle !!}</p>
+                        <h5 class="">{!! $s->text{'text_es'} !!}</h5>
+                        {{--<p>{!! $s->text{'text_es'} !!}</p>--}}
+                        @if($s->section == 'home')
+                            <a href="{{ route('nosotros') }}" class="btn baires-fondo rounded-pill m-0 px-4 my-3">CONOCÉ MÁS</a>
+                        @endif
                     </div>
                 </div>
             </div>
