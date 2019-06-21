@@ -1,10 +1,10 @@
 <!-- Footer -->
-<footer class="page-footer" style="background-color: #000000">
-    <div class="container text-md-left py-2">
-        <div class="row mt-3">
-            <div class="col-sm-12 col-md-5 d-flex justify-content-start align-items-center">
+<footer class="page-footer" style="background-color: #444444">
+    <div class="container text-md-left py-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 d-flex justify-content-start align-items-center">
 
-                <img src=" " alt="" class="img-fluid">
+                <img src="{{ asset($logos->text{'footer'}) }}" alt="" class="img-fluid">
                 <!--<div class="d-flex my-5">
                     <p style="font-size: 13px">SEGUINOS EN</p>
                     <a href="" class="tpn-blue mx-2"><i class="fab fa-facebook fa-lg"></i></a>
@@ -12,18 +12,25 @@
                 </div>-->
             </div>
             <div class="col-sm-12 col-md-3">
-                <h6 class="text-uppercase distren-color distren-bold">MAPA DE SITIO</h6>
-                <a href=" " class="nav-link m-0 p-0">Home</a>
-                <a href=" " class="nav-link m-0 p-0">Empresa</a>
-                <a href="" class="nav-link m-0 p-0">Productos</a>
-                <a href="" class="nav-link m-0 p-0">Ofertas</a>
-                <a href="" class="nav-link m-0 p-0">Carrito</a>
-                <a href="" class="nav-link m-0 p-0">Contacto</a>
+                <h6 class="text-uppercase baires-color">Secciones</h6>
+                <a href=" " class="nav-link m-0 p-0">Verticales</a>
+                <a href=" " class="nav-link m-0 p-0">Flow Pack</a>
+                <a href="" class="nav-link m-0 p-0">Doy Pack</a>
+                <a href="" class="nav-link m-0 p-0">Termocontraibles</a>
+                <a href="" class="nav-link m-0 p-0">Dosificadoras</a>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <h6 class="text-uppercase baires-color">ENVASADORAS</h6>
+                <a href=" " class="nav-link m-0 p-0">Verticales</a>
+                <a href=" " class="nav-link m-0 p-0">Flow Pack</a>
+                <a href="" class="nav-link m-0 p-0">Doy Pack</a>
+                <a href="" class="nav-link m-0 p-0">Termocontraibles</a>
+                <a href="" class="nav-link m-0 p-0">Dosificadoras</a>
             </div>
 
 
             <div class="col-sm-12 col-md-4">
-                <h6 class="text-uppercase distren-color distren-bold">DISTREN ENVASES</h6>
+                <h6 class="text-uppercase baires-color">BAIRES PACK</h6>
                 <ul class="list-group" style="font-size: 13px">
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
                         <i class="material-icons distren-color mr-3">location_on</i>

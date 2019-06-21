@@ -2,7 +2,7 @@
 <nav id="sidebar" class="position-fixed h-100" style=" overflow-y:auto;">
     <ul class="list-unstyled">
         <div class="text-center">
-            <img src="{{ asset('uploads/logos/logo.png') }}" alt="" class="img-fluid p-4">
+            <img src="{{ asset($logos->text{'header'}) }}" alt="" class="img-fluid p-4">
         </div>
         <!---HOME---->
         <li class="">
@@ -90,7 +90,7 @@
                 <i class="material-icons">verified_user</i>Post Venta<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Venta">
-                <li><a href="{{ route('contenido.index', ['section' => 'postventa', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
+                <li><a href="{{ route('contenido.index', ['section' => 'venta', 'type' => 'texto']) }}"><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
             </ul>
         </li>
         <!---VIDEOS---->

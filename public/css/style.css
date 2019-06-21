@@ -1,3 +1,10 @@
 .nav-link{
     color: white !important;
 }
+
+/*HEADER SELECT*/
+.lang{
+    background: #333333;
+    color: white;
+    border: none;
+}

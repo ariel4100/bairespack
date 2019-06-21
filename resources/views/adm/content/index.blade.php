@@ -32,9 +32,9 @@
 
 
             @endif
-            @if($section == 'empresa')
+            @if($section == 'nosotros')
                 <div class="custom-file">
-                    <input value=""  accept="image/jpeg,application/pdf" name="ficha" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
+                    <input value=""  accept="image/jpeg,image/png,application/pdf" name="ficha" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
                     <label data-invalid="Seleccione ficha" data-valid="Ficha seleccionada" class="custom-file-label mb-0 text-truncate" data-browse="Buscar" for="ficha"></label>
                 </div>
                 <!-----------NOSOTROS-------------->
@@ -89,6 +89,35 @@
                     <textarea id="valorestext_en" class="md-textarea form-control" name="valorestext_en" rows="3">{!! $contenido->text{'valorestext_en'} !!}</textarea>
                 </div>
                
+            @endif
+            @if($section == 'venta')
+                <!-----------VENTA-------------->
+                <div class="md-form col-md-6">
+                    <input type="text" id="title_es" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! $contenido->text{'title_es'} !!}">
+                </div>
+                <div class="md-form col-md-6">
+                    <input type="text" id="title_en" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! $contenido->text{'title_en'} !!}">
+                </div>
+
+                <div class="md-form col-md-6">
+                    <p class="mb-0">Texto Es</p>
+                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! $contenido->text{'text_es'} !!}</textarea>
+                </div>
+
+                <div class="md-form col-md-6">
+                    <p class="mb-0">Texto En</p>
+                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $contenido->text{'text_en'} !!}</textarea>
+                </div>
+                <div class="md-form col-md-6">
+                    <p class="mb-0">Texto Es</p>
+                    <textarea id="valorestext_es" class="md-textarea form-control" name="subtext_es" rows="3">{!! $contenido->text{'subtext_es'} !!}</textarea>
+                </div>
+
+                <div class="md-form col-md-6">
+                    <p class="mb-0">Texto En</p>
+                    <textarea id="valorestext_en" class="md-textarea form-control" name="subtext_en" rows="3">{!! $contenido->text{'subtext_en'} !!}</textarea>
+                </div>
+
             @endif
             @if($section == 'logos')
                 <div class="col-md-12 text-center">

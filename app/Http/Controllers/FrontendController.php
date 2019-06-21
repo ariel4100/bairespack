@@ -24,8 +24,8 @@ class FrontendController extends Controller
 
     public function postventa()
     {
-
-        return view('page.postventa');
+        $contenido = Content::firstOrNew(['section' => 'venta','type' => 'texto']);
+        return view('page.postventa',compact('contenido'));
     }
 
     public function contacto()
