@@ -14,4 +14,18 @@ class Family extends Model
     protected $fillable = [
         'text', 'image', 'order','general_id',
     ];
+
+    public function general()
+    {
+        return $this->belongsTo('App\General');
+    }
+
+    public function subfamily()
+    {
+        return $this->hasMany('App\Subfamily');
+    }
+    public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

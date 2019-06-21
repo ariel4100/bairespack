@@ -14,4 +14,9 @@ class General extends Model
     protected $fillable = [
         'text','order','padre_id'
     ];
+
+    public function family()
+    {
+        return $this->hasMany('App\Family');
+    }
 }

@@ -35,12 +35,12 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('nosotros') ? 'activo' : '' }}" href="{{ route('nosotros') }}">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('envasadoras*') ? 'activo' : '' }}" href=" ">Envasadoras</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('dosificadoras') ? 'activo' : '' }}" href=" ">Dosificadoras</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href=" ">Accesorios</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('envasadoras*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 1]) }}">Envasadoras</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('dosificadoras') ? 'activo' : '' }}" href="{{ route('productos',['general' => 2]) }}">Dosificadoras</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href="{{ route('productos',['general' => 3]) }}">Accesorios</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href=" ">Noticias</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href="{{ route('post.venta') }}">Post-Venta</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href=" ">Videos</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href="{{ route('videos') }}">Videos</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('accesorios') ? 'activo' : '' }}" href="{{ route('contacto') }}">Contacto</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2" href=" "><i class="fas fa-search prefix rounded-pill p-1 baires-color"  style="border: 2px solid #FEB80B;"></i></a></li>
                 </ul>

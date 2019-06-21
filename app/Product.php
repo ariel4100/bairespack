@@ -14,4 +14,13 @@ class Product extends Model
     protected $fillable = [
         'text', 'image', 'order','family_id','subfamily_id'
     ];
+
+    public function family() {
+        return $this->belongsTo('App\Family');
+    }
+
+    public function subfamily() {
+        return $this->belongsTo('App\Subfamily');
+    }
+
 }

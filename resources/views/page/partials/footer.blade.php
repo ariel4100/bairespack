@@ -11,18 +11,27 @@
                     <a href="" class="tpn-blue"><i class="fab fa-youtube fa-lg"></i></a>
                 </div>-->
             </div>
-            <div class="col-sm-12 col-md-3">
-                <h6 class="text-uppercase baires-color">Secciones</h6>
-                <a href=" " class="nav-link m-0 p-0">Verticales</a>
-                <a href=" " class="nav-link m-0 p-0">Flow Pack</a>
-                <a href="" class="nav-link m-0 p-0">Doy Pack</a>
-                <a href="" class="nav-link m-0 p-0">Termocontraibles</a>
-                <a href="" class="nav-link m-0 p-0">Dosificadoras</a>
+            <div class="col-sm-12 col-md-3 d-flex justify-content-between align-items-start">
+                <div class="">
+                    <h6 class="text-uppercase baires-color">Secciones</h6>
+                    <a href="" class="nav-link m-0 p-0">Inicio</a>
+                    <a href="" class="nav-link m-0 p-0">Nosotros</a>
+                    <a href="" class="nav-link m-0 p-0">Envasadoras</a>
+                    <a href="" class="nav-link m-0 p-0">Dosificadoras</a>
+                    <a href="" class="nav-link m-0 p-0">Accesorios</a>
+                </div>
+                <div class="">
+                    <a href="" class="nav-link m-0 p-0">Inicio</a>
+                    <a href="" class="nav-link m-0 p-0">Nosotros</a>
+                    <a href="" class="nav-link m-0 p-0">Envasadoras</a>
+                    <a href="" class="nav-link m-0 p-0">Dosificadoras</a>
+                    <a href="" class="nav-link m-0 p-0">Accesorios</a>
+                </div>
             </div>
             <div class="col-sm-12 col-md-2">
                 <h6 class="text-uppercase baires-color">ENVASADORAS</h6>
-                <a href=" " class="nav-link m-0 p-0">Verticales</a>
-                <a href=" " class="nav-link m-0 p-0">Flow Pack</a>
+                <a href="" class="nav-link m-0 p-0">Verticales</a>
+                <a href="" class="nav-link m-0 p-0">Flow Pack</a>
                 <a href="" class="nav-link m-0 p-0">Doy Pack</a>
                 <a href="" class="nav-link m-0 p-0">Termocontraibles</a>
                 <a href="" class="nav-link m-0 p-0">Dosificadoras</a>

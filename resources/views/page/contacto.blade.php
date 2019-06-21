@@ -1,38 +1,38 @@
 @extends('page.layouts.app')
 
 @section('content')
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13143.607446757835!2d-58.4701564!3d-34.5560401!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7bfdcdb7e4fb77c0!2sDistren+-+Envases!5e0!3m2!1ses!2sar!4v1557415800721!5m2!1ses!2sar" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4021.533875044546!2d-58.52584875327054!3d-34.56815698207985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb70fdc166627%3A0x3d0b4a5268eb0274!2sG%C3%BCiraldes+1838%2C+Villa+Maip%C3%BA%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1561137650922!5m2!1ses!2sar" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     <div class="container my-5">
-        @include('page.partials.message')
+        {{--@include('page.partials.message')--}}
         <div class="row">
             <div class="col-md-4">
-                @if($contacto)
-                <h4 class="distren-color text-uppercase distren-bold ml-md-5">{!! $contacto->title !!}</h4>
+                @if(!isset($contacto))
+                <h4 class="distren-color text-uppercase distren-bold ml-md-5"> </h4>
                 <ul class="list-group">
                     <li class="list-group-item border-0 d-flex align-items-center">
                         <i class="material-icons distren-color mr-3">location_on</i>
-                        <a href="https://bit.ly/309sR9i" target="_blank" class="text-muted">{!! $contacto->direccion !!}</a>
+                        <a href="https://bit.ly/309sR9i" target="_blank" class="text-muted"> </a>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center">
                         <i class="material-icons distren-color mr-3">phone_in_talk</i>
-                        <a href="tel:{!! $contacto->telefono_1 !!}" class="text-muted">{!! $contacto->telefono_1 !!}</a>
+                        <a href="tel: " class="text-muted"> </a>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center">
                         <i class="fab fa-whatsapp distren-color mr-3" style="padding: 2px; font-size: 24px"></i>
-                        <a href="tel:{!! $contacto->telefono_1 !!}" class="text-muted" target="_blank">{!! $contacto->telefono_1 !!}</a>
+                        <a href="tel: " class="text-muted" target="_blank"> </a>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center">
                         <i class="material-icons distren-color mr-3">mail_outline</i>
                         <div class="">
-                            <a href="mailto:{!! $contacto->correo !!}" class="text-muted">{!! $contacto->correo !!}</a>
-                            <a href="mailto:{!! $contacto->correo_2 !!}" class="text-muted">{!! $contacto->correo_2 !!}</a>
+                            <a href="mailto: " class="text-muted"> </a>
+                            <a href="mailto: " class="text-muted"> </a>
                         </div>
                     </li>
                 </ul>
                     @endif
             </div>
             <div class="col-md-8">
-                <form class="form-row" action="{{ route('contacto.mail') }}" method="post">
+                <form class="form-row" action=" " method="post">
                     @csrf
                     <div class="md-form col-md-6">
                         <input type="text" class="form-control" placeholder="Nombre" name="nombre">

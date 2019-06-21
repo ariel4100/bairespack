@@ -15,21 +15,27 @@
 //    return view('welcome');
 //});
 /*************************RUTAS PUBLICAS******************************/
-Route::get('/','FrontendController@home')->name('home');
-Route::get('nosotros','FrontendController@nosotros')->name('nosotros');
-Route::get('post-venta','FrontendController@postventa')->name('post.venta');
-Route::get('contacto','FrontendController@contacto')->name('contacto');
-Route::group([ 'prefix' => 'productos'],function (){
-    Route::get('/','FrontendController@categorias')->name('categorias');
-    Route::get('categoria/{id}','FrontendController@categoriaproductos')->name('categoria');
-    Route::get('subcategoria/{id}','FrontendController@subcategoria')->name('subcategoria');
-    Route::get('producto/{id}','FrontendController@producto')->name('producto');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::get('/','FrontendController@home')->name('home');
+    Route::get('nosotros','FrontendController@nosotros')->name('nosotros');
+    Route::get('post-venta','FrontendController@postventa')->name('post.venta');
+    Route::get('videos','FrontendController@videos')->name('videos');
+    Route::get('contacto','FrontendController@contacto')->name('contacto');
+    Route::group([ 'prefix' => 'productos'],function (){
+        Route::get('/{general}','ProductController@familia')->name('productos');
+        Route::get('categoria/{id}','ProductController@categoriaproductos')->name('categoria');
+        Route::get('subcategoria/{familia}','ProductController@subfamilia')->name('subfamilia');
+        Route::get('productos/{subfamilia}','ProductController@productos')->name('productos.all');
+        Route::get('producto/{producto}','ProductController@producto')->name('producto');
+    });
 });
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 /*************************RUTAS ADM******************************/
+
 Route::group(['prefix' => 'adm'],function (){
     Route::view('/',  'adm.dashboard.index');
     Route::group(['prefix' => 'slider', 'as' => 'slider'], function() {
@@ -81,6 +87,15 @@ Route::group(['prefix' => 'adm'],function (){
         Route::get('{id}/edit/{general}', ['uses' => 'Adm\FamilyController@edit', 'as' => '.edit']);
         Route::put('{contenido}/update', ['uses' => 'Adm\FamilyController@update', 'as' => '.update']);
         Route::get('{id}/destroy', ['uses' => 'Adm\FamilyController@delete', 'as' => '.destroy']);
+    });
+
+    Route::group(['prefix' => 'subfamilia', 'as' => 'subfamilia'], function() {
+        Route::get('{general}', ['uses' => 'Adm\SubfamilyController@index', 'as' => '.index']);
+        Route::get('crear/subfamilia/{general}', ['uses' => 'Adm\SubfamilyController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\SubfamilyController@store', 'as' => '.store']);
+        Route::get('{id}/edit/{general}', ['uses' => 'Adm\SubfamilyController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\SubfamilyController@update', 'as' => '.update']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\SubfamilyController@delete', 'as' => '.destroy']);
     });
     //Route::get('familia/{general}','Adm\FamilyController@index')->name('fami.index');
     //Route::resource('familia','Adm\FamilyController');

@@ -28,6 +28,12 @@ class FrontendController extends Controller
         return view('page.postventa',compact('contenido'));
     }
 
+    public function videos()
+    {
+
+        return view('page.videos');
+    }
+
     public function contacto()
     {
 
