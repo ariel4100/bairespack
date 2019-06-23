@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Content;
 use App\Slider;
+use App\Video;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -30,8 +31,8 @@ class FrontendController extends Controller
 
     public function videos()
     {
-
-        return view('page.videos');
+        $videos = Video::orderBy('order')->get();
+        return view('page.videos',compact('videos'));
     }
 
     public function contacto()

@@ -9,15 +9,16 @@
                         <span @click="deleteImage(index)" class="badge badge-danger del">X</span>
                         <img class="img-fluid" :src="getPreviewImage(index)" style="height: 200px" v-if="img == 1">
                     </div>
+                    <input type="text" :name="'gallery['+index+'][image]'" :value="item.image"  class="d-none">
                     <div class="custom-file">
-                        <input type="file" @change="previewImage(index,$event)" class="custom-file-input" id="customFileLang" :name="'gallery['+index+'][image]'"   lang="es">
-                        <label class="custom-file-label" for="customFileLang" data-browse="Subir">Imagen</label>
+                        <input type="file" @change="previewImage(index,$event)" class="custom-file-input" :name="'gallery['+index+'][image]'"  lang="es">
+                        <label class="custom-file-label"  data-browse="Subir">Imagen</label>
                     </div>
                     <div class="md-form m-0" v-if="!familia">
-                        <input type="text" :name="'gallery['+index+'][titleg_es]'"   placeholder="Titulo - español" class="form-control">
+                        <input type="text" :name="'gallery['+index+'][title_es]'"   placeholder="Titulo - español" class="form-control">
                     </div>
                     <div class="md-form m-0" v-if="!familia">
-                        <input type="text" :name="'gallery['+index+'][titleg_en]'"   placeholder="Titulo - ingles" class="form-control">
+                        <input type="text" :name="'gallery['+index+'][title_en]'"   placeholder="Titulo - ingles" class="form-control">
                     </div>
                 </div>
             </draggable>
@@ -50,15 +51,24 @@
         },
         methods:{
             getFamily() {
-                console.log(this.familia);
-                if (this.familia)
+                console.log(this.galeria);
+                if (this.galeria != undefined)
                 {
+                    this.galeria.forEach((item)=>{
+                        this.gallery.push(
+                            {
+                                image: item.image,
+                                title_es: item.title_es,
+                                title_en: item.title_en,
+                            }
+                        );
+                    });
                     // for (const item in this.familia) {
                     //     this.gallery.push(this.familia);
                     //     //this.gallery[item] = this.familia[item];
                     //     //console.log(this.familia);
                     // }
-                    this.gallery = this.familia;
+
 
                     console.log(this.gallery);
 

@@ -25,7 +25,8 @@
     "dependencies": {
         "v-gallery": "^1.2.4",
         "vue-draggable": "^2.0.2",
+        "vue-multiselect": "^2.1.6",
         "vue-template-compiler": "^2.6.10",
-        "vuedraggable": "^2.21.0"
+        "vuedraggable": "^2.22.0"
     }
 }

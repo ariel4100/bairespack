@@ -26,11 +26,24 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="text-white ml-2" href=" "> <i class="fab fa-whatsapp mr-2" style="color: #25d366;"></i>54 9 11 6050-7809</a></li>
                     <li class="nav-item">
-                        <div class="form-group m-0 ml-3">
-                            <select class="lang" name="" id="">
-                                <option value="">ES</option>
-                            </select>
+                        <div class="dropdown">
+                            <button class="btn btn-sm m-0 p-0 ml-2 text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ App::getLocale() }}
+                            </button>
+                            <div class="dropdown-menu m-0 py-0 dropdown-menu-right" style="min-width: 2rem" aria-labelledby="dropdownMenuButton">
+                                @foreach (LaravelLocalization::getSupportedLocales() as $key => $lang)
+                                    <a class="dropdown-item m-0 p-0 {{ LaravelLocalization::getCurrentLocale()==$key?'active':'' }}" href="{{ LaravelLocalization::getLocalizedURL($key) }}">{{ ucwords($key) }}</a>
+                                @endforeach
+                            </div>
                         </div>
+{{--                        <div class="form-group m-0 ml-3">--}}
+{{--                            <select class="lang" name=""onchange="location = this.value;">--}}
+{{--                                @foreach (LaravelLocalization::getSupportedLocales() as $key => $lang)--}}
+{{--                                    <option value="{{ $key }}" {{ LaravelLocalization::getCurrentLocale()==$key?'selected':'' }}><a href="{{ LaravelLocalization::getLocalizedURL($key) }}">{{ ucwords($key) }}</a></option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

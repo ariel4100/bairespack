@@ -33,11 +33,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+
 /*************************RUTAS ADM******************************/
 
 Route::group(['prefix' => 'adm'],function (){
     Route::view('/',  'adm.dashboard.index');
+    // SLIDERS
     Route::group(['prefix' => 'slider', 'as' => 'slider'], function() {
         Route::get('{seccion}/create', ['uses' => 'Adm\SliderController@create', 'as' => '.create']);
         Route::post('store', ['uses' => 'Adm\SliderController@store', 'as' => '.store']);
@@ -46,7 +47,7 @@ Route::group(['prefix' => 'adm'],function (){
         Route::post('update/{slider}', ['uses' => 'Adm\SliderController@update', 'as' => '.update']);
         Route::get('destroy/{slider}', ['uses' => 'Adm\SliderController@destroy', 'as' => '.destroy']);
     });
-
+    // CONTENIDO
     Route::group(['prefix' => 'contenido', 'as' => 'contenido'], function() {
         Route::get('{section}/{type}', ['uses' => 'Adm\ContentController@index', 'as' => '.index']);
         Route::get('{section}/{type}/create', ['uses' => 'Adm\ContentController@create', 'as' => '.create']);
@@ -101,4 +102,6 @@ Route::group(['prefix' => 'adm'],function (){
     //Route::resource('familia','Adm\FamilyController');
     Route::resource('metadatos','Adm\MetadataController');
     Route::resource('usuario','Adm\UserController');
+
+    Route::resource('video','Adm\VideoController');
 });

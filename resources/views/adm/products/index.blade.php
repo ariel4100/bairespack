@@ -17,7 +17,7 @@
                     <tbody>
                     @forelse ($productos as $item)
                         <tr>
-                            <td><img src="" style="width: 150px"></td>
+                            <td><img src="{{ asset($item->image[0]['image'] ?? '') }}" style="width: 150px"></td>
                             <td>{{ $item->text{'title_es'} }}</td>
                             <td>{{ $item->order }}</td>
                             <td>

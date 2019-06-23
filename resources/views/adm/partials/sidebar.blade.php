@@ -99,7 +99,7 @@
                 <i class="material-icons">video_library</i>Videos<i class="fas fa-sort-down ml-auto"></i>
             </a>
             <ul class="collapse list-group list-group-flush " id="Videos">
-                <li><a href=" "><i class="fas fa-chevron-right px-4"></i>Informacion</a></li>
+                <li><a href="{{ route('video.index') }}"><i class="fas fa-chevron-right px-4"></i>Lista de videos</a></li>
             </ul>
         </li>
         <!---CONTACTO---->

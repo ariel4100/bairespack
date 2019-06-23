@@ -14,9 +14,9 @@
                                     <img class="img-fluid" src="{{ asset($item->image[0]['image'] ?? '') }}" alt="Card image cap">
                                 </div>
                                 <div class="card-footer text-center bg-white">
-                                    <p class="m-0">{!! $item->subfamily->text{'title_es'} ?? '' !!}</p>
+                                    <p class="m-0">{!! $item->subfamily->text{'title_'.App::getLocale()} ?? '' !!}</p>
                                     <h4 class="">
-                                        {!! $item->text{'title_es'} ?? '' !!}
+                                        {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
                                     </h4>
                                 </div>
                             </div>

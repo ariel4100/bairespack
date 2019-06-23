@@ -35,9 +35,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $gallery = $request->gallery;
+        if (isset($gallery))
+        {
+            foreach ($gallery as $k => $item) {
+                $path = $item['image']->store('gallery');
+                $gallery[$k]['image'] = $path;
+            }
+        }
         $producto = new Product();
         $producto->text = $request->except('_token','category_id','subcategory_id','order','galery');
-        $producto->image = $request->galery;
+        $producto->image = $gallery;
         $producto->order = $request->order;
         $producto->subfamily_id = $request->subcategory_id;
         $producto->family_id = $request->category_id;
@@ -60,11 +68,22 @@ class ProductController extends Controller
     {
         //dd($request->all());
         $gallery = $request->gallery;
+        $producto = Product::find($id);
+        //dd($producto->image[0]['image']);
         if (isset($gallery))
         {
+            //dd($gallery);
             foreach ($gallery as $k => $item) {
-                $path = $item['image']->store('gallery');
-                $gallery[$k]['image'] = $path;
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $gallery[$k]['image'] = $producto->image[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('gallery');
+                    $gallery[$k]['image'] = $path;
+                }
             }
         }
         //dd($gallery);

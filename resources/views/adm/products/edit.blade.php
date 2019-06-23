@@ -192,7 +192,7 @@
                     </div>
 
                     {{--@dd($producto->image)--}}
-                    <gallery-component :galery="{{ json_encode($producto->image) }}"></gallery-component>
+                    <gallery-component :galeria="{{ json_encode($producto->image) }}"></gallery-component>
                 </div>
             @endif
             <div class="row">

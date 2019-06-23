@@ -23,4 +23,7 @@ class Product extends Model
         return $this->belongsTo('App\Subfamily');
     }
 
+    public function related() {
+        return $this->belongsToMany('App\Product','related_products');
+    }
 }

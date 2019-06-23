@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
+
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,6 +10,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Baires Pack</title>
+    @foreach (LaravelLocalization::getSupportedLocales() as $key => $lang)
+        @if (LaravelLocalization::getCurrentLocale()!=$key)
+            <meta property="og:locale:alternate" content="{{ $key }}">
+        @endif
+    @endforeach
     <link rel="icon" href="">
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
