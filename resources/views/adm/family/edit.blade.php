@@ -40,11 +40,11 @@
                     {{--@for ($i=1; $i <= 3; $i++)--}}
                         {{--<div class="col-md-4"  >--}}
                             {{--<div class="custom-file">--}}
-                                {{--<input type="file" class="custom-file-input" name="galery[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">--}}
+                                {{--<input type="file" class="custom-file-input" name="config[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">--}}
                                 {{--<label class="custom-file-label" for="customFileLang" data-browse="Buscar">Imagen</label>--}}
                             {{--</div>--}}
                             {{--<div class="md-form">--}}
-                                {{--<input type="text"  name="galery[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">--}}
+                                {{--<input type="text"  name="config[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">--}}
                             {{--</div>--}}
                         {{--</div>--}}
                     {{--@endfor--}}
@@ -59,17 +59,17 @@
             {{--DOSIFICADORAS--}}
             @if($general->id == 2)
                 <div class="row">
-                    <div class="col-md-6">
-                        <select class="browser-default custom-select" name="familia_id">
-                            <option selected disabled>Seleccione Categoria</option>
-                            <option value="0">Ninguno</option>
-                            @forelse($family as $item)
-                                <option value="{{ $item->id }}" {{ $item->id == $categoria->family_id ? 'selected' : null}}>{{ $item->text{'title_es'} }}</option>
-                            @empty
-                                <option value="">No hay registro</option>
-                            @endforelse
-                        </select>
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<select class="browser-default custom-select" name="familia_id">--}}
+                            {{--<option selected disabled>Seleccione Categoria</option>--}}
+                            {{--<option value="0">Ninguno</option>--}}
+                            {{--@forelse($family as $item)--}}
+                                {{--<option value="{{ $item->id }}" {{ $item->id == $categoria->family_id ? 'selected' : null}}>{{ $item->text{'title_es'} }}</option>--}}
+                            {{--@empty--}}
+                                {{--<option value="">No hay registro</option>--}}
+                            {{--@endforelse--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="order" name="order" placeholder="Orden" value="{{ $categoria->order }}" class="form-control">
                     </div>

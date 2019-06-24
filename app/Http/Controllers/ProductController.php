@@ -28,22 +28,33 @@ class ProductController extends Controller
         return view('page.productos.subcategoria',compact('subfamily','general'));
     }
 
-    public function productos($subfamily)
+    public function productos($family,$subfamily)
     {
+        //dd($family);
         $sf = Subfamily::find($subfamily);
-        $general = General::find($sf->general_id);
-        //dd($sf);
-        $productos = Product::where('subfamily_id',$sf->id)
-            ->where('family_id',$sf->id)->orderBy('order')
-            ->get();
+        $f = Family::find($family);
+        $general = General::find($sf->general_id ?? $f->general_id);
+        //dd($f);
+//        if ($sf)
+//        {
+            $productos = Product::where('subfamily_id',$sf ? $sf->id : null)
+                ->where('family_id',$f->id)->orderBy('order')
+                ->get();
+//        }
+//        if ($f)
+//        {
+//            $productos = Product::where('family_id',$f->id)
+//                ->where('subfamily_id',null)->orderBy('order')
+//                ->get();
+//        }
         //dd($productos);
         return view('page.productos.productos',compact('productos','general'));
     }
 
     public function producto(Product $producto)
     {
-        $sf = Subfamily::where('family_id',$producto->family_id)->first();
-        $general = General::find($sf->general_id);
+        $f = Family::find($producto->family_id);
+        $general = General::find($f->general_id);
         //dd($general);
 
         return view('page.productos.producto',compact('producto','general'));

@@ -24,6 +24,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('gallery-component', require('./components/GalleryComponent.vue').default);
 Vue.component('form-component', require('./components/FormComponent.vue').default);
 Vue.component('video-component', require('./components/VideoComponent.vue').default);
+Vue.component('select-component', require('./components/SelectComponent.vue').default);
+Vue.component('config-component', require('./components/ConfigComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

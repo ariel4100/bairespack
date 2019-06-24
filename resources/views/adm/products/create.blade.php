@@ -5,6 +5,7 @@
         <a class="text-decoration-none " href="{{ route('productos.index',['general' => $general]) }}"><< Volver</a>
         <form class="mb-5" method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
             @csrf
+            <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <p>Seleccionar Categoria</p>
@@ -194,8 +195,9 @@
                     {{--<label class="custom-control-label" for="customSwitch1" >Destacado</label>--}}
                     {{--</div>--}}
                     {{--</div>--}}
-                    <gallery-component></gallery-component>
                 </div>
+                <select-component></select-component>
+                <gallery-component></gallery-component>
             @endif
             @if($general->id == 3)
                 <div class="row">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container " style="margin-top: 8rem">
-
+        {{--ENVASADORAS--}}
         @if($general->id == 1)
             <div class="row">
                 <div class="col-md-12">
@@ -14,19 +14,21 @@
                 @foreach($family as $item)
                     <div class="col-md-3 mb-5">
                         <!-- Card -->
-                        <div class="card">
-                            <div class="card-header border-0 bg-white">
-                                <h4 class="text-center my-3">
-                                    {!! $item->general->text{'title_es'} !!}
-                                    {!! $item->text{'title_es'} !!}
-                                </h4>
-                            </div>
+                        <a href="{{ route('productos.all',['familia' => $item->id,'subfamilia' => 0]) }}" class="text-decoration-none" style="color: unset;">
+                            <div class="card">
+                                <div class="card-header border-0 bg-white">
+                                    <p class="text-center m-0">{!! $item->general->text{'title_es'} !!}</p>
+                                    <h4 class="text-center">
+                                        {!! $item->text{'title_es'} !!}
+                                    </h4>
+                                </div>
 
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Card image -->
-                                <img class="card-img-top mb-4" src="{{ asset($item->text{'image'}) }}" alt="Card image cap">
+                                <!-- Card content -->
+                                <div class="card-body d-flex align-items-center" style="height: 300px">
+                                    <!-- Card image -->
+                                    <img class="img-fluid" src="{{ asset($item->text{'image'}) }}" alt="Card image cap" style="">
 
+                                </div>
                                 <!--Carousel Wrapper-->
                                 <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
                                     <!--Indicators-->
@@ -70,20 +72,20 @@
                                     <!--/.Controls-->
                                 </div>
                                 <!--/.Carousel Wrapper-->
+                                <div class="card-footer border-0 bg-white">
+                                    <p class="m-0 text-center">Tipo</p>
+                                    <h4 class="text-center">
+                                        {!! $item->text{'type_es'} !!}
+                                    </h4>
+                                </div>
                             </div>
-                            <div class="card-footer border-0 bg-white">
-                                <p class="m-0 text-center">Tipo</p>
-                                <h4 class="text-center">
-                                    {!! $item->text{'type_es'} !!}
-                                </h4>
-                            </div>
-                        </div>
+                        </a>
                         <!-- Card -->
                     </div>
                 @endforeach
             </div>
         @endif
-
+        {{--DOSIFICADORAS--}}
         @if($general->id == 2)
         <div class="row">
             <div class="col-md-12">
@@ -93,7 +95,7 @@
         <div class="row mt-5">
             @foreach($family as $item)
                 <div class="col-md-4 mb-5">
-                    <a href="{{ route('subfamilia',['familia' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
+                    <a href="{{ route('subfamilia',['familia' => $item->id]) }}" class="text-decoration-none" style="color: unset;">
                         <div class="card">
                             <div class="card-body text-center">
                                 <img class="img-fluid" src="{{ asset($item->text{'image'}) }}" alt="Card image cap">
@@ -111,6 +113,7 @@
         </div>
     @endif
 
+        {{--ACCESORIOS--}}
         @if($general->id == 3)
             <div class="row">
                 <div class="col-md-12">

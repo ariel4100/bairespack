@@ -61,7 +61,7 @@ class SubfamilyController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        $data = $request->except('_token','galery','_method','general_id');
+        $data = $request->except('_token','config','_method','general_id');
         $gallery = $request->gallery;
         $family = Subfamily::find($id);
         //dd($data['image']);

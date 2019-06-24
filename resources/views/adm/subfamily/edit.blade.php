@@ -39,11 +39,11 @@
                     {{--@for ($i=1; $i <= 3; $i++)--}}
                         {{--<div class="col-md-4"  >--}}
                             {{--<div class="custom-file">--}}
-                                {{--<input type="file" class="custom-file-input" name="galery[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">--}}
+                                {{--<input type="file" class="custom-file-input" name="config[{{$i}}][img]" value="{{ $categoria->image[$i]['img'] ?? '' }}" id="customFileLang" lang="es">--}}
                                 {{--<label class="custom-file-label" for="customFileLang" data-browse="Buscar">Imagen</label>--}}
                             {{--</div>--}}
                             {{--<div class="md-form">--}}
-                                {{--<input type="text"  name="galery[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">--}}
+                                {{--<input type="text"  name="config[{{$i}}][order]" value="{{ $categoria->image[$i]['order'] ?? '' }}" placeholder="Orden" class="form-control">--}}
                             {{--</div>--}}
                         {{--</div>--}}
                     {{--@endfor--}}

@@ -7,7 +7,7 @@
             <div class="row my-5">
                 @foreach($subfamily as $item)
                     <div class="col-md-4 mb-5">
-                        <a href="{{ route('productos.all',['subfamilia' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
+                        <a href="{{ route('productos.all',['subfamilia' => $item->id, 'familia' => $item->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">

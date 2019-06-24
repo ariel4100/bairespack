@@ -6,12 +6,13 @@
         <form class="mb-5" method="POST" action="{{ route('productos.update',$producto->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <p>Seleccionar Categoria</p>
                     <select class="custom-select form-control select2" name="category_id">
                         @forelse($categorias as $item)
-                            <option value="{!! $item->id !!}">{!! $item->text{'title_es'} !!}</option>
+                            <option value="{!! $item->id !!}" {{ $item->id == $producto->category_id ? 'selected' : null }}>{!! $item->text{'title_es'} !!}</option>
                         @empty
                             <option value="" selected disabled>No hay registros</option>
                         @endforelse
@@ -28,6 +29,7 @@
                     </select>
                 </div>
             </div>
+            {{--ENVASADORAS--}}
             @if($general->id == 1)
             <div class="row">
                 <div class="md-form col-md-6">
@@ -114,9 +116,16 @@
                 {{--</div>--}}
                 {{--</div>--}}
 
-                <gallery-component :galery="{{ json_encode($producto->image) }}"></gallery-component>
             </div>
+
+                <gallery-component :galeria="{{ json_encode($producto->image) }}"></gallery-component>
+
+
+
+                <config-component :dosificaciones="{{ json_encode($dosificadoras) }}"></config-component>
             @endif
+
+            {{--DISIFICADORAS--}}
             @if($general->id == 2)
                 <div class="row">
                     <div class="md-form col-md-6">
@@ -190,11 +199,13 @@
                     <div class="md-form col-md-4">
                         <input type="text" id="order" name="order" value="{!! $producto->order ?? ''!!}" placeholder="Orden" class="form-control m-0">
                     </div>
-
-                    {{--@dd($producto->image)--}}
-                    <gallery-component :galeria="{{ json_encode($producto->image) }}"></gallery-component>
                 </div>
+                {{--@dd($producto->related)--}}
+                <select-component :envasadoras="{{ json_encode($envasadoras) }}" :selectedenvasadoras="{{ json_encode($producto->related) }}"></select-component>
+                {{--@dd($producto->image)--}}
+                <gallery-component :galeria="{{ json_encode($producto->image) }}"></gallery-component>
             @endif
+
             <div class="row">
                 <div class="col-md-12 text-right">
                     <button type="submit" class="btn btn-success">Guardar</button>

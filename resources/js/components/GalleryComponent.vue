@@ -15,10 +15,10 @@
                         <label class="custom-file-label"  data-browse="Subir">Imagen</label>
                     </div>
                     <div class="md-form m-0" v-if="!familia">
-                        <input type="text" :name="'gallery['+index+'][title_es]'"   placeholder="Titulo - español" class="form-control">
+                        <input type="text" :name="'gallery['+index+'][title_es]'" :value="item.title_es"  placeholder="Titulo - español" class="form-control">
                     </div>
                     <div class="md-form m-0" v-if="!familia">
-                        <input type="text" :name="'gallery['+index+'][title_en]'"   placeholder="Titulo - ingles" class="form-control">
+                        <input type="text" :name="'gallery['+index+'][title_en]'" :value="item.title_en" placeholder="Titulo - ingles" class="form-control">
                     </div>
                 </div>
             </draggable>
@@ -51,7 +51,7 @@
         },
         methods:{
             getFamily() {
-                console.log(this.galeria);
+                //console.log(this.galeria);
                 if (this.galeria != undefined)
                 {
                     this.galeria.forEach((item)=>{
@@ -70,7 +70,7 @@
                     // }
 
 
-                    console.log(this.gallery);
+                    //console.log(this.gallery);
 
                 }
                 //console.log(this.familia)

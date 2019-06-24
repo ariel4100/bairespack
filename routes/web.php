@@ -26,7 +26,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::get('/{general}','ProductController@familia')->name('productos');
         Route::get('categoria/{id}','ProductController@categoriaproductos')->name('categoria');
         Route::get('subcategoria/{familia}','ProductController@subfamilia')->name('subfamilia');
-        Route::get('productos/{subfamilia}','ProductController@productos')->name('productos.all');
+        Route::get('products/{familia}/{subfamilia}','ProductController@productos')->name('productos.all');
         Route::get('producto/{producto}','ProductController@producto')->name('producto');
     });
 });
@@ -66,15 +66,14 @@ Route::group(['prefix' => 'adm'],function (){
         Route::put('{contenido}/update', ['uses' => 'Adm\ProductController@update', 'as' => '.update']);
         Route::get('{id}/destroy', ['uses' => 'Adm\ProductController@delete', 'as' => '.destroy']);
     });
-
-    // GALERIAS DE PRODUCTOS
-    Route::group(['prefix' => 'galeria', 'as' => 'galeria'], function() {
-        Route::get('{id}', ['uses' => 'Adm\GaleryController@index', 'as' => '.index']);
-        Route::get('crear/galeria/{id}', ['uses' => 'Adm\GaleryController@create', 'as' => '.create']);
-        Route::post('/store', ['uses' => 'Adm\GaleryController@store', 'as' => '.store']);
-        Route::get('{id}/edit', ['uses' => 'Adm\GaleryController@edit', 'as' => '.edit']);
-        Route::put('{contenido}/update', ['uses' => 'Adm\GaleryController@update', 'as' => '.update']);
-        Route::get('{id}/destroy', ['uses' => 'Adm\GaleryController@destroy', 'as' => '.destroy']);
+    //CONFIGURACIONES DE PRODUCTOS
+    Route::group(['prefix' => 'config', 'as' => 'config'], function() {
+        Route::get('{producto}', ['uses' => 'Adm\ConfigController@index', 'as' => '.index']);
+        Route::get('crear/config/{producto}', ['uses' => 'Adm\ConfigController@create', 'as' => '.create']);
+        Route::post('/store', ['uses' => 'Adm\ConfigController@store', 'as' => '.store']);
+        Route::get('edit/{id}', ['uses' => 'Adm\ConfigController@edit', 'as' => '.edit']);
+        Route::put('{contenido}/update', ['uses' => 'Adm\ConfigController@update', 'as' => '.update']);
+        Route::get('{id}/destroy', ['uses' => 'Adm\ConfigController@delete', 'as' => '.destroy']);
     });
    /* Route::group(['prefix' => 'pedidos', 'as' => 'pedidos'], function() {
         Route::get('pedidos', ['uses' => 'Adm\OrderController@index', 'as' => '.index']);

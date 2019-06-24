@@ -23,7 +23,7 @@ class FamilyController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->except('_token','galery','_method');
+        $data = $request->except('_token','config','_method');
         $gallery = $request->galery;
         //dd($request->all());
         //dd($gallery);
@@ -60,7 +60,7 @@ class FamilyController extends Controller
     public function update(Request $request, $id)
     {
         //dd($request->all());
-        $data = $request->except('_token','galery','_method','general_id');
+        $data = $request->except('_token','config','_method','general_id');
         $gallery = $request->gallery;
         $family = Family::find($id);
         //dd($data['image']);
