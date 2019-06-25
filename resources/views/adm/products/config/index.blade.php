@@ -3,7 +3,7 @@
 @section('content')
     <div class="container p-4">
         <a href="{{ route('config.create',['producto' => $producto]) }}" class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle mx-1"></i>Añadir</a>
-        <a class="text-decoration-none text-right" href=""><p><< Volver</p></a>
+        <a class="text-decoration-none text-right" href="{{ route('productos.index',['general' => 1]) }}"><p><< Volver</p></a>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">

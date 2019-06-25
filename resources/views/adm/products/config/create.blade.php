@@ -28,6 +28,13 @@
                     <h6>Texto - ingles</h6>
                     <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3"></textarea>
                 </div>
+                <div class="col-md-6">
+                    {{--@dd($dosificadoras)--}}
+                    <multiple-component :related="{{ json_encode($dosificadoras) }}"></multiple-component>
+                </div>
+                <div class="col-md-6 md-form">
+                    <input type="text" name="order"   placeholder="Orden" class="form-control">
+                </div>
             </div>
             <gallery-component></gallery-component>
             <div class="col-md-12 my-4 text-right">

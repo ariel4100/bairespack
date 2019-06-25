@@ -23,7 +23,9 @@
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('productos.edit',['id' => $item->id,'general' => $general]) }}"><i class="fas fa-pen"></i></a>
                                 <a class="btn btn-sm btn-danger" onclick="return confirm('¿Realmente desea eliminar este registro?')" href="{{ route('productos.destroy',$item->id) }}"><i class="fas fa-trash-alt"></i></a>
-                                <a class="btn btn-sm btn-info" href="{{ route('config.index',$item->id) }}">Configuraciones</a>
+                                @if($general->id == 1)
+                                    <a class="btn btn-sm btn-info" href="{{ route('config.index',$item->id) }}">Configuraciones</a>
+                                @endif
                             </td>
                         </tr>
                     @empty

@@ -26,4 +26,13 @@ class Product extends Model
     public function related() {
         return $this->belongsToMany('App\Product','related_products','product_id','related_id');
     }
+
+    public function configuraciones()
+    {
+        return $this->hasMany('App\Config');
+    }
+
+    public function config() {
+        return $this->belongsToMany('App\Config','config_products');
+    }
 }

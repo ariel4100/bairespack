@@ -10,9 +10,10 @@
             <div class="row">
                 <div class="col-md-6 mt-4">
                     <p>Seleccionar Categoria</p>
+
                     <select class="custom-select form-control select2" name="category_id">
                         @forelse($categorias as $item)
-                            <option value="{!! $item->id !!}" {{ $item->id == $producto->category_id ? 'selected' : null }}>{!! $item->text{'title_es'} !!}</option>
+                            <option value="{!! $item->id !!}" {{ $item->id == $producto->family_id ? 'selected' : null }}>{!! $item->text{'title_es'} !!}</option>
                         @empty
                             <option value="" selected disabled>No hay registros</option>
                         @endforelse

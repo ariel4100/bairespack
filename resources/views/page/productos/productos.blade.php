@@ -10,13 +10,13 @@
                     <div class="col-md-4 mb-5">
                         <a href="{{ route('producto',['producto' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
                             <div class="card">
-                                <div class="card-body text-center">
+                                <div class="card-body text-center" style="height: 270px;">
                                     <img class="img-fluid" src="{{ asset($item->image[0]['image'] ?? '') }}" alt="Card image cap">
                                 </div>
-                                <div class="card-footer text-center bg-white">
-                                    <p class="m-0">{!! $item->subfamily->text{'title_'.App::getLocale()} ?? '' !!}</p>
+                                <div class="card-footer bg-white">
+                                    <p class="m-0">{!! $item->text{'title_'.App::getLocale()} ?? '' !!}</p>
                                     <h4 class="">
-                                        {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
+                                        {!! $item->text{'subtitle_'.App::getLocale()} ?? '' !!}
                                     </h4>
                                 </div>
                             </div>

@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Blade::component('components.title', 'title');
+        Blade::component('components.gallery', 'gallery');
 //        View::composer('*','');
          //View::share('key', 'value');
 //        view()->composer('view', function () {

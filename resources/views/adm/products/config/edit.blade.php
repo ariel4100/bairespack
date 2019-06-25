@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container p-4">
-        <a class="text-decoration-none " href="{{ route('config.index',$config->id) }}"><< Volver</a>
+        <a class="text-decoration-none " href="{{ route('config.index',$config->product_id) }}"><< Volver</a>
         <form class="row" method="POST" action="{{ route('config.update',$config->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="row mb-2"  >
+            <input type="hidden" id="order" name="product_id" value="{!! $config->product_id !!}" class="form-control">
+            <div class="row mb-2">
                 <div class="col-md-6 md-form">
                     <input type="text" name="tipo_es" value="{!! $config->text{'tipo_es'} !!}" placeholder="Tipo - español" class="form-control">
                 </div>
@@ -26,6 +27,13 @@
                 <div class="md-form col-md-6">
                     <h6>Texto - ingles</h6>
                     <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $config->text{'text_en'} !!}</textarea>
+                </div>
+                <div class="col-md-6">
+                    {{--@dd($dosificadoras)--}}
+                    <multiple-component :related="{{ json_encode($dosificadoras) }}" :selectrelated="{{ json_encode($config->product) }}"></multiple-component>
+                </div>
+                <div class="col-md-6 md-form">
+                    <input type="text" name="order" value="{!! $config->order !!}" placeholder="Orden" class="form-control">
                 </div>
             </div>
             {{--@dd($config)--}}
