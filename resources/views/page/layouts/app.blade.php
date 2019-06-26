@@ -39,10 +39,25 @@
         .baires-fondo{
             background-color: #FEB80B;
         }
+        .activo{
+            border-bottom: 2px solid #FEB80B;
+            /*color: #000000 !important;*/
+        }
+        .card{
+            border-top: 5px solid #F2F2F2;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+            /*color: #000000 !important;*/
+        }
+        .card:hover{
+            border-top: 5px solid #FFB900;
+            -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+            box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15) !important;
+            /*color: #000000 !important;*/
+        }
     </style>
     @stack('style')
 </head>
-<body style="font-family:  'Montserrat', sans-serif; color: #9FA3A5;">
+<body style="font-family: 'Montserrat', sans-serif; color: #595959;">
 <div id="app">
     @include('page.partials.header')
     <main class=" ">

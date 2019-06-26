@@ -71,11 +71,21 @@ class FamilyController extends Controller
         }else{
             $data['image'] = $family->text{'image'};
         }
+
         if (isset($gallery))
         {
+            //dd($gallery);
             foreach ($gallery as $k => $item) {
-                $path = $item['image']->store('uploads/familia/bag');
-                $gallery[$k]['image'] = $path;
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $gallery[$k]['image'] = $family->image[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('gallery');
+                    $gallery[$k]['image'] = $path;
+                }
             }
         }
         //dd($gallery);

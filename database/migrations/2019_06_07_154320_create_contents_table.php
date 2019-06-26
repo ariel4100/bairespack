@@ -18,6 +18,7 @@ class CreateContentsTable extends Migration
             $table->string('section')->nullable();
             $table->string('type')->nullable();
             $table->json('text')->nullable();
+            $table->json('image')->nullable();
             $table->string('order')->nullable();
             $table->timestamps();
         });

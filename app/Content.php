@@ -8,11 +8,11 @@ class Content extends Model
 {
     protected $casts = [
         'text' => 'array',
-
+        'image' => 'array'
     ];
 
     protected $fillable = [
-        'order','section','text','type',
+        'order','section','text','type','image'
     ];
 
     public function scopeSeccionTipo($query, $section, $type) {

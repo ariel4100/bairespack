@@ -19,21 +19,28 @@
             </div>
             <div class="row">
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_es" name="title_es" value="{{ $categoria->text{'title_es'} }}" placeholder="Titulo - español" class="form-control">
+                    <input type="text" id="title_es" name="title_es" value="{{ $categoria->text{'title_es'} ?? '' }}" placeholder="Titulo - español" class="form-control">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="title_en" name="title_en" value="{{ $categoria->text{'title_en'} }}" placeholder="Titulo - ingles" class="form-control">
+                    <input type="text" id="title_en" name="title_en" value="{{ $categoria->text{'title_en'} ?? '' }}" placeholder="Titulo - ingles" class="form-control">
                 </div>
 
                 <div class="md-form col-md-6">
-                    <input type="text" id="type_es" name="type_es" value="{{ $categoria->text{'type_es'} }}" placeholder="Tipo - español" class="form-control">
+                    <input type="text" id="type_es" name="type_es" value="{{ $categoria->text{'type_es'} ?? '' }}" placeholder="Tipo - español" class="form-control">
                 </div>
                 <div class="md-form col-md-6">
-                    <input type="text" id="type_en" name="type_en" value="{{ $categoria->text{'type_en'} }}" placeholder="Tipo - ingles" class="form-control">
+                    <input type="text" id="type_en" name="type_en" value="{{ $categoria->text{'type_en'} ?? '' }}" placeholder="Tipo - ingles" class="form-control">
+                </div>
+                <div class="col-md-6 my-4">
+                    <!-- Default unchecked -->
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="featured" {{ isset($categoria->text{'featured'}) ? 'checked' : '' }} id="defaultUnchecked">
+                        <label class="custom-control-label" for="defaultUnchecked">Destacado?</label>
+                    </div>
                 </div>
             </div>
             {{--@dd($categoria->image)--}}
-            <gallery-component :familia="{{ json_encode($categoria->image) }}"></gallery-component>
+            <gallery-component :galeria="{{ json_encode($categoria->image) }}"></gallery-component>
             {{--<div id="form" class="">--}}
                 {{--<button @click.prevent="addImage()" class="btn btn-success p-2"><i class="fas fa-plus distren-color"></i></button>--}}
                 {{--<div class="row">--}}

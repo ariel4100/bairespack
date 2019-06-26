@@ -14,6 +14,8 @@ class ViewComposer
 
     public  function compose(View $view){
         $logos = Content::seccionTipo('logos', 'texto')->first();
+        $contacto = Content::seccionTipo('contacto', 'texto')->first();
         $view->with('logos',$logos);
+        $view->with('contacto',$contacto);
     }
 }

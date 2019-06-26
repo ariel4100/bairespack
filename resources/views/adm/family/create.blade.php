@@ -33,6 +33,13 @@
                 <div class="md-form col-md-6">
                     <input type="text" id="type_en" name="type_en" placeholder="Tipo - ingles" class="form-control">
                 </div>
+                <div class="col-md-6 my-4">
+                    <!-- Default unchecked -->
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="featured" id="defaultUnchecked">
+                        <label class="custom-control-label" for="defaultUnchecked">Destacado?</label>
+                    </div>
+                </div>
             </div>
             <gallery-component></gallery-component>
             @endif

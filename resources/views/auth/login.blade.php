@@ -5,9 +5,8 @@
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-6">
                 <div class="bg-white p-5 rounded">
-        
                     <div class="text-center">
-                        <img src=" " alt="" class="img-fluid">
+                        <img src="{{ asset($logos->text{'header'}) }}" alt="" class="img-fluid">
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

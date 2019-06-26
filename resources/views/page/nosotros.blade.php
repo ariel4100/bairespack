@@ -7,22 +7,30 @@
     @if($contenido)
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="">{!! $contenido->text{'title_es'} !!}</h2>
-                {!! $contenido->text{'text_es'} !!}
+            <div class="col-md-8">
+                <h2 class="py-2" >{!! $contenido->text{'title_'.App::getLocale()} !!}</h2>
+                <hr align="left" class="w-25" style="border-top: 2px solid #FEB80B;">
+                <p class="">
+                    {!! $contenido->text{'text_'.App::getLocale()} !!}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset($contenido->text{'image'}) }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>
     <div class="container my-4">
         <div class="row">
-            <div class="col-md-6" style="background-color: #f2f2f2">
-                <h2 class="baires-color">{!! $contenido->text{'mision_es'} !!}</h2>
-                {!! $contenido->text{'misiontext_es'} !!}
+            <div class="col-md-6">
+                <div class="p-4" style="background-color: #f2f2f2">
+                    <h2 class="baires-color">{!! $contenido->text{'mision_'.App::getLocale()} !!}</h2>
+                    {!! $contenido->text{'misiontext_'.App::getLocale()} !!}
+                </div>
             </div>
-            <div class="col-md-6 " style="background-color: #f2f2f2">
-                <div class="">
-                    <h2 class="baires-color pt-3">{!! $contenido->text{'valores_es'} !!}</h2>
-                    {!! $contenido->text{'valorestext_es'} !!}
+            <div class="col-md-6 " >
+                <div class="p-4" style="background-color: #f2f2f2">
+                    <h2 class="baires-color">{!! $contenido->text{'valores_'.App::getLocale()} !!}</h2>
+                    {!! $contenido->text{'valorestext_'.App::getLocale()} !!}
                 </div>
             </div>
         </div>

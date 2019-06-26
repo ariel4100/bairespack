@@ -7,75 +7,42 @@
     </div>
     <div class="container">
         <h4 class="text-center my-5">Tipos de envases</h4>
-        <div class="row">
-            <div class="col-md-3">
-                <!-- Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-center">
-                            Envasadoras
-                            Verticales
-                        </h4>
-                    </div>
+        <div class="row mt-5">
+            @foreach($familia as $item)
+                <div class="col-md-3 mb-5">
+                    <!-- Card -->
 
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Card image -->
-                        <img class="card-img-top mb-4" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
-
-                        <!--Carousel Wrapper-->
-                        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-                            <!--Indicators-->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-                            </ol>
-                            <!--/.Indicators-->
-                            <!--Slides-->
-                            <div class="carousel-inner" role="listbox">
-                                <!--First slide-->
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
-                                         alt="First slide">
-                                </div>
-                                <!--/First slide-->
-                                <!--Second slide-->
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
-                                         alt="Second slide">
-                                </div>
-                                <!--/Second slide-->
-                                <!--Third slide-->
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
-                                         alt="Third slide">
-                                </div>
-                                <!--/Third slide-->
+                    <div class="card shadow-none">
+                        <a href="{{ route('productos.all',['familia' => $item->id,'subfamilia' => 0]) }}" class="text-decoration-none" style="color: unset;">
+                            <div class="card-header border-top border-bottom-0 bg-white">
+                                <p class="text-center m-0">{!! $item->general->text{'title_es'} !!}</p>
+                                <h4 class="text-center">
+                                    {!! $item->text{'title_es'} !!}
+                                </h4>
                             </div>
-                            <!--/.Slides-->
-                            <!--Controls-->
-                            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                            <!--/.Controls-->
+
+                            <!-- Card content -->
+                            <div class="card-body d-flex align-items-center" style="height: 300px">
+                                <!-- Card image -->
+                                <img class="img-fluid" src="{{ asset($item->text{'image'}) }}" alt="Card image cap" style="">
+
+                            </div>
+                        </a>
+                        @gallery
+                        @slot('gallery',$item->image)
+                        @slot('id',$item->id)
+                        @endgallery
+                        <div class="card-footer border-0 bg-white">
+                            <p class="m-0 text-center">Tipo</p>
+                            <h4 class="text-center">
+                                {!! $item->text{'type_es'} !!}
+                            </h4>
                         </div>
-                        <!--/.Carousel Wrapper-->
                     </div>
-                    <div class="card-footer">
-                        <h4 class="text-center">
-                            Tipo
-                            Bolsa
-                        </h4>
-                    </div>
+
+                    <!-- Card -->
                 </div>
-                <!-- Card -->
-            </div>
+            @endforeach
         </div>
     </div>
     {{--@dd($contenido)--}}
@@ -90,14 +57,16 @@
         <h4 class="text-center my-5">
             {!! $contenido->text{'title_es'} !!}
         </h4>
-        <div class="row justify-content-center text-center">
-            <div class="col-md-3">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg">
-                <p>
-                    Asistencia
-                    técnica
-                </p>
-            </div>
+    </div>
+    <div class="container px-5 my-4">
+        <div class="row">
+
+            @foreach($postventa->image as $item)
+                <div class="col-md-3 text-center">
+                    <img src="{{ asset($item{'image'}) }}" alt="" class="img-fluid">
+                    <h5 class=" p-4">{!! $item{'title_'.App::getLocale()} !!}</h5>
+                </div>
+            @endforeach
         </div>
     </div>
 

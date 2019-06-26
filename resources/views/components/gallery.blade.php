@@ -10,14 +10,14 @@
         @if($gallery)
 
             @foreach($gallery as $k=>$item)
-                <div class="carousel-item {{ $k == 0 ? 'active' : null }}">
+                <div class="carousel-item {{ $k == 0 ? 'active' : null }} text-center">
                     <img class="img-fluid" style=" " src="{!! asset($item{'image'}) !!}"
                          alt="First slide">
+                    @if($item{'title_'.App::getLocale()})
                     <div class="carousel-caption d-none d-md-block">
-                        @if($item{'title_'.App::getLocale()})
                         <span class="bg-dark text-white px-3">{!! $item{'title_'.App::getLocale()} !!}</span>
-                        @endif
                     </div>
+                    @endif
                 </div>
             @endforeach
         @endif

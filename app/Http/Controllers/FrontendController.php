@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Content;
+use App\Family;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
@@ -11,9 +12,12 @@ class FrontendController extends Controller
 {
     public function home()
     {
+        $familia = Family::where('text->featured','on')->get();
+        $postventa = Content::where('text->featured','on')->first();
+        //dd($familia);
         $slider = Slider::where('section', 'home')->orderBy('order')->get();
         $contenido = Content::firstOrNew(['section' => 'home','type' => 'texto']);
-        return view('page.home',compact('contenido','slider'));
+        return view('page.home',compact('contenido','slider','familia','postventa'));
     }
 
     public function nosotros()

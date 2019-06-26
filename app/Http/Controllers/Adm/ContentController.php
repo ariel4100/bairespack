@@ -13,7 +13,8 @@ class ContentController extends Controller
     public function index($section, $type)
     {
         if ($type == 'imagen') {
-            $contenido = Content::firstOrCreate($section, $type)->get();
+            $contenido = Content::firstOrCreate(['section' => $section,'type' => $type]);
+            //dd($contenido);
             return view('adm.content.lista', compact('contenido', 'section','type'));
         }else {
             $contenido = Content::firstOrCreate(['section' => $section,'type' => $type]);
@@ -36,6 +37,7 @@ class ContentController extends Controller
     public function update(Request $request,$section)
     {
         //dd($request->all());
+        $gallery = $request->gallery;
         $datos = $request->except('_token','_method','section','type');
         $content = Content::firstOrNew(['section' => $section]);
         if (isset($datos['favicon']))
@@ -66,16 +68,32 @@ class ContentController extends Controller
         }else{
             $datos['image'] = $content->text{'image'};
         }
-
+        //galeria
+        if (isset($gallery))
+        {
+            //dd($gallery);
+            foreach ($gallery as $k => $item) {
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $gallery[$k]['image'] = $content->image[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('gallery');
+                    $gallery[$k]['image'] = $path;
+                }
+            }
+        }
+        //dd($content);
         $content->type = $request->type;
         $content->text = $datos;
         $content->order = $request->order;
+        $content->image = $gallery;
         $content->save();
 
         //dd($datos);
 
-
-        
         return back()->with('status','Actualizado correctamente');
     }
 }

@@ -34,7 +34,7 @@
             @endif
             @if($section == 'nosotros')
                 <div class="custom-file">
-                    <input value=""  accept="image/jpeg,image/png,application/pdf" name="ficha" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
+                    <input value=""  accept="image/jpeg,image/png,application/pdf" name="image" id="ficha" class="form-control  custom-file-input invalid" type="file" placeholder="Imagen">
                     <label data-invalid="Seleccione ficha" data-valid="Ficha seleccionada" class="custom-file-label mb-0 text-truncate" data-browse="Buscar" for="ficha"></label>
                 </div>
                 <!-----------NOSOTROS-------------->
@@ -117,7 +117,14 @@
                     <p class="mb-0">Texto En</p>
                     <textarea id="valorestext_en" class="md-textarea form-control" name="subtext_en" rows="3">{!! $contenido->text{'subtext_en'} !!}</textarea>
                 </div>
-
+                    <div class="col-md-6 my-4">
+                        <!-- Default unchecked -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="featured" {{ isset($contenido->text{'featured'}) ? 'checked' : '' }} id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">Destacado?</label>
+                        </div>
+                    </div>
+                <gallery-component :galeria="{{ json_encode($contenido->image) }}"></gallery-component>
             @endif
             @if($section == 'logos')
                 <div class="col-md-12 text-center">
@@ -146,29 +153,35 @@
                 </div>
             @endif
             @if($section == 'contacto')
+                <div class="md-form col-md-6">
+                    <input type="text" id="Titulo" name="title_es" placeholder="Titulo - español" class="form-control" value="{!! $contenido->text{'title_es'} !!}">
+                </div>
+                <div class="md-form col-md-6">
+                    <input type="text" id="Titulo" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!! $contenido->text{'title_en'} !!}">
+                </div>
                 <div class="col-md-12">
                     <div class="md-form">
-                        <input type="text" id="Titulo" name="title" placeholder="Titulo" class="form-control" value="{!! isset($datos['title']) ? $datos['title'] : null !!}">
-                    </div>
-                    <div class="md-form">
-                        <input type="text" id="Dirección" name="direccion" placeholder="Dirección" class="form-control" value="{!! isset($datos['direccion']) ? $datos['direccion'] : null !!}">
+                        <input type="text" id="Dirección" name="direccion" placeholder="Dirección" class="form-control" value="{!! $contenido->text{'direccion'} !!}">
                     </div>
                     <div class="row">
                         <div class="md-form col-md-6">
-                            <input type="text" id="Telefono_1" name="telefono_1" placeholder="Telefono 1" class="form-control" value="{!!  isset($datos['telefono_1']) ? $datos['telefono_1'] : null !!}">
+                            <input type="text" id="Telefono_1" name="telefono_1" placeholder="Telefono" class="form-control" value="{!! $contenido->text{'telefono_1'} !!}">
                         </div>
                         <div class="md-form col-md-6">
-                            <input type="text" id="Telefono_2" name="telefono_2" placeholder="Telefono 2" class="form-control" value="{!!  isset($datos['telefono_2']) ? $datos['telefono_2'] : null !!}">
+                            <input type="text" id="Correo" name="correo" placeholder="Correo" class="form-control" value="{!! $contenido->text{'correo'} !!}">
                         </div>
+                        {{--<div class="md-form col-md-6">--}}
+                            {{--<input type="text" id="Telefono_2" name="telefono_2" placeholder="Telefono 2" class="form-control" value=" ">--}}
+                        {{--</div>--}}
                     </div>
-                    <div class="row">
-                        <div class="md-form col-md-6">
-                            <input type="text" id="Correo" name="correo" placeholder="Correo 1" class="form-control" value="{!!  isset($datos['correo']) ? $datos['correo'] : null !!}">
-                        </div>
-                        <div class="md-form col-md-6">
-                            <input type="text" id="Correo_2" name="correo_2" placeholder="Correo 2" class="form-control" value="{!!  isset($datos['correo_2']) ? $datos['correo_2'] : null !!}">
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="md-form col-md-6">--}}
+                            {{--<input type="text" id="Correo" name="correo" placeholder="Correo 1" class="form-control" value="{!!  isset($datos['correo']) ? $datos['correo'] : null !!}">--}}
+                        {{--</div>--}}
+                        {{--<div class="md-form col-md-6">--}}
+                            {{--<input type="text" id="Correo_2" name="correo_2" placeholder="Correo 2" class="form-control" value="{!!  isset($datos['correo_2']) ? $datos['correo_2'] : null !!}">--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             @endif
             @if($section == 'redes')
@@ -182,14 +195,21 @@
                 </div>
             @endif
             @if($section == 'condiciones')
-                <div class="col-md-12">
-                    <div class="md-form">
-                        <input type="text" id="Titulo" name="title" placeholder="Titulo" class="form-control" value="{!! isset($condiciones['title']) ? $condiciones['title'] : null !!}">
-                    </div>
-                    <div class="md-form">
-                        <textarea id="text" class="md-textarea form-control" name="text" rows="3">{!! isset($condiciones['text']) ? $condiciones['text'] : null !!}</textarea>
-                    </div>
+                <div class="md-form col-md-6">
+                    <input type="text" id="Titulo" name="title_es" placeholder="Titulo - español" class="form-control" value="{!!  $contenido->text{'title_es'} ?? '' !!}">
                 </div>
+                <div class="md-form col-md-6">
+                    <input type="text" id="Titulo" name="title_en" placeholder="Titulo - ingles" class="form-control" value="{!!  $contenido->text{'title_en'} ?? '' !!}">
+                </div>
+                <div class="md-form col-md-6">
+                    <textarea id="text_es" class="md-textarea form-control" name="text_es" rows="3">{!! $contenido->text{'text_es'} ?? '' !!}</textarea>
+                </div>
+
+                <div class="md-form col-md-6">
+                    <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $contenido->text{'text_en'} ?? '' !!}</textarea>
+                </div>
+
+
             @endif
  
             <div class="col-md-12 my-4 text-right">
@@ -200,6 +220,7 @@
 @endsection
 @push('script')
     <script>
+
         CKEDITOR.replace('text_es');
         CKEDITOR.replace('text_en');
         CKEDITOR.replace('valorestext_en');

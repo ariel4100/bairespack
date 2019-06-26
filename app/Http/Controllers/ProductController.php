@@ -24,8 +24,12 @@ class ProductController extends Controller
         $subfamily = Subfamily::where('general_id',$f->general_id)
             ->where('family_id',$f->id)->orderBy('order')
             ->get();
+        $productos = Product::where('general_id',$f->general_id)
+            ->where('family_id',$f->id)->where('subfamily_id',null)->orderBy('order')
+            ->get();
+
         //dd($subfamily);
-        return view('page.productos.subcategoria',compact('subfamily','general'));
+        return view('page.productos.subcategoria',compact('subfamily','general','productos'));
     }
 
     public function productos($family,$subfamily)

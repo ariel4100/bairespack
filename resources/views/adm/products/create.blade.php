@@ -10,6 +10,7 @@
                 <div class="col-md-6 mt-4">
                     <p>Seleccionar Categoria</p>
                     <select class="custom-select form-control select2" name="category_id">
+                        <option value="">Ninguno</option>
                         @forelse($categorias as $item)
                             <option value="{!! $item->id !!}">{!! $item->text{'title_es'} !!}</option>
                         @empty
@@ -20,6 +21,7 @@
                 <div class="col-md-6 mt-4">
                     <p>Seleccionar Subcategoria</p>
                     <select class="custom-select form-control select2" name="subcategory_id">
+                        <option value="">Ninguno</option>
                         @forelse($subcategorias as $item)
                             <option value="{!! $item->id !!}">{!! $item->text{'title_es'} !!}</option>
                         @empty

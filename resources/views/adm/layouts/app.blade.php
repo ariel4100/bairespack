@@ -60,10 +60,11 @@
         .container{
             width: 90%;
         }
+        .
     </style>
     @stack('style')
 </head>
-<body style="font-family: 'Montserrat Light'; ">
+<body style="font-family: 'Montserrat', sans-serif; ">
 <div id="app">
     <!-- Sidebar -->
     @include('adm.partials.sidebar')

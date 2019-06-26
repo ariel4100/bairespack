@@ -14,6 +14,16 @@
             </div>
         </div>
     </div>
+    <div class="container px-5 my-4">
+        <div class="row">
+            @foreach($contenido->image as $item)
+            <div class="col-md-3 text-center">
+                <img src="{{ asset($item{'image'}) }}" alt="" class="img-fluid">
+                <h5 class=" p-4">{!! $item{'title_'.App::getLocale()} !!}</h5>
+            </div>
+            @endforeach
+        </div>
+    </div>
     <div class="py-5" style="background-color: #f2f2f2">
         <div class="container py-5">
             <h3 class="text-center">¿Necesitás Asesoramiento?</h3>

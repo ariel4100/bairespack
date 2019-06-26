@@ -42,25 +42,19 @@
                 <h6 class="text-uppercase baires-color">BAIRES PACK</h6>
                 <ul class="list-group" style="font-size: 13px">
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
-                        <i class="material-icons distren-color mr-3">location_on</i>
-                        <a href="https://bit.ly/309sR9i" target="_blank">{!! isset($datos->direccion) ? $datos->direccion : null !!}</a>
+                        <i class="material-icons baires-color mr-3">location_on</i>
+                        <a href="https://bit.ly/309sR9i" target="_blank">{!! $contacto->text{'direccion'} ?? '' !!}</a>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
-                        <i class="material-icons distren-color mr-3">phone_in_talk</i>
+                        <i class="material-icons baires-color mr-3">phone_in_talk</i>
                         <div class="">
-                            <a href="tel:{!! isset($datos->telefono_2) ? $datos->telefono_2 : null !!}"> </a>
+                            <a href="tel:{!! $contacto->text{'telefono_1'} ?? '' !!}">{!! $contacto->text{'telefono_1'} !!}</a>
                         </div>
                     </li>
                     <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
-                        <i class="fab fa-whatsapp distren-color mr-3" style="padding: 2px; font-size: 24px"></i>
-                        <a href="tel:{!! isset($datos->telefono_1) ? $datos->telefono_1 : null !!}" target="_blank"> </a>
-                    </li>
-                    <li class="list-group-item border-0 d-flex align-items-center px-0 py-1" style="background-color: unset">
-                        <i class="material-icons distren-color mr-3">mail_outline</i>
+                        <i class="material-icons baires-color mr-3">mail_outline</i>
                         <div class="">
-                            <a href="mailto:{!! isset($datos->correo) ? $datos->correo : null !!}">{!! isset($datos->correo) ? $datos->correo : null !!}</a>
-                            <br>
-                            <a href="mailto:{!! isset($datos->correo_2) ? $datos->correo_2 : null !!}">{!! isset($datos->correo_2) ? $datos->correo_2 : null !!}</a>
+                            <a href="mailto:{!! $contacto->text{'correo'} ?? '' !!}">{!! $contacto->text{'correo'} ?? '' !!}</a>
                         </div>
                     </li>
 
