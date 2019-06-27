@@ -51,7 +51,7 @@
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/1*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 1]) }}">Envasadoras</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/2*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 2]) }}">Dosificadoras</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/3*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 3]) }}">Accesorios</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('post-venta') ? 'activo' : '' }}" href=" ">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('noticias') ? 'activo' : '' }}" href="{{ route('noticias') }}">Noticias</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('post-venta') ? 'activo' : '' }}" href="{{ route('post.venta') }}">Post-Venta</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('videos') ? 'activo' : '' }}" href="{{ route('videos') }}">Videos</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('contacto') ? 'activo' : '' }}" href="{{ route('contacto') }}">Contacto</a></li>

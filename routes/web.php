@@ -20,6 +20,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/','FrontendController@home')->name('home');
     Route::get('nosotros','FrontendController@nosotros')->name('nosotros');
     Route::get('post-venta','FrontendController@postventa')->name('post.venta');
+    Route::get('noticias','FrontendController@noticias')->name('noticias');
+    Route::get('noticias/{id}/noticia', 'FrontendController@show_noticias')->name('show_noticias');
+    Route::get('noticias/{news}','FrontendController@noticias_blog')->name('noticias_blog');
     Route::get('videos','FrontendController@videos')->name('videos');
     Route::get('contacto','FrontendController@contacto')->name('contacto');
     Route::group([ 'prefix' => 'productos'],function (){
@@ -99,6 +102,8 @@ Route::group(['middleware' => 'auth','prefix' => 'adm'],function (){
     });
     //Route::get('familia/{general}','Adm\FamilyController@index')->name('fami.index');
     //Route::resource('familia','Adm\FamilyController');
+    Route::resource('categoria','Adm\CategoryController');
+    Route::resource('noticia','Adm\NewController');
     Route::resource('metadatos','Adm\MetadataController');
     Route::resource('usuario','Adm\UserController');
 

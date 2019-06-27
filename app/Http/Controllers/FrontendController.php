@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Content;
 use App\Family;
+use App\News;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
@@ -31,6 +33,27 @@ class FrontendController extends Controller
     {
         $contenido = Content::firstOrNew(['section' => 'venta','type' => 'texto']);
         return view('page.postventa',compact('contenido'));
+    }
+
+    public function noticias()
+    {
+        $categorias = Category::orderBy('order')->get();
+        $noticias = News::orderBy('order')->get();
+        return view('page.noticias.noticias',compact('noticias','categorias'));
+    }
+
+    public function show_noticias($id) {
+        $categoria = Category::find($id);
+//        dd($categoria->news);
+        $categorias = Category::orderBy('order')->get();
+        $noticias = $categoria->news()->orderBy('order')->paginate(8);
+        return view('page.noticias.show_noticias', compact('noticias', 'categoria', 'categorias'));
+    }
+
+    public function noticias_blog(News $news)
+    {
+        $categorias = Category::orderBy('order')->get();
+        return view('page.noticias.noticias_blog',compact('news','categorias'));
     }
 
     public function videos()

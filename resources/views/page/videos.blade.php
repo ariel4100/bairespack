@@ -4,10 +4,10 @@
         #myClassicTab .nav-link{
             color: #000 !important;
         }
-        .active{
+        #myClassicTab li .active{
             border-bottom: 2px solid #FFB900 !important;
         }
-        li a{
+        #myClassicTab li a{
             border-bottom: 2px solid #B0B0B0;
         }
     </style>
@@ -16,15 +16,13 @@
     <div class="container" style="margin-top: 8rem">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="py-2" style="border-bottom: 2px solid #FEB80B; width: 10%">Videos</h2>
-
+                <h2 class="py-2" style="border-bottom: 2px solid #FEB80B; width: 100px">Videos</h2>
             </div>
         </div>
     </div>
     <!-- Classic tabs -->
-    <div class="container">
-
-        <div class="clas sic-tabs">
+    <div class="container my-4">
+        <div class="classic-tabs">
             {{--@dd($videos)--}}
             <ul class="nav mb-5" id="myClassicTab" role="tablist">
                 <li class="nav-item">
@@ -43,10 +41,24 @@
                     </li>
                 @endforelse
             </ul>
-            <div class="tab-content border-right border-bottom border-left rounded-bottom" id="myClassicTabContent">
+            <div class="tab-content" id="myClassicTabContent">
                 <div class="tab-pane fade active  show" id="video-0" role="tabpanel" aria-labelledby="profile-tab-classic">
                     <div class="row">
-                        {{--@dd($item->video)--}}
+                        @forelse($videos as $k=>$item)
+
+                            {{--@dd($item->video)--}}
+                            @forelse($item->video ?? [] as $video)
+                                <div class="col-md-4 mb-4">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{ $video{'video'} ?? '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <p>{!! $video{'title_'.App::getLocale()} ?? '' !!}</p>
+                                </div>
+                            @empty
+                                <p>No hay registro</p>
+                            @endforelse
+
+                        @empty
+                            <h4 class="">No hay videos </h4>
+                        @endforelse
 
                     </div>
                 </div>

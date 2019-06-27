@@ -53,9 +53,9 @@ class SubfamilyController extends Controller
 
     public function edit($id,General $general)
     {
-        $categoria = Subfamily::find($id);
+        $subcategoria = Subfamily::find($id);
         $family = Family::where('general_id',$general->id)->orderBy('order')->get();
-        return view('adm.family.edit',compact('categoria','general','family'));
+        return view('adm.subfamily.edit',compact('subcategoria','general','family'));
     }
 
     public function update(Request $request, $id)

@@ -16,7 +16,7 @@
                         <!-- Card -->
 
                             <div class="card shadow-none">
-                                <a href="{{ route('productos.all',['familia' => $item->id,'subfamilia' => 0]) }}" class="text-decoration-none" style="color: unset;">
+                                <a href="{{ route('subfamilia',['familia' => $item->id]) }}" class="text-decoration-none" style="color: unset;">
                                     <div class="card-header border-top border-bottom-0 bg-white">
                                         <p class="text-center m-0">{!! $item->general->text{'title_es'} !!}</p>
                                         <h4 class="text-center">
@@ -72,26 +72,34 @@
 
         {{--ACCESORIOS--}}
         @if($general->id == 3)
+            {{--@dd($family)--}}
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="baires-color">Seleccioná un Accesorio</h2>
                 </div>
             </div>
             <div class="row mt-5">
-                @foreach($family as $item)
+                @foreach($productos as $item)
+                    {{--@dd($item->general)--}}
+
                     <div class="col-md-4 mb-5">
-                        <a href="" class=" " style="text-decoration: none; color: unset;">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <img class="img-fluid" src="{{ asset($item->text{'image'}) }}" alt="Card image cap">
-                                </div>
-                                <div class="card-footer bg-white">
-                                    <p class="m-0">{!! $item->general->text{'title_es'} !!}</p>
-                                    <h4 class="">
-                                        {!! $item->text{'title_es'} !!}
-                                    </h4>
-                                </div>
-                            </div>
+                        <a href="{{ route('producto',['producto' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
+                            @card
+                            @slot('item',$item)
+
+                            @slot('height','200px')
+                            @endcard
+                            {{--<div class="card">--}}
+                                {{--<div class="card-body text-center">--}}
+                                    {{--<img class="img-fluid" src="{{ asset($item->image[0]{'image'}) }}" alt="Card image cap">--}}
+                                {{--</div>--}}
+                                {{--<div class="card-footer bg-white">--}}
+                                    {{--<p class="m-0">{!! $item->general->text{'title_es'} !!}</p>--}}
+                                    {{--<h4 class="">--}}
+                                        {{--{!! $item->text{'title_es'} !!}--}}
+                                    {{--</h4>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </a>
                     </div>
                 @endforeach

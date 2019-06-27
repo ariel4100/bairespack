@@ -12,6 +12,7 @@
                             @card
                             @slot('item',$item)
                             {{--@slot('style','text-center')--}}
+                            @slot('height','300px')
                             @endcard
                         </a>
                     </div>

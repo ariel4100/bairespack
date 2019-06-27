@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->json('text')->nullable();
             $table->json('image')->nullable();
+            $table->json('planos')->nullable();
             $table->string('order')->nullable();
             $table->unsignedBigInteger('subfamily_id')->nullable();
             $table->unsignedBigInteger('family_id')->nullable();

@@ -19,4 +19,10 @@ class General extends Model
     {
         return $this->hasMany('App\Family');
     }
+
+
+    public function product()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

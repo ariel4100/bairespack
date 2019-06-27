@@ -69,17 +69,36 @@ class ProductController extends Controller
         //productos relacionados accesorios
         $accesorios = Product::where('general_id',3)->orderBy('order')->get();
 
-        return view('adm.products.edit',compact('producto','categorias','subcategorias','general','envasadoras','dosificadoras'));
+        return view('adm.products.edit',compact('producto','categorias','subcategorias','general','envasadoras','dosificadoras','accesorios'));
     }
 
     public function update(Request $request, $id)
     {
         //dd($request->all());
+        $planos = $request->planos;
         $gallery = $request->gallery;
         $producto = Product::find($id);
         $producto->related()->sync($request->related_id);
+        $producto->related_accesorio()->sync($request->accesorio_id);
         //dd($producto->related);
-        //dd($producto->image[0]['image']);
+        //dd($planos);
+        if (isset($planos))
+        {
+            //dd($gallery);
+            foreach ($planos as $k => $item) {
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $planos[$k]['image'] = $producto->planos[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('gallery/planos');
+                    $planos[$k]['image'] = $path;
+                }
+            }
+        }
+
         if (isset($gallery))
         {
             //dd($gallery);
@@ -96,10 +115,11 @@ class ProductController extends Controller
                 }
             }
         }
-        //dd($gallery);
+        //dd($planos);
         $producto = Product::find($id);
         $producto->text = $request->except('_token','category_id','subcategory_id','order','config');
         $producto->image = $gallery;
+        $producto->planos = $planos;
         $producto->order = $request->order;
         $producto->subfamily_id = $request->subcategory_id;
         $producto->family_id = $request->category_id;

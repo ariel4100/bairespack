@@ -27,6 +27,7 @@ Vue.component('video-component', require('./components/VideoComponent.vue').defa
 Vue.component('select-component', require('./components/SelectComponent.vue').default);
 Vue.component('config-component', require('./components/ConfigComponent.vue').default);
 Vue.component('multiple-component', require('./components/MultipleComponent.vue').default);
+Vue.component('planos-component', require('./components/PlanosComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

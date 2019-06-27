@@ -8,12 +8,18 @@ class Product extends Model
 {
     protected $casts = [
         'text' => 'array',
-        'image' => 'array'
+        'image' => 'array',
+        'planos' => 'array'
     ];
 
     protected $fillable = [
-        'text', 'image', 'order','family_id','subfamily_id'
+        'text', 'image', 'order','family_id','subfamily_id','planos'
     ];
+
+    public function general()
+    {
+        return $this->belongsTo('App\General');
+    }
 
     public function family() {
         return $this->belongsTo('App\Family');
@@ -25,6 +31,10 @@ class Product extends Model
 
     public function related() {
         return $this->belongsToMany('App\Product','related_products','product_id','related_id');
+    }
+
+    public function related_accesorio() {
+        return $this->belongsToMany('App\Product','related_accesorios','product_id','related_id');
     }
 
     public function configuraciones()
