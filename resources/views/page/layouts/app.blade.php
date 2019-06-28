@@ -31,7 +31,17 @@
     <script>
         document.__API_URL2 = '{{ url('/') }}';
     </script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '9a22ee3a46c3bcd0f4d2f458593160bbe76aada9';
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+        })(document);
+    </script>
     <style>
         .baires-color{
             color: #FEB80B;
@@ -53,6 +63,29 @@
             -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
             box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15) !important;
             /*color: #000000 !important;*/
+        }
+        @media only screen and (max-width: 600px) {
+            .fixed-top-sm {
+                position: absolute;
+                background-color: rgb(51, 51, 51);
+            }
+            .carrousel-sm{
+                padding-top: 5.2rem
+            }
+            .carousel-caption {
+                top: 5% !important;
+            }
+            .carousel-caption {
+                font-size: 12px !important;
+            }
+            .carousel-caption h2{
+                font-size: 14px !important;
+            }
+            .carousel-caption a{
+                margin: 0px !important;
+                padding: 0 2px !important;
+                font-size: 10px !important;
+            }
         }
     </style>
     @stack('style')

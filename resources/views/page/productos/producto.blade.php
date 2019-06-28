@@ -12,15 +12,16 @@
                 border-bottom: 2px solid #FFB900 !important;
             }
             #myClassicTab li a{
-                border-bottom: 2px solid #B0B0B0;
+                border-bottom: 2px solid transparent;
             }
         </style>
 
 @endpush
 @section('content')
     <div class="container" style="margin-top: 8rem">
-        {{--@include('page.partials.breadcrumb')--}}
+        @include('page.partials.breadcrumb')
         {{--ENVASADORAS--}}
+        {{--@dd($producto->family)--}}
         @if($general->id == 1)
             <div class="row">
                 <div class="col-md-6 border text-center">
@@ -35,15 +36,26 @@
                     <h4 class=" ">{!! $producto->text{'title_'.App::getLocale()} ?? '' !!}</h4>
                     <h4 class="font-weight-bold mb-4 pb-2" style="border-bottom: 2px solid #FFB900">{!! $producto->text{'subtitle_'.App::getLocale()} ?? '' !!}</h4>
                     {!! $producto->text{'text_'.App::getLocale()} ?? '' !!}
-                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">Consultar</a>
+                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">Consultar</a>
                     <br>
                     @if(isset($producto->text{'file_'.App::getLocale()}))
-                    <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">FICHA TÉCNICA</a>
+                    <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">FICHA TÉCNICA</a>
                     @endif
                 </div>
             </div>
             {{--CARACTERISTICAS Y TABLAS DE VARIANTES--}}
             <div class="row my-5 justify-content-end">
+                @if(isset($producto->text{'titlep_'.App::getLocale()}))
+                    <div class="col-md-6">
+                        <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
+                        {{--@dd($producto->planos)--}}
+                        @forelse($producto->planos as $planos)
+                            <img src="{{ asset($planos{'image'}) }}" alt="" class="img-fluid">
+                        @empty
+                            <h4>No hay registro</h4>
+                        @endforelse
+                    </div>
+                @endif
                 @if($producto->text{'titlec_'.App::getLocale()})
                     <div class="col-md-6">
                         <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>
@@ -77,12 +89,12 @@
                 <div class="row my-5">
                     <div class="col-md-12">
                         <div class="classic-tabs">
-                                <ul class="nav mb-5" id="myClassicTab" role="tablist">
+                                <ul class="nav mb-5" id="myClassicTab" role="tablist" style="border-bottom: 2px solid #B0B0B0;">
                                     @forelse($producto->configuraciones as $k=>$item)
                                         {{--@dd($item->text{'tipo_es'})--}}
-                                        <li class="nav-item">
+                                        <li class="nav-item d-flex">
                                             <a class="nav-link waves-light {{ $k==0 ? 'active': '' }} show" id="profile-tab-classic" data-toggle="tab" href="#config-{{$k}}"
-                                               role="tab" aria-controls="profile-classic" aria-selected="true">{!! $item->text{'tipo_'.App::getLocale()} !!}</a>
+                                               role="tab" aria-controls="profile-classic" style="margin-bottom: -2px;" aria-selected="true">{!! $item->text{'tipo_'.App::getLocale()} !!}</a>
                                         </li>
                                     @empty
                                         <li class="nav-item">
@@ -106,28 +118,21 @@
                                                     <h3 class="">{!! $item->text{'title_'.App::getLocale()} ?? '' !!}</h3>
                                                     <h4 class="">{!! $item->text{'tipo_'.App::getLocale()} ?? '' !!}</h4>
                                                     <p class="">{!! $item->text{'text_'.App::getLocale()} ?? '' !!}</p>
-                                                    @if(request()->get('config'))
-                                                        {{request()->get('config')}}
-                                                        <a href="#modal_{{$k}}" data-toggle="modal"  class="btn baires-fondo rounded-pill m-0 px-5 my-3" >Ingresar</a>
-
-                                                    @else
-
-                                                        <a href="#modal_{{$k}}" data-toggle="modal"  class="btn baires-fondo rounded-pill m-0 px-5 my-3" >Ingresar</a>
-                                                    @endif
+                                                    <a href="#modal_{{$item->id}}" data-toggle="modal"  class="btn baires-fondo rounded-pill m-0 px-5 my-3" >Ingresar</a>
                                                 </div>
                                             </div>
                                         </div>
                                         {{--{{ request()->get('config') }}--}}
                                         <!-- Modal -->
-                                        <div class="modal fade {{ request()->get('config') ? 'show' : '' }}" id="modal_{{$k}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                        <div class="modal fade" id="modal_{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                              aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
+                                                    <button type="button" class="close text-right p-3" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                     <div class="modal-body">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <div class="row p-5">
+                                                        <div class="row ">
                                                             <div class="col-md-6 border">
                                                                 @gallery
                                                                 @slot('gallery',$item->image)
@@ -246,7 +251,7 @@
                 @foreach($producto->related as $item)
 
                     <div class="col-md-3 mb-5">
-                        <a href="{{ route('producto',['producto' => $item->id,'config' => $producto->subfamily->family->text{'title_es'}]) }}" class=" " style="text-decoration: none; color: unset;">
+                        <a href="{{ route('producto',['producto' => $item->id,'config' => $producto->subfamily->family->id]) }}" class=" " style="text-decoration: none; color: unset;">
                             @card
                             @slot('item',$item)
                             @slot('style','text-center')
@@ -387,8 +392,9 @@
 @endsection
 @push('script')
     <script>
+        window.config = "{{ request()->get('config') ?? null }}";
         $(document).ready(function(){
-            $('#modal_1').modal('show');
+            $('#modal_'+window.config).modal('show');
         });
     </script>
 @endpush

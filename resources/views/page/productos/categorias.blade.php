@@ -18,9 +18,9 @@
                             <div class="card shadow-none">
                                 <a href="{{ route('subfamilia',['familia' => $item->id]) }}" class="text-decoration-none" style="color: unset;">
                                     <div class="card-header border-top border-bottom-0 bg-white">
-                                        <p class="text-center m-0">{!! $item->general->text{'title_es'} !!}</p>
+                                        <p class="text-center m-0">{!! $item->general->text{'title_'.App::getLocale()} !!}</p>
                                         <h4 class="text-center">
-                                            {!! $item->text{'title_es'} !!}
+                                            {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
                                         </h4>
                                     </div>
 
@@ -38,7 +38,7 @@
                                 <div class="card-footer border-0 bg-white">
                                     <p class="m-0 text-center">Tipo</p>
                                     <h4 class="text-center">
-                                        {!! $item->text{'type_es'} !!}
+                                        {!! $item->text{'type_'.App::getLocale()} !!}
                                     </h4>
                                 </div>
                             </div>

@@ -77,3 +77,14 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcvKasUAAAAAL3WaPvUIWwxucS_KbbCZ4IsBQUV"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcvKasUAAAAAL3WaPvUIWwxucS_KbbCZ4IsBQUV', {action: 'homepage'}).then(function(token) {
+            ...
+            });
+        });
+    </script>
+
+@endpush

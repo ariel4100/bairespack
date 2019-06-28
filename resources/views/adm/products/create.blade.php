@@ -58,6 +58,16 @@
                 </div>
                 <div class="row">
                     <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_es" name="titlep_es"  placeholder="Titulo Planos - español" class="form-control">
+                    </div>
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_en" name="titlep_en"  placeholder="Titulo Planos - ingles" class="form-control">
+                    </div>
+                    <planos-component  ></planos-component>
+
+                </div>
+                <div class="row">
+                    <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlec_es" placeholder="Titulo Caracteristicas - español" class="form-control">
                     </div>
                     <div class="md-form m-0 col-md-6">
@@ -164,17 +174,27 @@
                 </div>
                 <div class="row">
                     <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_es" name="titlep_es"  placeholder="Titulo Planos - español" class="form-control">
+                    </div>
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_en" name="titlep_en"  placeholder="Titulo Planos - ingles" class="form-control">
+                    </div>
+                    <planos-component  ></planos-component>
+
+                </div>
+                <div class="row mt-5">
+                    <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlec_es" placeholder="Titulo Caracteristicas - español" class="form-control">
                     </div>
                     <div class="md-form m-0 col-md-6">
-                        <input type="text" id="titlec_en" name="titlec_en" placeholder="Titulo Caracteristicas - ingles" class="form-control">
+                        <input type="text" id="titlec_en" name="titlec_en"  placeholder="Titulo Caracteristicas - ingles" class="form-control">
                     </div>
                     <div class="md-form col-md-6">
-                        <h6>Planos - español</h6>
+                        <h6>Caracteristicas - español</h6>
                         <textarea id="caracteristica_es" class="md-textarea form-control" name="caracteristica_es" rows="3"></textarea>
                     </div>
                     <div class="md-form col-md-6">
-                        <h6>Planos - ingles</h6>
+                        <h6>Caracteristicas - ingles</h6>
                         <textarea id="caracteristica_en" class="md-textarea form-control" name="caracteristica_en" rows="3"></textarea>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
             border-bottom: 2px solid #FFB900 !important;
         }
         #myClassicTab li a{
-            border-bottom: 2px solid #B0B0B0;
+            border-bottom: 2px solid transparent;
         }
     </style>
 @endpush
@@ -24,19 +24,19 @@
     <div class="container my-4">
         <div class="classic-tabs">
             {{--@dd($videos)--}}
-            <ul class="nav mb-5" id="myClassicTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link px-5  waves-light active show" id="profile-tab-classic" data-toggle="tab" href="#video-0"
-                       role="tab" aria-controls="profile-classic" aria-selected="true">Todos</a>
+            <ul class="nav mb-5" id="myClassicTab" role="tablist" style="border-bottom: 2px solid #B0B0B0;">
+                <li class="nav-item d-flex">
+                    <a class="nav-link px-5  waves-light active d-flex align-items-center" id="profile-tab-classic" data-toggle="tab" href="#video-0"
+                       role="tab" aria-controls="profile-classic" style="margin-bottom: -2px;" aria-selected="true">Todos</a>
                 </li>
                 @forelse($videos as $k=>$item)
-                    <li class="nav-item">
-                        <a class="nav-link px-5  waves-light  show" id="profile-tab-classic" data-toggle="tab" href="#video-{{$k+1}}"
-                           role="tab" aria-controls="profile-classic" aria-selected="true">{!! $item->text{'title_'.App::getLocale()} !!}</a>
+                    <li class="nav-item d-flex">
+                        <a class="nav-link px-5  waves-light d-flex align-items-center" id="profile-tab-classic" data-toggle="tab" href="#video-{{$k+1}}"
+                           role="tab" aria-controls="profile-classic" style="margin-bottom: -2px;" aria-selected="true">{!! $item->text{'title_'.App::getLocale()} !!}</a>
                     </li>
                 @empty
-                    <li class="nav-item">
-                        <a class="nav-link  waves-light active show" id="profile-tab-classic" data-toggle="tab" href="#video"
+                    <li class="nav-item d-flex">
+                        <a class="nav-link  waves-light active d-flex align-items-center" id="profile-tab-classic" data-toggle="tab" href="#video"
                            role="tab" aria-controls="profile-classic" aria-selected="true">Todos</a>
                     </li>
                 @endforelse

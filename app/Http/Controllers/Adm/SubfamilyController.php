@@ -92,7 +92,7 @@ class SubfamilyController extends Controller
 
     public function delete($id)
     {
-        Family::find($id)->delete();
+        Subfamily::find($id)->delete();
         return back()->with('status','Se eliminó correctamente');
     }
 }

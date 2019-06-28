@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="margin-top: 8rem">
-
+        @include('page.partials.breadcrumb')
         @if($general->id == 1)
             <div class="row my-5">
                 @foreach($productos as $item)

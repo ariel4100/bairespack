@@ -61,6 +61,23 @@
             </div>
             <div class="row">
                 <div class="md-form m-0 col-md-6">
+                    <input type="text" id="titlec_es" name="titlep_es" value="{!! $producto->text{'titlep_es'} ?? ''!!}" placeholder="Titulo Planos - español" class="form-control">
+                </div>
+                <div class="md-form m-0 col-md-6">
+                    <input type="text" id="titlec_en" name="titlep_en" value="{!! $producto->text{'titlep_en'} ?? ''!!}" placeholder="Titulo Planos - ingles" class="form-control">
+                </div>
+                <planos-component :galeria="{{ json_encode($producto->planos) }}"></planos-component>
+                {{--<div class="md-form col-md-6">--}}
+                {{--<h6>Planos - español</h6>--}}
+                {{--<textarea id="caracteristica_es" class="md-textarea form-control" name="caracteristica_es" rows="3">{!! $producto->text{'caracteristica_es'} ?? ''!!}</textarea>--}}
+                {{--</div>--}}
+                {{--<div class="md-form col-md-6">--}}
+                {{--<h6>Planos - ingles</h6>--}}
+                {{--<textarea id="caracteristica_en" class="md-textarea form-control" name="caracteristica_en" rows="3">{!! $producto->text{'caracteristica_en'} ?? ''!!}</textarea>--}}
+                {{--</div>--}}
+            </div>
+            <div class="row mt-5">
+                <div class="md-form m-0 col-md-6">
                     <input type="text" id="titlec_es" name="titlec_es" value="{!! $producto->text{'titlec_es'} ?? ''!!}" placeholder="Titulo Caracteristicas - español" class="form-control">
                 </div>
                 <div class="md-form m-0 col-md-6">
@@ -91,6 +108,7 @@
                     <textarea id="tabla_en" class="md-textarea form-control" name="tabla_en" rows="3">{!! $producto->text{'tabla_en'} ?? ''!!}</textarea>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="custom-file ">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="margin-top: 8rem">
-        {{--@include('page.partials.breadcrumb')--}}
+        @include('page.partials.breadcrumb')
         @if($general->id == 1)
             <div class="row my-5">
                 {{--@dd($subfamily)--}}
@@ -16,9 +16,9 @@
                                         <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">
                                     </div>
                                     <div class="card-footer bg-white">
-                                        <p class="m-0">{!! $item->family->text{'title_es'} ?? '' !!}</p>
+                                        <p class="m-0">{!! $item->family->text{'title_'.App::getLocale()} ?? '' !!}</p>
                                         <h4 class="">
-                                            {!! $item->text{'title_es'} ?? '' !!}
+                                            {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
                                         </h4>
                                     </div>
                                 </div>
@@ -55,9 +55,9 @@
                                         <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">
                                     </div>
                                     <div class="card-footer bg-white">
-                                        <p class="m-0">{!! $item->family->text{'title_es'} ?? '' !!}</p>
+                                        <p class="m-0">{!! $item->family->text{'title_'.App::getLocale()} ?? '' !!}</p>
                                         <h4 class="">
-                                            {!! $item->text{'title_es'} ?? '' !!}
+                                            {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
                                         </h4>
                                     </div>
                                 </div>

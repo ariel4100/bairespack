@@ -32,7 +32,7 @@ class ProductController extends Controller
             ->get();
 
         //dd($productos);
-        return view('page.productos.subcategoria',compact('subfamily','general','productos'));
+        return view('page.productos.subcategoria',compact('subfamily','general','productos','f'));
     }
 
     public function productos($family,$subfamily)
@@ -62,15 +62,15 @@ class ProductController extends Controller
 //                ->get();
 //        }
         //dd($productos);
-        return view('page.productos.productos',compact('productos','general','subfamily'));
+        return view('page.productos.productos',compact('productos','general','sf','f'));
     }
 
     public function producto(Product $producto)
     {
-        //$f = Family::find($producto->family_id);
+        $f = Family::find($producto->family_id);
         $general = General::find($producto->general_id);
         //dd($general);
 
-        return view('page.productos.producto',compact('producto','general'));
+        return view('page.productos.producto',compact('producto','general','f'));
     }
 }
