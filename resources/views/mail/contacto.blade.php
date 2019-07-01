@@ -20,21 +20,21 @@
 </style>
 <body>
 <div>
-    <h2>Distren</h2>
+    <h2>BairesPack</h2>
     <h3>Contacto</h3>
     <p>Enviado desde la web </p>
     <br>
     <h3>Datos del contacto</h3>
     <ul>
-        <li><strong>Nombre:</strong>{{ $contacto['nombre'] }}</li>
-        <li><strong>Apellido:</strong>{{ $contacto['apellido'] }}</li>
-        <li><strong>Email:</strong> {{ $contacto['email'] }}</li>
-        <li><strong>Teléfono:</strong> {{ $contacto['telefono'] }}</li>
+        <li><strong>Nombre:</strong>{{ $nombre }}</li>
+        <li><strong>Apellido:</strong>{{ $apellido }}</li>
+        <li><strong>Email:</strong> {{ $email }}</li>
+        <li><strong>Teléfono:</strong> {{ $telefono }}</li>
         <br>
         <br>
-        <h4>{{ $contacto['nombre'] }}  {{ $contacto['apellido'] }} le escribe:</h4>
+        <h4>{{ $nombre }} {{ $apellido }} le escribe:</h4>
         <p>
-            {{ $contacto['mensaje'] }}
+            {{ $mensaje }}
         </p>
     </ul>
 </div>

@@ -24,7 +24,7 @@
             </button>
             <div class="collapse navbar-collapse flex-md-column" id="navbarNav">
                 <ul class="navbar-nav ml-auto d-flex flex-row justify-content-between">
-                    <li class="nav-item"><a class="text-white ml-2" href=" "> <i class="fab fa-whatsapp mr-2" style="color: #25d366;"></i>54 9 11 6050-7809</a></li>
+                    <li class="nav-item"><a class="text-white ml-2" href="https://wa.me/5491160507809" target="_blank"> <i class="fab fa-whatsapp mr-2" style="color: #25d366;"></i>54 9 11 6050-7809</a></li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <button class="btn btn-sm m-0 p-0 ml-2 text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,7 +47,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('nosotros') ? 'activo' : '' }}" href="{{ route('nosotros') }}">{{ __('We') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('nosotros') ? 'activo' : '' }}" href="{{ route('nosotros') }}">{{ __('About us') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/1*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 1]) }}">{{ __('Packaging') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/2*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 2]) }}">{{ __('Dosing') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/3*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 3]) }}">{{ __('Accessory') }}</a></li>
@@ -55,29 +55,44 @@
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('post-venta') ? 'activo' : '' }}" href="{{ route('post.venta') }}">{{ __('Post-Sale') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('videos') ? 'activo' : '' }}" href="{{ route('videos') }}">{{ __('Videos') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('contacto') ? 'activo' : '' }}" href="{{ route('contacto') }}">{{ __('Contact') }}</a></li>
-                    {{--<li class="nav-item"><a class="nav-link  ml-2" href=" "><i class="fas fa-search prefix rounded-pill p-1 baires-color"  style="border: 2px solid #FEB80B;"></i></a></li>--}}
-                    <div class="btn-group dropleft">
-                        <a href=""  class="nav-link ml-2" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                            <i class="fas fa-search prefix rounded-pill p-1 baires-color" style="border: 2px solid #FEB80B;"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="form-group m-0">
-                                <input type="text" class="form-control" placeholder="Buscar...">
-                            </div>
-                        </div>
-                    </div>
-                    {{--<li class="nav-item">--}}
+                    <li class="nav-item"><a class="nav-link  ml-2" href="#buscar" data-toggle="modal"><i class="fas fa-search prefix rounded-pill p-1 baires-color"  style="border: 2px solid #FEB80B;"></i></a></li>
+                    {{--<div class="btn-group dropleft">--}}
                         {{--<a href=""  class="nav-link ml-2" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">--}}
                             {{--<i class="fas fa-search prefix rounded-pill p-1 baires-color" style="border: 2px solid #FEB80B;"></i>--}}
                         {{--</a>--}}
-                        {{--<form class="dropdown-menu dropdown-menu-right p-2">--}}
+                        {{--<div class="dropdown-menu">--}}
                             {{--<div class="form-group m-0">--}}
                                 {{--<input type="text" class="form-control" placeholder="Buscar...">--}}
                             {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</li>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </ul>
             </div>
         </div>
     </nav>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="buscar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Buscador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('buscador') }}" method="get">
+
+                    <div class="md-form">
+                        <i class="fas fa-search prefix " style="color: black!important;"></i>
+                        <input type="text" name="name" class="form-control" placeholder="Buscar...">
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

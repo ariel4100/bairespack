@@ -3,9 +3,21 @@
 @section('content')
 
 <div class="container" style="margin-top: 8rem">
-    <h2 class="text-uppercase">Noticias</h2>
+    <h2 class="text-uppercase">{{ __('News') }}</h2>
     <hr align="left" class="" style="border-top: 2px solid #FEB80B; width: 150px">
     <div class="row my-5">
+        <nav class="col-md-12">
+            <ol class="list-unstyled d-flex">
+                <li class=""><a href="{{ route('noticias') }}" style="color: unset;" class="text-decoration-none">{{ __('News') }}</a></li>
+                @if(isset($news->category))
+                    <li class="ml-2"><a href="{{ route('show_noticias',$news->category->id) }}" style="color: unset;" class="text-decoration-none">{{ '| '.$news->category->text{'title_'.App::getLocale()} }}</a></li>
+                @endif
+                @if(isset($news))
+                    {{--{{ $f->text{'title_es'} }}--}}
+                    <li class="ml-2"><a href="{{ route('noticias_blog',$news) }}" style="color: unset;" class="text-decoration-none">{{ '| '. $news->text{'title_'.App::getLocale()} }}</a></li>
+                @endif
+            </ol>
+        </nav>
         <div class="col-md-8">
             <!--Carousel Wrapper-->
             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -48,12 +60,12 @@
         </div>
         <div class="col-md-4 ">
             <div class="p-5" style="background-color: #F9F9F9">
-                <h5 class="text-uppercase">Categorías</h5>
+                <h5 class="text-uppercase">{{ __('CATEGORIES') }}</h5>
                 <hr align="left" class="" style="background-color: #595959; width: 70px">
                 @forelse($categorias as $c)
-                    <p class="m-0"><a href="{{ route('show_noticias',$c->id) }}" class="" style="text-decoration: none; color: unset;"> {!! $c->text{'title_es'} !!}</a></p>
+                    <p class="m-0"><a href="{{ route('show_noticias',$c->id) }}" class="" style="text-decoration: none; color: unset;"> {!! $c->text{'title_'.App::getLocale()} !!}</a></p>
                 @empty
-                    <p>No hay registros</p>
+                    <p>{{ __('No records') }}</p>
                 @endforelse
             </div>
         </div>

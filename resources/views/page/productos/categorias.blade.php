@@ -6,8 +6,8 @@
         @if($general->id == 1)
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="baires-color">Descubrí la máquina <br>
-                        detrás de cada tipo de envase</h2>
+                    <h2 class="baires-color">{{ __('I discovered the machine') }}<br>
+                        {{ __('behind each type of container') }}</h2>
                 </div>
             </div>
             <div class="row mt-5">
@@ -36,7 +36,7 @@
                                 @slot('id',$item->id)
                                 @endgallery
                                 <div class="card-footer border-0 bg-white">
-                                    <p class="m-0 text-center">Tipo</p>
+                                    <p class="m-0 text-center">{{ __('Type') }}</p>
                                     <h4 class="text-center">
                                         {!! $item->text{'type_'.App::getLocale()} !!}
                                     </h4>
@@ -52,7 +52,7 @@
         @if($general->id == 2)
         <div class="row">
             <div class="col-md-12">
-                <h2 class="baires-color">Seleccioná una dosificadora</h2>
+                <h2 class="baires-color">{{ __('Select a dispenser') }}</h2>
             </div>
         </div>
 
@@ -62,7 +62,8 @@
                     <a href="{{ route('subfamilia',['familia' => $item->id]) }}" class="text-decoration-none" style="color: unset;">
                         @card
                         @slot('item',$item)
-                        @slot('height','200px')
+                        {{--@slot('height','200px')--}}
+                        @slot('footerheight','100px')
                         @endcard
                     </a>
                 </div>
@@ -75,7 +76,7 @@
             {{--@dd($family)--}}
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="baires-color">Seleccioná un Accesorio</h2>
+                    <h2 class="baires-color">{{ __('Select an Accessory') }}</h2>
                 </div>
             </div>
             <div class="row mt-5">
@@ -86,8 +87,8 @@
                         <a href="{{ route('producto',['producto' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
                             @card
                             @slot('item',$item)
-
-                            @slot('height','200px')
+                            @slot('footerheight','100px')
+                            {{--@slot('height','200px')--}}
                             @endcard
                             {{--<div class="card">--}}
                                 {{--<div class="card-body text-center">--}}

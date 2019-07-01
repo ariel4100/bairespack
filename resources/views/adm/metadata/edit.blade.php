@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="md-form">
-                        <input type="text" id="Seccion" name="section" class="form-control" value="{{ $metadato->section }}">
+                        <input type="text" id="Seccion" name="section" class="form-control" readonly value="{{ $metadato->section }}">
                         <label for="Seccion">Seccion</label>
                     </div>
                 </div>

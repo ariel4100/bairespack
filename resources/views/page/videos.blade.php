@@ -27,7 +27,7 @@
             <ul class="nav mb-5" id="myClassicTab" role="tablist" style="border-bottom: 2px solid #B0B0B0;">
                 <li class="nav-item d-flex">
                     <a class="nav-link px-5  waves-light active d-flex align-items-center" id="profile-tab-classic" data-toggle="tab" href="#video-0"
-                       role="tab" aria-controls="profile-classic" style="margin-bottom: -2px;" aria-selected="true">Todos</a>
+                       role="tab" aria-controls="profile-classic" style="margin-bottom: -2px;" aria-selected="true">{{ __('All') }}</a>
                 </li>
                 @forelse($videos as $k=>$item)
                     <li class="nav-item d-flex">
@@ -53,11 +53,11 @@
                                     <p>{!! $video{'title_'.App::getLocale()} ?? '' !!}</p>
                                 </div>
                             @empty
-                                <p>No hay registro</p>
+                                <p>{{ __('No records') }}</p>
                             @endforelse
 
                         @empty
-                            <h4 class="">No hay videos </h4>
+                            <p>{{ __('No records') }}</p>
                         @endforelse
 
                     </div>

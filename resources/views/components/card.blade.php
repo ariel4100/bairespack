@@ -10,7 +10,7 @@
                             <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">
                         </div>
                     @endif
-                    <div class="card-footer bg-white {{ $style ?? '' }}">
+                    <div class="card-footer bg-white {{ $style ?? '' }}" style="height: {{$footerheight ?? '170px'}}">
                         @if(isset($item->general->text))
                             <p class="m-0">{!! $item->general->text{'title_'.App::getLocale()} ?? '' !!}</p>
                         @endif

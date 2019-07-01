@@ -19,10 +19,10 @@
                 </div>
                 <div class="carousel-caption d- none d-md-block wow fadeInLeft" style="right: 0px; left: 0px; text-align: left; top: 30%">
                     <div class="container" >
-                         {!! $s->text{'text_es'} !!}
+                         {!! $s->text{'text_'.App::getLocale()} !!}
                         {{--<p>{!! $s->text{'text_es'} !!}</p>--}}
                         @if($s->section == 'home')
-                            <a href="{{ route('nosotros') }}" class="btn baires-fondo rounded-pill m-0 px-4 my-3">CONOCÉ MÁS</a>
+                            <a href="{{ route('nosotros') }}" class="btn baires-fondo rounded-pill m-0 px-4 my-3">{{ __('Learn more') }}</a>
                         @endif
                     </div>
                 </div>

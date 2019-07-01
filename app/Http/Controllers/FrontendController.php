@@ -6,9 +6,11 @@ use App\Category;
 use App\Content;
 use App\Family;
 use App\News;
+use App\Product;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class FrontendController extends Controller
 {
@@ -66,6 +68,20 @@ class FrontendController extends Controller
     {
 
         return view('page.contacto');
+    }
+
+    public function buscador(Request $request)
+    {
+        //dd(isset($request->name));
+        if (isset($request->name))
+        {
+            $resultado = Product::Orwhere('text->title_'.App::getLocale(), 'LIKE', "%$request->name%")->get();
+        }else{
+            $resultado = [];
+        }
+        //$resultado = Product::whereLike(['text->title_'.App::getLocale(), 'text->text_'.App::getLocale()], $request->name)->get();
+        //dd($resultado);
+        return view('page.buscador',compact('resultado'));
     }
 
 }

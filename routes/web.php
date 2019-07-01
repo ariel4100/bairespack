@@ -25,6 +25,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('noticias/{news}','FrontendController@noticias_blog')->name('noticias_blog');
     Route::get('videos','FrontendController@videos')->name('videos');
     Route::get('contacto','FrontendController@contacto')->name('contacto');
+    /***MAIL***/
+    Route::post('contacto','MailController@contacto')->name('contacto.mail');
+    Route::post('postventa','MailController@postventa')->name('post.venta.mail');
+    /****FIN MAIL****/
+    Route::get('buscador','FrontendController@buscador')->name('buscador');
     Route::group([ 'prefix' => 'productos'],function (){
         Route::get('/{general}','ProductController@familia')->name('productos');
         Route::get('categoria/{id}','ProductController@categoriaproductos')->name('categoria');

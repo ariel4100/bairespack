@@ -15,7 +15,7 @@
                          alt="First slide">
                     @if($item{'title_'.App::getLocale()})
                     <div class="carousel-caption d-none d-md-block">
-                        <span class="bg-dark text-white px-3">{!! $item{'title_'.App::getLocale()} !!}</span>
+                        <span class="bg-dark text-white px-3 py-1">{!! $item{'title_'.App::getLocale()} !!}</span>
                     </div>
                     @endif
                 </div>

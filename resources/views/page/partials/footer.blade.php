@@ -12,11 +12,11 @@
                 </div>-->
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
-                <h6 class="text-uppercase baires-color">Secciones</h6>
+                <h6 class="text-uppercase baires-color">{{ __('Sections') }}</h6>
                 <div class="d-flex justify-content-between "  >
                     <div class="">
                         <a href="{{ route('home') }}" class="nav-link m-0 p-0">{{ __('Home') }}</a>
-                        <a href="{{ route('nosotros') }}" class="nav-link m-0 p-0">{{ __('We') }}</a>
+                        <a href="{{ route('nosotros') }}" class="nav-link m-0 p-0">{{ __('About us') }}</a>
                         <a href="{{ route('productos',['general' => 1]) }}" class="nav-link m-0 p-0">{{ __('Packaging') }}</a>
                         <a href="{{ route('productos',['general' => 2]) }}" class="nav-link m-0 p-0">{{ __('Dosing') }}</a>
                         <a href="{{ route('productos',['general' => 3]) }}" class="nav-link m-0 p-0">{{ __('Accessory') }}</a>
@@ -31,12 +31,12 @@
             </div>
 
             <div class="col-sm-12 col-md-2">
-                <h6 class="text-uppercase baires-color">ENVASADORAS</h6>
+                <h6 class="text-uppercase baires-color">{{ __('Packaging') }}</h6>
                 <a href="" class="nav-link m-0 p-0">Verticales</a>
                 <a href="" class="nav-link m-0 p-0">Flow Pack</a>
                 <a href="" class="nav-link m-0 p-0">Doy Pack</a>
                 <a href="" class="nav-link m-0 p-0">Termocontraibles</a>
-                <a href="{{ route('productos',['general' => 2]) }}" class="nav-link m-0 p-0">Dosificadoras</a>
+                <a href="{{ route('productos',['general' => 2]) }}" class="nav-link m-0 p-0">{{ __('Dosing') }}</a>
             </div>
 
 

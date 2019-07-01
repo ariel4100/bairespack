@@ -43,6 +43,9 @@
         })(document);
     </script>
     <style>
+        .btn{
+            box-shadow: unset !important;
+        }
         .baires-color{
             color: #FEB80B;
         }

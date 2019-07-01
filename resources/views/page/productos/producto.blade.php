@@ -1,20 +1,23 @@
 @extends('page.layouts.app')
-@push('style')
-    <style>
-        #myClassicTab .nav-link{
-            color: #000 !important;
-        }
+<style>
+    #myClassicTab .nav-link{
+        color: #000 !important;
+    }
 
-            #myClassicTab .nav-link{
-                color: #000 !important;
-            }
-            #myClassicTab li .active{
-                border-bottom: 2px solid #FFB900 !important;
-            }
-            #myClassicTab li a{
-                border-bottom: 2px solid transparent;
-            }
-        </style>
+    #myClassicTab .nav-link{
+        color: #000 !important;
+    }
+    #myClassicTab li .active{
+        border-bottom: 2px solid #FFB900 !important;
+    }
+    #myClassicTab li a{
+        border-bottom: 2px solid transparent;
+    }
+    table{
+        border: none !important;
+    }
+</style>
+@push('style')
 
 @endpush
 @section('content')
@@ -36,10 +39,10 @@
                     <h4 class=" ">{!! $producto->text{'title_'.App::getLocale()} ?? '' !!}</h4>
                     <h4 class="font-weight-bold mb-4 pb-2" style="border-bottom: 2px solid #FFB900">{!! $producto->text{'subtitle_'.App::getLocale()} ?? '' !!}</h4>
                     {!! $producto->text{'text_'.App::getLocale()} ?? '' !!}
-                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">Consultar</a>
+                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('Consult') }}</a>
                     <br>
                     @if(isset($producto->text{'file_'.App::getLocale()}))
-                    <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">FICHA TÉCNICA</a>
+                    <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
             </div>
@@ -47,24 +50,24 @@
             <div class="row my-5 justify-content-end">
                 @if(isset($producto->text{'titlep_'.App::getLocale()}))
                     <div class="col-md-6">
-                        <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
+                        <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
                         {{--@dd($producto->planos)--}}
                         @forelse($producto->planos as $planos)
                             <img src="{{ asset($planos{'image'}) }}" alt="" class="img-fluid">
                         @empty
-                            <h4>No hay registro</h4>
+
                         @endforelse
                     </div>
                 @endif
                 @if($producto->text{'titlec_'.App::getLocale()})
                     <div class="col-md-6">
-                        <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>
+                        <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>
                         <p class="">{!! $producto->text{'caracteristica_'.App::getLocale()} ?? '' !!}</p>
                     </div>
                 @endif
                 @if($producto->text{'titlet_'.App::getLocale()})
                     <div class="col-md-6">
-                        <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
+                        <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
                         {!! $producto->text{'tabla_'.App::getLocale()} ?? '' !!}
                     </div>
                 @endif
@@ -73,8 +76,7 @@
             <div class="container-fluid " style="background-color: #F9F9F9;">
                 <div class="row py-5 align-items-center">
                     <div class="col-md-6">
-                        <h3 class="baires-color">Para más información,
-                            mirá el video a continuación</h3>
+                        <h3 class="baires-color">{{ __('For more information, watch the video below') }}</h3>
                     </div>
                     <div class="col-md-6">
                         <iframe width="100%" height="250" src="https://www.youtube.com/embed/{!! $producto->text{'video'} !!}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -85,7 +87,7 @@
             {{--CONFIGURACIONES--}}
             {{--@dd($producto->configuraciones)--}}
             @if(count($producto->configuraciones) > 0)
-                <h4 class="py-3 text-center my-5" style="background-color: #F9F9F9">Configuraciones</h4>
+                <h5 class="py-3 text-center font-weight-bold my-5" style="background-color: #F9F9F9">{{ __('Configurations') }}</h5>
                 <div class="row my-5">
                     <div class="col-md-12">
                         <div class="classic-tabs">
@@ -118,7 +120,7 @@
                                                     <h3 class="">{!! $item->text{'title_'.App::getLocale()} ?? '' !!}</h3>
                                                     <h4 class="">{!! $item->text{'tipo_'.App::getLocale()} ?? '' !!}</h4>
                                                     <p class="">{!! $item->text{'text_'.App::getLocale()} ?? '' !!}</p>
-                                                    <a href="#modal_{{$item->id}}" data-toggle="modal"  class="btn baires-fondo rounded-pill m-0 px-5 my-3" >Ingresar</a>
+                                                    <a href="#modal_{{$item->id}}" data-toggle="modal"  class="btn baires-fondo rounded-pill m-0 px-5 my-3" >{{ __('Enter') }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +145,7 @@
                                                                 <h3 class="">{!! $item->text{'title_'.App::getLocale()} ?? '' !!}</h3>
                                                                 <h4 class="pb-2" style="border-bottom: 2px solid #FFB900">{!! $item->text{'tipo_'.App::getLocale()} ?? '' !!}</h4>
                                                                 <p class="">{!! $item->text{'text_'.App::getLocale()} ?? '' !!}</p>
-                                                                <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0  mb-3" style="width: 200px">Consultar</a>
+                                                                <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0  mb-3" style="width: 200px">{{ __('Consult') }}</a>
                                                             </div>
                                                             @forelse($item->product as $dosificadora)
                                                                 <div class="col-md-4 mt-5">
@@ -195,10 +197,10 @@
                     <h4 class=" ">{!! $producto->text{'title_'.App::getLocale()} ?? '' !!}</h4>
                     <h4 class="font-weight-bold mb-4 pb-2" style="border-bottom: 2px solid #FFB900">{!! $producto->subfamily->text{'title_'.App::getLocale()} ?? '' !!}</h4>
                     {!! $producto->text{'text_'.App::getLocale()} !!}
-                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">Consultar</a>
+                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">{{ __('Consult') }}</a>
                     <br>
                     @if(isset($producto->text{'file_'.App::getLocale()}))
-                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">FICHA TÉCNICA</a>
+                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
 
@@ -208,18 +210,18 @@
             <div class="row my-5 justify-content-end">
                 @if($producto->text{'titlep_'.App::getLocale()})
                 <div class="col-md-6">
-                    <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
+                    <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
                     {{--@dd($producto->planos)--}}
                     @forelse($producto->planos as $planos)
                         <img src="{{ asset($planos{'image'}) }}" alt="" class="img-fluid">
                     @empty
-                        <h4>No hay registro</h4>
+
                     @endforelse
                 </div>
                 @endif
                 @if($producto->text{'titlet_'.App::getLocale()})
                 <div class="col-md-6">
-                    <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
+                    <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
                     {!! $producto->text{'tabla_'.App::getLocale()} ?? '' !!}
                 </div>
                 @endif
@@ -229,8 +231,7 @@
                 <div class="container-fluid " style="background-color: #F9F9F9;">
                     <div class="row py-5 align-items-center">
                         <div class="col-md-6">
-                            <h3 class="baires-color">Para más información,
-                                mirá el video a continuación</h3>
+                            <h3 class="baires-color">{{ __('For more information, watch the video below') }}</h3>
                         </div>
                         <div class="col-md-6">
                             <iframe width="100%" height="250" src="https://www.youtube.com/embed/{!! $producto->text{'video'} !!}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -243,7 +244,7 @@
             {{--Máquinas que utilizan esta dosificadora--}}
             <div class="row my-5" style="background-color: #F9F9F9;">
                 <div class="col-md-12">
-                    <h5 class="text-center py-2 m-0">Máquinas que utilizan esta dosificadora</h5>
+                    <h5 class="text-center font-weight-bold py-2 m-0">{{ __('Machines that use this dosing machine') }}</h5>
                 </div>
             </div>
             {{--@dd($producto->subfamily->family->text{'title_es'})--}}
@@ -255,7 +256,8 @@
                             @card
                             @slot('item',$item)
                             @slot('style','text-center')
-                            @slot('height','200px')
+                            @slot('height','250px')
+                            @slot('footerheight','120px')
                             @endcard
                         </a>
                     </div>
@@ -266,7 +268,7 @@
             @if(count($producto->related_accesorio) > 0)
             <div class="row my-5" style="background-color: #F9F9F9;">
                 <div class="col-md-12">
-                    <h5 class="text-center py-2 m-0">Accesorios Relacionados</h5>
+                    <h5 class="text-center font-weight-bold py-2 m-0">{{ __('Related Accessories') }}</h5>
                 </div>
             </div>
                 <div class="row my-5">
@@ -345,13 +347,13 @@
 
                 </div>
                 <div class="col-md-6">
-                    <h4 class=" ">{!! $producto->text{'title_es'} ?? '' !!}</h4>
-                    <h4 class="font-weight-bold mb-4 pb-2" style="border-bottom: 2px solid #FFB900">{!! $producto->subfamily->text{'title_es'} ?? '' !!}</h4>
-                    {!! $producto->text{'text_es'} ?? '' !!}
-                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">Consultar</a>
+                    <h4 class=" ">{!! $producto->text{'title_'.App::getLocale()} ?? '' !!}</h4>
+                    <h4 class="font-weight-bold mb-4 pb-2" style="border-bottom: 2px solid #FFB900">{!! $producto->subfamily->text{'title_'.App::getLocale()} ?? '' !!}</h4>
+                    {!! $producto->text{'text_'.App::getLocale()} ?? '' !!}
+                    <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('Consult') }}</a>
                     <br>
                     @if(isset($producto->text{'file_'.App::getLocale()}))
-                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">FICHA TÉCNICA</a>
+                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
 
@@ -361,13 +363,13 @@
             <div class="row my-5 justify-content-end">
                 @if($producto->text{'titlec_'.App::getLocale()})
                 <div class="col-md-6">
-                    <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>
+                    <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>
                     <p class="">{!! $producto->text{'caracteristica_'.App::getLocale()} ?? '' !!}</p>
                 </div>
                 @endif
                 @if($producto->text{'titlet_'.App::getLocale()})
                 <div class="col-md-6">
-                    <h5 class="p-3" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
+                    <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlet_'.App::getLocale()} ?? '' !!}</h5>
                     {!! $producto->text{'tabla_'.App::getLocale()} ?? '' !!}
                 </div>
                 @endif
@@ -376,8 +378,7 @@
                 <div class="container-fluid " style="background-color: #F9F9F9;">
                     <div class="row py-5 align-items-center">
                         <div class="col-md-6">
-                            <h3 class="baires-color">Para más información,
-                                mirá el video a continuación</h3>
+                            <h3 class="baires-color">{{ __('For more information, watch the video below') }}</h3>
                         </div>
                         <div class="col-md-6">
                             <iframe width="100%" height="250" src="https://www.youtube.com/embed/{!! $producto->text{'video'} !!}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -396,5 +397,12 @@
         $(document).ready(function(){
             $('#modal_'+window.config).modal('show');
         });
+
+        let x = document.querySelectorAll("table");
+        for (let v of x) {
+            v.classList.add("table");
+            // v.classList.add("border-0");
+        }
+
     </script>
 @endpush
