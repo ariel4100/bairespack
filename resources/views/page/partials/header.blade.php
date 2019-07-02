@@ -47,14 +47,14 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('nosotros') ? 'activo' : '' }}" href="{{ route('nosotros') }}">{{ __('About us') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/1*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 1]) }}">{{ __('Packaging') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/2*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 2]) }}">{{ __('Dosing') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('productos/3*') ? 'activo' : '' }}" href="{{ route('productos',['general' => 3]) }}">{{ __('Accessory') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('noticias') ? 'activo' : '' }}" href="{{ route('noticias') }}">{{ __('News') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('post-venta') ? 'activo' : '' }}" href="{{ route('post.venta') }}">{{ __('Post-Sale') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('videos') ? 'activo' : '' }}" href="{{ route('videos') }}">{{ __('Videos') }}</a></li>
-                    <li class="nav-item"><a class="nav-link  ml-2 {{ request()->is('contacto') ? 'activo' : '' }}" href="{{ route('contacto') }}">{{ __('Contact') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('nosotros') }}" href="{{ route('nosotros') }}">{{ __('About us') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('productos/1') }}" href="{{ route('productos',['general' => 1]) }}">{{ __('Packaging') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('productos/2') }}" href="{{ route('productos',['general' => 2]) }}">{{ __('Dosing') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('productos/3') }}" href="{{ route('productos',['general' => 3]) }}">{{ __('Accessory') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('noticias') }}" href="{{ route('noticias') }}">{{ __('News') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('post-venta') }}" href="{{ route('post.venta') }}">{{ __('Post-Sale') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('videos') }}" href="{{ route('videos') }}">{{ __('Videos') }}</a></li>
+                    <li class="nav-item"><a class="nav-link  ml-2 {{ active('contacto') }}" href="{{ route('contacto') }}">{{ __('Contact') }}</a></li>
                     <li class="nav-item"><a class="nav-link  ml-2" href="#buscar" data-toggle="modal"><i class="fas fa-search prefix rounded-pill p-1 baires-color"  style="border: 2px solid #FEB80B;"></i></a></li>
                     {{--<div class="btn-group dropleft">--}}
                         {{--<a href=""  class="nav-link ml-2" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">--}}
