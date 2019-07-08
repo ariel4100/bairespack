@@ -8,8 +8,15 @@
                 <table class="table">
                     <thead>
                     <tr>
+
                         <th scope="col">Imagen</th>
                         <th scope="col">Titulo</th>
+                        @if($general->id == 1 || $general->id == 2)
+                            <th scope="col">Categoria</th>
+                        @endif
+                        @if($general->id == 1 || $general->id == 2)
+                            <th scope="col">Subcategoria</th>
+                        @endif
                         <th scope="col">Orden</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -19,6 +26,12 @@
                         <tr>
                             <td><img src="{{ asset($item->image[0]['image'] ?? '') }}" style="width: 150px"></td>
                             <td>{{ $item->text{'title_es'} }}</td>
+                            @if($general->id == 1 || $general->id == 2 )
+                                <td>{!! $item->family->text{'title_es'} ?? 'Ninguna' !!}</td>
+                            @endif
+                            @if($general->id == 1 || $general->id == 2 )
+                                <td>{!! $item->subfamily->text{'title_es'} ?? 'Ninguna' !!}</td>
+                            @endif
                             <td>{{ $item->order }}</td>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ route('productos.edit',['id' => $item->id,'general' => $general]) }}"><i class="fas fa-pen"></i></a>

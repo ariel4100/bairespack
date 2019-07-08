@@ -32,10 +32,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
+                        <gallery-component  ></gallery-component>
                     </div>
                 </div>
             @endif
@@ -65,10 +62,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
+                        <gallery-component  ></gallery-component>
                     </div>
                 </div>
             @endif

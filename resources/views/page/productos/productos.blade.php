@@ -18,7 +18,10 @@
                             <div class="card shadow-none">
                                 @if(isset($item->image[0]['image']))
                                     <div class="card-body justify-content-center d-flex align-items-center" style="height: {{$height ?? 'auto'}};">
-                                        <img class="img-fluid" src="{{ asset($item->image[0]['image'] ?? '') }}" alt="Card image cap">
+                                        @gallery
+                                        @slot('gallery',$item->image)
+                                        @slot('id',$item->id)
+                                        @endgallery
                                     </div>
                                 @endif
                                 @if(isset($item->text{'image'}))
@@ -57,7 +60,10 @@
                         <a href="{{ route('producto',['producto' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img class="img-fluid" src="{{ asset($item->image[0]['image'] ?? '') }}" alt="Card image cap">
+                                    @gallery
+                                    @slot('gallery',$item->image)
+                                    @slot('id',$item->id)
+                                    @endgallery
                                 </div>
                                 <div class="card-footer text-center bg-white">
                                     <p class="m-0">{!! $item->subfamily->text{'title_'.App::getLocale()} ?? '' !!}</p>

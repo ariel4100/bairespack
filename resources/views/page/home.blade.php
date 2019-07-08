@@ -8,7 +8,7 @@
     <div class="container">
         <h4 class="text-center my-5">{{ __('Types of packaging') }}</h4>
         <div class="row mt-5">
-            @foreach($familia as $item)
+            @foreach($familia as $k=>$item)
                 <div class="col-md-3 mb-5">
                     <!-- Card -->
 
@@ -24,7 +24,10 @@
                             <!-- Card content -->
                             <div class="card-body d-flex align-items-center" style="height: 300px">
                                 <!-- Card image -->
-                                <img class="img-fluid" src="{{ asset($item->text{'image'}) }}" alt="Card image cap" style="">
+                                @gallery
+                                @slot('gallery',$item->plans)
+                                @slot('id',$k)
+                                @endgallery
 
                             </div>
                         </a>

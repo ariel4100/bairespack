@@ -11,9 +11,12 @@
                         <div class="col-md-4 mb-5">
                             <a href="{{ route('productos.all',['subfamilia' => $item->id, 'familia' => $item->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
 
-                                <div class="card">
+                                <div class="card shadow-none">
                                     <div class="card-body justify-content-center d-flex align-items-center" style="height: 320px;">
-                                        <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">
+                                        @gallery
+                                        @slot('gallery',$item->image)
+                                        @slot('id',$item->id)
+                                        @endgallery
                                     </div>
                                     <div class="card-footer bg-white" >
                                         <p class="m-0">{!! $item->family->text{'title_'.App::getLocale()} ?? '' !!}</p>
@@ -25,7 +28,8 @@
                             </a>
                         </div>
                     @endforeach
-                @else
+                @endif
+                @if(count($productos))
                     {{--@dd($productos)--}}
                     @foreach($productos as $item)
 
@@ -39,7 +43,10 @@
                                 <div class="card shadow-none">
                                     @if(isset($item->image[0]['image']))
                                         <div class="card-body justify-content-center d-flex align-items-center" style="height: {{$height ?? 'auto'}};">
-                                            <img class="img-fluid" src="{{ asset($item->image[0]['image'] ?? '') }}" alt="Card image cap">
+                                            @gallery
+                                            @slot('gallery',$item->image)
+                                            @slot('id',$item->id)
+                                            @endgallery
                                         </div>
                                     @endif
                                     @if(isset($item->text{'image'}))
@@ -63,8 +70,8 @@
                             </a>
                         </div>
                     @endforeach
-
                 @endif
+
             </div>
         @endif
         @if($general->id == 2)
@@ -77,7 +84,10 @@
 
                                 <div class="card">
                                     <div class="card-body justify-content-center d-flex align-items-center" style="height: 320px;">
-                                        <img class="img-fluid" src="{{ asset($item->text{'image'} ?? '') }}" alt="Card image cap">
+                                        @gallery
+                                        @slot('gallery',$item->image)
+                                        @slot('id',$item->id)
+                                        @endgallery
                                     </div>
                                     <div class="card-footer bg-white">
                                         <p class="m-0">{!! $item->family->text{'title_'.App::getLocale()} ?? '' !!}</p>
@@ -89,8 +99,8 @@
                             </a>
                         </div>
                     @endforeach
-                @else
-
+                @endif
+                @if(count($productos))
                     @foreach($productos as $item)
 
                         <div class="col-md-4 mb-5">

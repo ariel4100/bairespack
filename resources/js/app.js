@@ -28,6 +28,7 @@ Vue.component('select-component', require('./components/SelectComponent.vue').de
 Vue.component('config-component', require('./components/ConfigComponent.vue').default);
 Vue.component('multiple-component', require('./components/MultipleComponent.vue').default);
 Vue.component('planos-component', require('./components/PlanosComponent.vue').default);
+Vue.component('image-component', require('./components/ImageComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

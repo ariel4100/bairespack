@@ -18,8 +18,7 @@
 
                     @forelse ($categorias as $item)
                         <tr>
-
-                            <td><img src="{{  asset(isset($item->text{'image'}) ? $item->text{'image'} : null) }}" style="width: 150px"></td>
+                            <td><img src="{{  asset(isset($item->plans) ? $item->plans[0]{'image'} : null) }}" style="width: 150px"></td>
                             <td>{{ $item->text{'title_es'} }} {{ $item->text{'title_en'} }}</td>
                             <td>{{ $item->order }}</td>
                             <td>

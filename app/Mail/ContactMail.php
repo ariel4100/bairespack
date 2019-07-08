@@ -33,13 +33,17 @@ class ContactMail extends Mailable
      */
     public function build()
     {
+
 //        return $this->view('view.name');
-        return $this->view('mail.contacto')->with([
-            'nombre' => $this->nombre,
-            'telefono' => $this->telefono,
-            'apellido' => $this->apellido,
-            'email' => $this->email,
-            'mensaje' => $this->mensaje,
-        ]);
+        return $this->view('mail.contacto')
+            ->with([
+                'nombre' => $this->nombre,
+                'telefono' => $this->telefono,
+                'apellido' => $this->apellido,
+                'email' => $this->email,
+                'mensaje' => $this->mensaje,
+                ])
+            ->replyto($this->email)
+            ->subject('Mensaje de Contacto de la Pagina Web');
     }
 }

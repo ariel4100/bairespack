@@ -8,6 +8,7 @@
             @method('PUT')
             <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             @if($general->id == 1)
+                {{--@dd($subcategoria)--}}
                 <div class="row">
                     <div class="col-md-6">
                         <p class="m-0">Seleccionar Categoria</p>
@@ -32,15 +33,20 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <img src="{{ asset($subcategoria->text{'image'} ?? '') }}" alt="" class="img-fluid">
+                        <gallery-component :galeria="{{ json_encode($subcategoria->image) }}"></gallery-component>
                     </div>
                 </div>
+                {{--<div class="row">--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="custom-file">--}}
+                            {{--<input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">--}}
+                            {{--<label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<img src="{{ asset($subcategoria->text{'image'} ?? '') }}" alt="" class="img-fluid">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             @endif
             @if($general->id == 2)
 
@@ -68,13 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <img src="{{ asset($subcategoria->text{'image'} ?? '') }}" alt="" class="img-fluid">
+                        <gallery-component :galeria="{{ json_encode($subcategoria->image) }}"></gallery-component>
                     </div>
                 </div>
             @endif

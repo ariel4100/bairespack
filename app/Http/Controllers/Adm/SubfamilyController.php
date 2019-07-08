@@ -25,21 +25,21 @@ class SubfamilyController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('_token','general_id','familia_id','order');
-        //dd($request->all());
-        $gallery = $request->galery;
-        if (isset($data['image']))
-        {
-            $path = $data['image']->store('uploads/familia');
-            $data['image'] = $path;
-        }
-//        if (isset($gallery))
+         //dd($request->all());
+        $gallery = $request->gallery;
+//        if (isset($data['image']))
 //        {
-//            foreach ($gallery as $k=>$item)
-//            {
-//                $path = $item['image']->store('uploads/familia/bag');
-//                $gallery[$k]['image'] = $path;
-//            }
+//            $path = $data['image']->store('uploads/familia');
+//            $data['image'] = $path;
 //        }
+        if (isset($gallery))
+        {
+            foreach ($gallery as $k=>$item)
+            {
+                $path = $item['image']->store('gallery/subfamilies');
+                $gallery[$k]['image'] = $path;
+            }
+        }
 
         $family = new Subfamily();
         $family->text = $data;
@@ -65,18 +65,27 @@ class SubfamilyController extends Controller
         $gallery = $request->gallery;
         $family = Subfamily::find($id);
         //dd($data['image']);
-        if (isset($data['image']))
-        {
-            $path = $data['image']->store('uploads/familia');
-            $data['image'] = $path;
-        }else{
-            $data['image'] = $family->text{'image'};
-        }
+//        if (isset($data['image']))
+//        {
+//            $path = $data['image']->store('uploads/familia');
+//            $data['image'] = $path;
+//        }else{
+//            $data['image'] = $family->text{'image'};
+//        }
         if (isset($gallery))
         {
+            //dd($gallery);
             foreach ($gallery as $k => $item) {
-                $path = $item['image']->store('uploads/familia/bag');
-                $gallery[$k]['image'] = $path;
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $gallery[$k]['image'] = $family->image[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('gallery/subfamilies');
+                    $gallery[$k]['image'] = $path;
+                }
             }
         }
         //dd($gallery);
@@ -85,6 +94,7 @@ class SubfamilyController extends Controller
         $family->image = $gallery;
         $family->order = $request->order;
         $family->general_id = $request->general_id;
+        $family->family_id = $request->familia_id;
         $family->update();
 
         return back()->with('status','Categoria actualizado correctamente');

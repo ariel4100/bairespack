@@ -2,7 +2,7 @@
     <ol class="carousel-indicators">
         @if($gallery)
             @foreach($gallery as $k=>$item)
-                <li data-target="#carousel-example-1z" style="background-color: darkgray;" data-slide-to="{{ $k }}" class="{{ $k == 0 ? 'active' : null }}" ></li>
+                <li data-target="#carouselExampleCaptions_{{ $id }}" style="background-color: darkgray;" data-slide-to="{{ $k }}" class="{{ $k == 0 ? 'active' : null }}" ></li>
             @endforeach
         @endif
     </ol>

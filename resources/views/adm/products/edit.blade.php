@@ -144,7 +144,7 @@
 
 
 
-                <config-component :dosificaciones="{{ json_encode($dosificadoras) }}"></config-component>
+
             @endif
 
             {{--DISIFICADORAS--}}

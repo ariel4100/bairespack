@@ -23,15 +23,26 @@ class FamilyController extends Controller
 
     public function store(Request $request)
     {
+         //dd($request->all());
         $data = $request->except('_token','config','_method');
-        $gallery = $request->galery;
+        $gallery = $request->gallery;
+        $image = $request->image;
         //dd($request->all());
-        //dd($gallery);
-        if (isset($data['image']))
+
+        if (isset($image))
         {
-            $path = $data['image']->store('uploads/familia');
-            $data['image'] = $path;
+            foreach ($image as $k => $item) {
+                $path = $item['image']->store('plans');
+                $image[$k]['image'] = $path;
+            }
         }
+//
+
+//        if (isset($data['image']))
+//        {
+//            $path = $data['image']->store('uploads/familia');
+//            $data['image'] = $path;
+//        }
         if (isset($gallery))
         {
             foreach ($gallery as $k=>$item)
@@ -40,10 +51,11 @@ class FamilyController extends Controller
                 $gallery[$k]['image'] = $path;
             }
         }
-
+//        dd($gallery);
         $family = new Family();
         $family->text = $data;
         $family->image = $gallery;
+        $family->plans = $image;
         $family->order = $request->order;
         $family->general_id = $request->general_id;
         $family->save();
@@ -62,15 +74,32 @@ class FamilyController extends Controller
         //dd($request->all());
         $data = $request->except('_token','config','_method','general_id');
         $gallery = $request->gallery;
+        $image = $request->image;
         $family = Family::find($id);
         //dd($data['image']);
-        if (isset($data['image']))
+        if (isset($image))
         {
-            $path = $data['image']->store('uploads/familia');
-            $data['image'] = $path;
-        }else{
-            $data['image'] = $family->text{'image'};
+            //dd($gallery);
+            foreach ($image as $k => $item) {
+                //dd($item['image']);
+                if (is_string($item['image']))
+                {
+                    //dd($item['image']);
+                    $image[$k]['image'] = $family->plans[$k]['image'];
+                }else{
+                    //dd($item['image']);
+                    $path = $item['image']->store('plans');
+                    $image[$k]['image'] = $path;
+                }
+            }
         }
+//        if (isset($data['image']))
+//        {
+//            $path = $data['image']->store('uploads/familia');
+//            $data['image'] = $path;
+//        }else{
+//            $data['image'] = $family->text{'image'};
+//        }
 
         if (isset($gallery))
         {
@@ -92,6 +121,7 @@ class FamilyController extends Controller
 
         $family->text = $data;
         $family->image = $gallery;
+        $family->plans = $image;
         $family->order = $request->order;
         $family->general_id = $request->general_id;
         $family->update();

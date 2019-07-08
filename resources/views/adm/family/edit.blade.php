@@ -10,14 +10,11 @@
             {{--ENVASADORAS--}}
             @if($general->id == 1)
                 <div class="row">
-                <div class="col-md-12">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                        <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
+                    <div class="col-md-12">
+                        <image-component :galeria="{{ json_encode($categoria->plans) }}"></image-component>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <div class="md-form col-md-6">
                     <input type="text" id="title_es" name="title_es" value="{{ $categoria->text{'title_es'} ?? '' }}" placeholder="Titulo - español" class="form-control">
                 </div>
@@ -65,6 +62,7 @@
             @endif
             {{--DOSIFICADORAS--}}
             @if($general->id == 2)
+
                 <div class="row">
                     {{--<div class="col-md-6">--}}
                         {{--<select class="browser-default custom-select" name="familia_id">--}}
@@ -77,7 +75,8 @@
                             {{--@endforelse--}}
                         {{--</select>--}}
                     {{--</div>--}}
-                    <div class="md-form m-0 col-md-6">
+
+                    <div class="md-form col-md-6">
                         <input type="text" id="order" name="order" placeholder="Orden" value="{{ $categoria->order }}" class="form-control">
                     </div>
                     <div class="md-form col-md-6">
@@ -87,15 +86,20 @@
                         <input type="text" id="title_en" name="title_en" value="{{ $categoria->text{'title_en'} }}" placeholder="Titulo - ingles" class="form-control">
                     </div>
                 </div>
+                {{--<div class="row">--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="custom-file">--}}
+                            {{--<input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">--}}
+                            {{--<label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-12">--}}
+                        {{--<img src="{{ asset($categoria->text{'image'} ?? '') }}" alt="" class="img-fluid">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <img src="{{ asset($categoria->text{'image'} ?? '') }}" alt="" class="img-fluid">
+                        <image-component :galeria="{{ json_encode($categoria->plans) }}"></image-component>
                     </div>
                 </div>
             @endif

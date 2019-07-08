@@ -8,11 +8,12 @@ class Family extends Model
 {
     protected $casts = [
         'text' => 'array',
-        'image' => 'array'
+        'image' => 'array',
+        'plans' => 'array'
     ];
 
     protected $fillable = [
-        'text', 'image', 'order','general_id',
+        'text', 'image', 'order','general_id','plans'
     ];
 
     public function general()

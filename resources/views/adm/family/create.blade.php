@@ -8,13 +8,12 @@
             {{--@dd($general)--}}
             <input type="text" class="d-none" name="general_id" value="{{ $general->id }}">
             @if($general->id == 1)
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                        <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <image-component  ></image-component>
                     </div>
                 </div>
+            <div class="row">
                 <div class="md-form col-md-12">
                     <input type="text" id="order" name="order" placeholder="Orden" class="form-control">
                 </div>
@@ -58,10 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang" name="image" lang="es">
-                            <label class="custom-file-label" for="customFileLang" data-browse="Buscar">Seleccionar Imagen Principal</label>
-                        </div>
+                        <image-component  ></image-component>
                     </div>
                 </div>
             @endif
