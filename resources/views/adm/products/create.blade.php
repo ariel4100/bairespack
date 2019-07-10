@@ -56,17 +56,18 @@
                         <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3"></textarea>
                     </div>
                 </div>
-                <div class="row">
+
+                <div class="row mb-5">
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlep_es"  placeholder="Titulo Planos - español" class="form-control">
                     </div>
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_en" name="titlep_en"  placeholder="Titulo Planos - ingles" class="form-control">
                     </div>
-                    <planos-component  ></planos-component>
+                    <planos-component ></planos-component>
 
                 </div>
-                <div class="row">
+                <div class="row ">
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlec_es" placeholder="Titulo Caracteristicas - español" class="form-control">
                     </div>
@@ -172,17 +173,18 @@
                         <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3"></textarea>
                     </div>
                 </div>
-                <div class="row">
+
+                <div class="row mb-5">
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlep_es"  placeholder="Titulo Planos - español" class="form-control">
                     </div>
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_en" name="titlep_en"  placeholder="Titulo Planos - ingles" class="form-control">
                     </div>
-                    <planos-component  ></planos-component>
+                    <planos-component ></planos-component>
 
                 </div>
-                <div class="row mt-5">
+                <div class="row  ">
                     <div class="md-form m-0 col-md-6">
                         <input type="text" id="titlec_es" name="titlec_es" placeholder="Titulo Caracteristicas - español" class="form-control">
                     </div>
@@ -243,7 +245,8 @@
                     {{--</div>--}}
                     {{--</div>--}}
                 </div>
-                <select-component></select-component>
+                <select-component :envasadoras="{{ json_encode($envasadoras) }}"   :accesorios="{{ json_encode($accesorios) }}"  ></select-component>
+
                 <gallery-component></gallery-component>
             @endif
             @if($general->id == 3)
@@ -264,6 +267,16 @@
                         <h6>Texto - ingles</h6>
                         <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3"></textarea>
                     </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_es" name="titlep_es"  placeholder="Titulo Planos - español" class="form-control">
+                    </div>
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_en" name="titlep_en"  placeholder="Titulo Planos - ingles" class="form-control">
+                    </div>
+                    <planos-component ></planos-component>
+
                 </div>
                 <div class="row">
                     <div class="md-form m-0 col-md-6">

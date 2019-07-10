@@ -41,8 +41,8 @@
                     {!! $producto->text{'text_'.App::getLocale()} ?? '' !!}
                     <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('Consult') }}</a>
                     <br>
-                    @if(isset($producto->text{'file_'.App::getLocale()}))
-                    <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
+                    @if(isset($producto->text{'ficha_'.App::getLocale()}))
+                    <a href="{{ asset($producto->text{'ficha_'.App::getLocale()}) }}" target="_blank" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
             </div>
@@ -149,7 +149,7 @@
                                                             </div>
                                                             @forelse($item->product as $dosificadora)
                                                                 <div class="col-md-4 mt-5">
-                                                                    <a href="{{ route('producto',['producto' => $dosificadora->id]) }}" class=" " style="text-decoration: none; color: unset;">
+                                                                    <a href="{{ route('subfamilia',['familia' => $dosificadora->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
                                                                         <div class="card shadow-none">
                                                                             <div class="card-body text-center p-0">
                                                                                 <img class="img-fluid" src="{{ asset($dosificadora->image[0]['image'] ?? '') }}" alt="Card image cap">
@@ -199,8 +199,8 @@
                     {!! $producto->text{'text_'.App::getLocale()} !!}
                     <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">{{ __('Consult') }}</a>
                     <br>
-                    @if(isset($producto->text{'file_'.App::getLocale()}))
-                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 35%">{{ __('DATA SHEET') }}</a>
+                    @if(isset($producto->text{'ficha_'.App::getLocale()}))
+                        <a href="{{ asset($producto->text{'ficha_'.App::getLocale()}) }}" target="_blank" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
 
@@ -252,7 +252,7 @@
                 @foreach($producto->related as $item)
 
                     <div class="col-md-3 mb-5">
-                        <a href="{{ route('producto',['producto' => $item->id,'config' => $producto->subfamily->family->id]) }}" class=" " style="text-decoration: none; color: unset;">
+                        <a href="{{ route('producto',['producto' => $item->id,'config' => $producto->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
                             @card
                             @slot('item',$item)
                             @slot('style','text-center')
@@ -352,8 +352,8 @@
                     {!! $producto->text{'text_'.App::getLocale()} ?? '' !!}
                     <a href="{{ route('contacto') }}" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('Consult') }}</a>
                     <br>
-                    @if(isset($producto->text{'file_'.App::getLocale()}))
-                        <a href="" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
+                    @if(isset($producto->text{'ficha_'.App::getLocale()}))
+                        <a href="{{ asset($producto->text{'ficha_'.App::getLocale()}) }}" target="_blank" class="btn baires-fondo rounded-pill m-0 px-4 mb-3" style="width: 200px">{{ __('DATA SHEET') }}</a>
                     @endif
                 </div>
 
@@ -361,6 +361,17 @@
             </div>
             {{--PLANOS Y TABLAS DE VARIANTES--}}
             <div class="row my-5 justify-content-end">
+                @if(isset($producto->text{'titlep_'.App::getLocale()}))
+                    <div class="col-md-6">
+                        <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlep_'.App::getLocale()} ?? '' !!}</h5>
+                        {{--@dd($producto->planos)--}}
+                        @forelse($producto->planos as $planos)
+                            <img src="{{ asset($planos{'image'}) }}" alt="" class="img-fluid">
+                        @empty
+
+                        @endforelse
+                    </div>
+                @endif
                 @if($producto->text{'titlec_'.App::getLocale()})
                 <div class="col-md-6">
                     <h5 class="p-3 font-weight-bold" style="background-color: #F9F9F9">{!! $producto->text{'titlec_'.App::getLocale()} ?? '' !!}</h5>

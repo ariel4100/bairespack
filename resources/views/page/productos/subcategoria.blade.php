@@ -105,11 +105,20 @@
 
                         <div class="col-md-4 mb-5">
                             <a href="{{ route('producto',['producto' => $item->id]) }}" class=" " style="text-decoration: none; color: unset;">
-                                @card
-                                @slot('item',$item)
-                                {{--@slot('height','300px')--}}
-                                @slot('footerheight','120px')
-                                @endcard
+                                <div class="card">
+                                    <div class="card-body justify-content-center d-flex align-items-center" style="height: 320px;">
+                                        @gallery
+                                        @slot('gallery',$item->image)
+                                        @slot('id',$item->id)
+                                        @endgallery
+                                    </div>
+                                    <div class="card-footer bg-white"  style="height: 100px">
+                                        <p class="m-0">{!! $item->family->text{'title_'.App::getLocale()} ?? '' !!}</p>
+                                        <h4 class="">
+                                            {!! $item->text{'title_'.App::getLocale()} ?? '' !!}
+                                        </h4>
+                                    </div>
+                                </div>
                             </a>
                         </div>
                     @endforeach

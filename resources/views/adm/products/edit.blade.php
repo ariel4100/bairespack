@@ -67,14 +67,7 @@
                     <input type="text" id="titlec_en" name="titlep_en" value="{!! $producto->text{'titlep_en'} ?? ''!!}" placeholder="Titulo Planos - ingles" class="form-control">
                 </div>
                 <planos-component :galeria="{{ json_encode($producto->planos) }}"></planos-component>
-                {{--<div class="md-form col-md-6">--}}
-                {{--<h6>Planos - español</h6>--}}
-                {{--<textarea id="caracteristica_es" class="md-textarea form-control" name="caracteristica_es" rows="3">{!! $producto->text{'caracteristica_es'} ?? ''!!}</textarea>--}}
-                {{--</div>--}}
-                {{--<div class="md-form col-md-6">--}}
-                {{--<h6>Planos - ingles</h6>--}}
-                {{--<textarea id="caracteristica_en" class="md-textarea form-control" name="caracteristica_en" rows="3">{!! $producto->text{'caracteristica_en'} ?? ''!!}</textarea>--}}
-                {{--</div>--}}
+
             </div>
             <div class="row mt-5">
                 <div class="md-form m-0 col-md-6">
@@ -273,6 +266,16 @@
                         <h6>Texto - ingles</h6>
                         <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $producto->text{'text_en'} ?? ''!!}</textarea>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_es" name="titlep_es" value="{!! $producto->text{'titlep_es'} ?? ''!!}" placeholder="Titulo Planos - español" class="form-control">
+                    </div>
+                    <div class="md-form m-0 col-md-6">
+                        <input type="text" id="titlec_en" name="titlep_en" value="{!! $producto->text{'titlep_en'} ?? ''!!}" placeholder="Titulo Planos - ingles" class="form-control">
+                    </div>
+                    <planos-component :galeria="{{ json_encode($producto->planos) }}"></planos-component>
+
                 </div>
                 <div class="row">
                     <div class="md-form m-0 col-md-6">
