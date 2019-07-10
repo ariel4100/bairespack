@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Adm;
 
 use App\Config;
 use App\Product;
+use App\Subfamily;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ConfigController extends Controller
 {
@@ -19,7 +21,7 @@ class ConfigController extends Controller
     public function create($producto)
     {
         //dd($producto);
-        $dosificadoras = Product::where('general_id',2)->get();
+        $dosificadoras = Subfamily::where('general_id',2)->get();
         return view('adm.products.config.create',compact('producto','dosificadoras'));
     }
 
@@ -48,18 +50,37 @@ class ConfigController extends Controller
 
     public function edit($id)
     {
-        //dd($producto);
-        $dosificadoras = Product::where('general_id',2)->get();
         $config = Config::find($id);
+         //dd($config->text{'tipo_es'});
+        if ($config->text{'tipo_es'} == 'Sólidos')
+        {
+            $dosificadoras = Subfamily::where('general_id',2)->get();
+        }else{
+            $dosificadoras = Product::where('general_id',2)->get();
+        }
+//        $dosificadoras = DB::table('subfamilies')
+//            ->join('products', 'subfamilies.id', '=', 'products.subfamily_id')
+//            ->select('products.', 'subfamilies.text', 'subfamilies.image')
+//            ->where('products.general_id',2)
+//            ->get();
+
         return view('adm.products.config.edit',compact('config','dosificadoras'));
     }
 
     public function update(Request $request,$id)
     {
-        //dd($request->all());
+         //dd($request->all());
         $config = Config::find($id);
 
-        $config->product()->sync($request->related_id);
+        if ($config->text{'tipo_es'} == 'Sólidos')
+        {
+            //dd($config->subfamily());
+            $config->subfamily()->sync($request->related_id);
+        }else{
+            $config->product()->sync($request->related_id);
+        }
+
+
         //dd($config->product);
         $gallery = $request->gallery;
         if (isset($gallery))
@@ -86,7 +107,7 @@ class ConfigController extends Controller
         $config->product_id = $request->product_id;
         $config->save();
 
-        return back()->with('status','Creado correctamente');
+        return back()->with('status','Actualizado correctamente');
     }
 
 

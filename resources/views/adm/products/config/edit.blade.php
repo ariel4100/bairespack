@@ -29,8 +29,13 @@
                     <textarea id="text_en" class="md-textarea form-control" name="text_en" rows="3">{!! $config->text{'text_en'} !!}</textarea>
                 </div>
                 <div class="col-md-6">
-                    {{--@dd($dosificadoras)--}}
-                    <multiple-component :related="{{ json_encode($dosificadoras) }}" :selectrelated="{{ json_encode($config->product) }}"></multiple-component>
+                        {{--@dd($dosificadoras)--}}
+                    @if($config->text{'tipo_es'} == 'Sólidos')
+                    <multiple-component :related="{{ json_encode($dosificadoras) }}" :selectrelated="{{ json_encode($config->subfamily) }}"></multiple-component>
+                    @else
+                        <multiple-component :related="{{ json_encode($dosificadoras) }}" :selectrelated="{{ json_encode($config->product) }}"></multiple-component>
+                    @endif
+
                 </div>
                 <div class="col-md-6 md-form">
                     <input type="text" name="order" value="{!! $config->order !!}" placeholder="Orden" class="form-control">

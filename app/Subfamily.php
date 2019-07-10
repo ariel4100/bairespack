@@ -18,4 +18,9 @@ class Subfamily extends Model
     {
         return $this->belongsTo('App\Family');
     }
+
+
+    public function config() {
+        return $this->belongsToMany('App\Config','config_subfamily','config_id','subfamily_id');
+    }
 }
