@@ -78,6 +78,7 @@
                                     @gallery
                                     @slot('gallery',$item->plans)
                                     @slot('id',$k)
+                                    @slot('alto','200px')
                                     @endgallery
                                 </div>
                             @endif

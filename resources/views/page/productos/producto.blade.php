@@ -168,7 +168,7 @@
                                                             @endforelse
                                                             @forelse($item->subfamily as $dosificadora)
                                                                 <div class="col-md-4 mt-5">
-                                                                    <a href="{{ route('productos.all',['subfamilia' => $item->id, 'familia' => $item->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
+                                                                    <a href="{{ route('productos.all',['subfamilia' => $dosificadora->id, 'familia' => $dosificadora->family_id]) }}" class=" " style="text-decoration: none; color: unset;">
                                                                         <div class="card shadow-none">
                                                                             <div class="card-body d-flex align-items-center p-0" style="height: 270px;">
                                                                                 <img class="img-fluid" src="{{ asset($dosificadora->image[0]['image'] ?? '') }}" alt="Card image cap">

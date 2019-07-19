@@ -11,7 +11,7 @@
 
             @foreach($gallery as $k=>$item)
                 <div class="carousel-item {{ $k == 0 ? 'active' : null }} text-center">
-                    <img class="img-fluid" style=" " src="{!! asset($item{'image'}) !!}"
+                    <img class="img-fluid" style="height: {{ $alto ?? '' }}" src="{!! asset($item{'image'}) !!}"
                          alt="First slide">
                     @if($item{'title_'.App::getLocale()})
                     <div class="carousel-caption d-none d-md-block">
